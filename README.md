@@ -153,10 +153,14 @@ npm start
 <br>
 
 * Software Stack
-  * socket-io (4.5.1)
-  * cors (2.8.5)
-  * react-icons (4.4.0)
-  * react-toastify (9.0.7)
+  * TBD
+  * TBD
+  * TBD
+  * Packages
+    * Package 1
+    * Package 2
+    * Package 3
+    * Package 4
 
 <br>
 <br>
