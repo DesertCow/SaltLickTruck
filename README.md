@@ -9,9 +9,10 @@
 
 * [Deployment](#deployment)
 * [Description](#description)
+* [Features](#features)
 * [Installation](#installation)
 * [Wireframe](#wireframe)
-* [Technology](#Technology)
+* [Technology Stack](#Technology)
 * [Demo](#demo)
 
   <br>
@@ -36,12 +37,62 @@
 <br>
 <br>
 
+## [Features](#table-of-contents)
+
+---
+* Order Tracking System
+
+<br>
+
+* User (Auth0)
+  * Sign Up
+  * Sign-In
+  * Password Recovery
+
+<br>
+
+* Database
+  * Login (Auth0)
+  * User Profile
+  * Order Data
+  * Analytics
+
+<br>
+
+* Kitchen View
+  * Display Orders
+  * Est Wait Times
+  * Real Time Order Change
+  * Order Close Out Tool
+
+<br>
+
+* Payment System (Stripe)
+  * Store payment to user profile
+
+<br>
+
+* Admin
+  * TBD
+
+<br>
+<br>
+
 ## [Wireframe](#table-of-contents)
 
  ----
 
 <p align="center">
-  <img src="./public/src/img/WireFrame_Login.png" width="850" alt="Login Screen Wireframe")
+  <img src="./Dev_Docs/Home_Page.png" height="550" alt="Main Screen Wireframe")
+</p>
+<h5 align="center">Home Screen</h5>
+
+<br>
+<br>
+<br>
+
+<p align="center">
+  <img src="./Dev_Docs/Login_1.png" height="550" alt="Login Screen Wireframe")
 </p>
 <h5 align="center">Login Screen</h5>
 <br>
@@ -49,7 +100,7 @@
 <br>
 
 <p align="center">
-  <img src="./public/src/img/WireFrame_SignUp.png" width="850" alt="Sign Up Wireframe")
+  <img src="./Dev_Docs/SignUp_1.png" height="550" alt="Sign Up Wireframe")
 </p>
 <h5 align="center">Sign Up Page</h5>
 
@@ -58,18 +109,9 @@
 <br>
 
 <p align="center">
-  <img src="./public/src/img/WireFrame_Chat.png" width="850" alt="Main Screen Wireframe")
+  <img src="./Dev_Docs/Main_Menu_1.png" height="550" alt="Settings Wireframe")
 </p>
-<h5 align="center">User Screen</h5>
-
-<br>
-<br>
-<br>
-
-<p align="center">
-  <img src="./public/src/img/WireFrame_Settings.png" width="850" alt="Settings Wireframe")
-</p>
-<h5 align="center">Settings Menu</h5>
+<h5 align="center">Menu</h5>
 
 <br>
 <br>
@@ -101,18 +143,24 @@ npm start
 
   ----
 
-* Packages
-  * Node.js (16.15.1)
-  * Express.js (4.18.1)
-  * Bootstrap (5.2.0-beta1)
-  * Bcrypt (5.0.1)
-  * dotenv (16.0.1)
-    <br>
-* New Packages
-  * socket-io (4.5.1)
-  * cors (2.8.5)
-  * react-icons (4.4.0)
-  * react-toastify (9.0.7)
+* Hardware Stack
+  * TBD
+  * TBD
+  * TBD
+  * TBD
+  * TBD
+
+<br>
+
+* Software Stack
+  * TBD
+  * TBD
+  * TBD
+  * Packages
+    * Package 1
+    * Package 2
+    * Package 3
+    * Package 4
 
 <br>
 <br>
