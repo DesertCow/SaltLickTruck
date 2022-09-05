@@ -42,28 +42,28 @@
 ---
 * Order Tracking System
 <br>
-* User (Auth0)
-  * Sign Up
-  * Sign-In
-  * Password Recovery
+- User (Auth0)
+  - Sign Up
+  - Sign-In
+  - Password Recovery
 <br>
-* Database
-  * Login (Auth0)
-  * User Profile
-  * Order Data
-  * Analytics
+- Database
+  - Login (Auth0)
+  - User Profile
+  - Order Data
+  - Analytics
 <br>
-* Kitchen View
-  * Display Orders
-  * Est Wait Times
-  * Real Time Order Change
-  * Order Close Out Tool
+- Kitchen View
+  - Display Orders
+  - Est Wait Times
+  - Real Time Order Change
+  - Order Close Out Tool
 <br>
-* Payment System (Stripe)
-  * Store payment to user profile
+- Payment System (Stripe)
+  - save payment to user profile
 <br>
-* Admin
-  * TBD
+- Admin
+  - TBD
 
 <br>
 <br>
