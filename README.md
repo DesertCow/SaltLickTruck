@@ -12,7 +12,7 @@
 * [Features](#features)
 * [Installation](#installation)
 * [Wireframe](#wireframe)
-* [Technology](#Technology)
+* [Technology Stack](#Technology)
 * [Demo](#demo)
 
   <br>
@@ -41,22 +41,37 @@
 
 ---
 * Order Tracking System
+
+<br>
+
 * User (Auth0)
   * Sign Up
   * Sign-In
   * Password Recovery
+
+<br>
+
 * Database
   * Login (Auth0)
   * User Profile
   * Order Data
   * Analytics
+
+<br>
+
 * Kitchen View
   * Display Orders
   * Est Wait Times
   * Real Time Order Change
   * Order Close Out Tool
+
+<br>
+
 * Payment System (Stripe)
   * Store payment to user profile
+
+<br>
+
 * Admin
   * TBD
 
@@ -128,14 +143,16 @@ npm start
 
   ----
 
-* Packages
-  * Node.js (16.15.1)
-  * Express.js (4.18.1)
-  * Bootstrap (5.2.0-beta1)
-  * Bcrypt (5.0.1)
-  * dotenv (16.0.1)
-    <br>
-* New Packages
+* Hardware Stack
+  * TBD
+  * TBD
+  * TBD
+  * TBD
+  * TBD
+
+<br>
+
+* Software Stack
   * socket-io (4.5.1)
   * cors (2.8.5)
   * react-icons (4.4.0)
