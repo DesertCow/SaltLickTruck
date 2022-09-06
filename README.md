@@ -83,7 +83,7 @@
  ----
 
 <p align="center">
-  <img src="./Dev_Docs/Home_Page.png" height="550" alt="Main Screen Wireframe")
+  <img src="./public/src/img/Home_Page.png" height="550" alt="Main Screen Wireframe")
 </p>
 <h5 align="center">Home Screen</h5>
 
@@ -92,7 +92,7 @@
 <br>
 
 <p align="center">
-  <img src="./Dev_Docs/Login_1.png" height="550" alt="Login Screen Wireframe")
+  <img src="./public/src/img/Login_1.png" height="550" alt="Login Screen Wireframe")
 </p>
 <h5 align="center">Login Screen</h5>
 <br>
@@ -100,7 +100,7 @@
 <br>
 
 <p align="center">
-  <img src="./Dev_Docs/SignUp_1.png" height="550" alt="Sign Up Wireframe")
+  <img src="./public/src/img/SignUp_1.png" height="550" alt="Sign Up Wireframe")
 </p>
 <h5 align="center">Sign Up Page</h5>
 
@@ -109,7 +109,7 @@
 <br>
 
 <p align="center">
-  <img src="./Dev_Docs/Main_Menu_1.png" height="550" alt="Settings Wireframe")
+  <img src="./public/src/img/Main_Menu_1.png" height="550" alt="Settings Wireframe")
 </p>
 <h5 align="center">Menu</h5>
 
