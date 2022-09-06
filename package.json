@@ -1,0 +1,38 @@
+{
+  "name": "babel-exchange",
+  "version": "1.0.0",
+  "description": "<div align=\"center\"> <h1>Salt Lick Food Truck</h1> <h4>About Food truck management application with a customer facing ordering App with a backend Kitchen management and display application.</h4> </div>",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./server/server.js && cd public/ && npm run start-client",
+    "startAll": "concurrently \"cd server && npm start\" \"cd public && npm start\"",
+    "build": "cd public/ && npm install && npm run build",
+    "seed": "node seeds/seed.js",
+    "watch": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^3.6.2",
+    "bcrypt": "^5.0.1",
+    "concurrently": "^7.3.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "graphql": "^16.3.0",
+    "mongoose": "^6.4.7",
+    "nodemon": "^2.0.19"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DesertCow/SaltLickTruck.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/DesertCow/SaltLickTruck/issues"
+  },
+  "homepage": "https://github.com/DesertCow/SaltLickTruck#readme"
+}
