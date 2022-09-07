@@ -8,23 +8,34 @@ function Home() {
 
   return (
     <div>
-      <h1> Hello World!</h1>
-      <h1> Hello World!</h1>
-      <h1> Hello World!</h1>
-      <h1> Hello World!</h1>
-      <h1> Hello World!</h1>
-      <h1> Hello World!</h1>
-      <h1> Hello World!</h1>
-      <h1> Hello World!</h1>
-      <h1> Hello World!</h1>
-      <button type="button" class="btn btn-primary">Primary</button>
-      <button type="button" class="btn btn-secondary">Secondary</button>
-      <button type="button" class="btn btn-success">Success</button>
-      <button type="button" class="btn btn-danger">Danger</button>
-      <button type="button" class="btn btn-warning">Warning</button>
-      <button type="button" class="btn btn-info">Info</button>
-      <button type="button" class="btn btn-light">Light</button>
-      <button type="button" class="btn btn-dark">Dark</button>
+      <h1 className="homeTitle text-center pt-4"> Salt Lick BBQ</h1>
+
+      <div className="text-center">
+        <img src={require("../img/Food_Truck_Icon.png")}
+          className="homePageTruck"
+          alt="Truck Logo" />
+      </div>
+
+      <div className="text-center homeMenu row d-flex align-items-center justify-content-center">
+        <row className="row px-5 py-3">
+          <button type="button" className="btn btn-primary">Order</button>
+        </row>
+        <row className="row px-5 py-3">
+          <button type="button" className="btn btn-primary">PDF Menu</button>
+        </row>
+        <row className="row px-5 py-3">
+          <button type="button" className="btn btn-primary">Login</button>
+        </row>
+        <row className="row px-5 py-3">
+          <button type="button" className="btn btn-primary">Sign Up</button>
+        </row>
+        <row className="row px-5 py-3">
+          <button type="button" className="btn btn-primary">Contact Information</button>
+        </row>
+
+      </div>
+
+
     </div>
   );
 
