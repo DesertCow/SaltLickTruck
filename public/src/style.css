@@ -9,7 +9,7 @@
 
 .homePageTruck {
 
-    width: 350px;
+    width: 300px;
 }
 
 .homeMenu {
@@ -18,4 +18,8 @@
 
 body {
   background-color: #DA4453;
+}
+
+footer ul li p {
+  font-size: 12px;
 }

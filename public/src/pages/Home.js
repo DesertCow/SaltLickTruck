@@ -7,7 +7,7 @@ function Home() {
 
 
   return (
-    <div>
+    <div className="d-flex flex-column min-vh-100">
       <h1 className="homeTitle text-center pt-4"> Salt Lick BBQ</h1>
 
       <div className="text-center">
@@ -35,6 +35,19 @@ function Home() {
 
       </div>
 
+      {/* <footer class="footer align-items-center"> */}
+      {/* <!-- Footer --> */}
+      {/* <footer class="text-center text-lg-start bg-light text-muted"> */}
+      <footer class="mt-auto mb-0">
+        <ul class="pb-1 text-center">
+          <li>
+            <p>Made by 🌵 Desert-Cow 🐄</p>
+          </li>
+          <li>
+            <p>© 2022 Monkey See Monkey Do LLC.</p>
+          </li>
+        </ul>
+      </footer>
 
     </div>
   );
