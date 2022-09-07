@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import React, { useState, useEffect } from "react";
+// import axios from "axios";
 // import { loginRoute, registerRoute } from "../utils/apiRoutes";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 function Home() {
 
@@ -21,7 +21,9 @@ function Home() {
           <button type="button" className="btn btn-primary">Order</button>
         </row>
         <row className="row px-5 py-3">
-          <button type="button" className="btn btn-primary">PDF Menu</button>
+          <form method="get" className="btn btn-primary" action="../img/Salt_Lick_Menu_DWood-PDF.pdf">
+            <button type="submit" className="btn btn-primary">PDF Menu</button>
+          </form>
         </row>
         <row className="row px-5 py-3">
           <button type="button" className="btn btn-primary">Login</button>
