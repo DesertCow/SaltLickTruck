@@ -1,10 +1,42 @@
 // import React, { useState, useEffect } from "react";
 // import axios from "axios";
 // import { loginRoute, registerRoute } from "../utils/apiRoutes";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
 
+  const navigate = useNavigate();
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    navigate("/Login");
+
+  };
+
+  const handleRegister = async (event) => {
+    event.preventDefault();
+    navigate("/Register");
+
+  };
+
+  const handleContact = async (event) => {
+    event.preventDefault();
+    navigate("/Contact");
+
+  };
+
+  const downloadPDF = async (event) => {
+    event.preventDefault();
+    // navigate("/Contact");
+    console.log("Trigger PDF Download...");
+
+  };
+
+  const handleMainMenu = async (event) => {
+    event.preventDefault();
+    navigate("/Main_Menu");
+
+  };
 
   return (
     <div className="d-flex flex-column min-vh-100">
@@ -18,21 +50,23 @@ function Home() {
 
       <div className="text-center homeMenu row d-flex align-items-center justify-content-center">
         <row className="row px-5 py-3">
-          <button type="button" className="btn btn-primary">Order</button>
+          <button type="button" className="btn btn-primary" onClick={(event) => handleMainMenu(event)}>Order</button>
         </row>
         <row className="row px-5 py-3">
-          <form method="get" className="btn btn-primary" action="../img/Salt_Lick_Menu_DWood-PDF.pdf">
+          {/* <form method="get" className="btn btn-primary" action="../img/Salt_Lick_Menu_DWood-PDF.pdf">
+          <form method="get" className="btn btn-primary" onClick={(event) => downloadPDF(event)}>
             <button type="submit" className="btn btn-primary">PDF Menu</button>
-          </form>
+          </form> */}
+          <button type="button" className="btn btn-primary" onClick={(event) => downloadPDF(event)}>PDF Menu</button>
         </row>
         <row className="row px-5 py-3">
-          <button type="button" className="btn btn-primary">Login</button>
+          <button type="button" className="btn btn-primary" onClick={(event) => handleLogin(event)}>Login</button>
         </row>
         <row className="row px-5 py-3">
-          <button type="button" className="btn btn-primary">Sign Up</button>
+          <button type="button" className="btn btn-primary" onClick={(event) => handleRegister(event)}>Sign Up</button>
         </row>
         <row className="row px-5 py-3">
-          <button type="button" className="btn btn-primary">Contact Information</button>
+          <button type="button" className="btn btn-primary" onClick={(event) => handleContact(event)}>Contact Information</button>
         </row>
 
       </div>
