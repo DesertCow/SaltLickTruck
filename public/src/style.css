@@ -1,0 +1,25 @@
+
+
+
+.homeTitle {
+  font-family: 'Lakki Reddy', cursive;
+  font-size: 50px;
+
+}
+
+.homePageTruck {
+
+    width: 300px;
+}
+
+.homeMenu {
+
+}
+
+body {
+  background-color: #DA4453;
+}
+
+footer ul li p {
+  font-size: 12px;
+}
