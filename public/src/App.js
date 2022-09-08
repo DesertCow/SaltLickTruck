@@ -14,10 +14,10 @@ export default function App() {
         {/* <Route path="/register" element={<Register />} />
         <Route path="/chat" element={<Chat />} /> */}
         <Route path="/" element={<Home />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Register" element={<Register />} />
-        <Route path="/Contact" element={<Contact />} />
-        <Route path="/Main_Menu" element={<Main_Menu />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/main_Menu" element={<Main_Menu />} />
       </Routes>
     </BrowserRouter>
   );

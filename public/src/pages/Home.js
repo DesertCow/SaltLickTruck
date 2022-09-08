@@ -9,19 +9,19 @@ function Home() {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    navigate("/Login");
+    navigate("/login");
 
   };
 
   const handleRegister = async (event) => {
     event.preventDefault();
-    navigate("/Register");
+    navigate("/register");
 
   };
 
   const handleContact = async (event) => {
     event.preventDefault();
-    navigate("/Contact");
+    navigate("/contact");
 
   };
 
@@ -34,7 +34,7 @@ function Home() {
 
   const handleMainMenu = async (event) => {
     event.preventDefault();
-    navigate("/Main_Menu");
+    navigate("/main_Menu");
 
   };
 
