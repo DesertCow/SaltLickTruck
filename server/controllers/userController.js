@@ -10,24 +10,25 @@ module.exports.login = async (req, res, next) => {
   const { username, password } = req.body;
   const user = await User.findOne({ username });
 
-  // if (!user) {
-  //   console.log("\x1b[35mLogin Failed\x1b[0m");
-  //   return res.json({ msg: "Invalid Username", status: false });
-  // }
+  console.log("\n\x1b[33mLogin Request\x1b[0m\n   User: \x1b[33m" + username + "\x1b[0m\n   Password: \x1b[35m" + password + "\x1b[0m");
+
+  if (!user) {
+    console.log("\x1b[35mLogin Failed\x1b[0m");
+    return res.json({ msg: "Invalid Username", status: false });
+  }
 
   //* Validate Password
-  // const passValid = await bcrypt.compare(password, user.password);
+  const passValid = await bcrypt.compare(password, user.password);
 
-  //* Hash Password for store
-  // const hashedPassword = await bcrypt.hash(req.body.password, 10)
-
-  // const user = await User.findOne({ username });
-
-  console.log("\n\x1b[33mLogin Request\x1b[0m\n   User: \x1b[33m" + username + "\x1b[0m\n   Password: \x1b[35m" + password + "\x1b[0m");
-  // console.log("\n\x1b[33mLogin Request\x1b[0m\n   User: \x1b[33m" + username + "\x1b[0m\n   Hashed Password: \x1b[35m" + hashedPassword + "\x1b[0m");
+  //* Invalid password, return 
+  if (!passValid) {
+    console.log("\x1b[35mLogin Failed\x1b[0m");
+    return res.json({ msg: "Invalid Password", authenticated: false, status: false })
+  }
 
 
-  return res.json({ msg: "Login Recivied", authenticated: false, debug: "Username/Password reached the Server" })
+  console.log("\x1b[32mLogin Successful\x1b[0m");
+  return res.json({ msg: "Login Recivied", authenticated: true, debug: "Username/Password reached the Server" })
 
   // } catch {
   //   res.status(500).send()
