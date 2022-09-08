@@ -40,7 +40,7 @@ function Home() {
 
   return (
     <div className="d-flex flex-column min-vh-100">
-      <h1 className="homeTitle text-center pt-4"> Salt Lick BBQ</h1>
+      <h1 className="homeTitle text-center mt-5"> Salt Lick BBQ</h1>
 
       <div className="text-center">
         <img src={require("../img/Food_Truck_Icon.png")}
