@@ -7,8 +7,13 @@ import "./reset.css";
 // import { BrowserRouter as Router } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 
+
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
+
+// const express = require('express');
+// const path = require('path');
+// const { auth } = require('express-openid-connect');
 
 root.render(
   <div>
