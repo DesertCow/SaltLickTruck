@@ -22,6 +22,17 @@ const authRoutes = require("./routes/auth");
 // console.log('Hello World')
 app.use(express.json());
 
+mongoose.connect(process.env.MONGO_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => {
+  // console.log("DB Connection Successful!")
+  console.log(`| 💡     Database Connection:  \x1b[32mOnline\x1b[0m     💡 |`);
+
+}).catch((err) => {
+  console.log(err.message);
+});
+
 //* Setup API Routes
 app.use("/api/auth", authRoutes);
 // app.use("/api/messages", messageRoutes);
