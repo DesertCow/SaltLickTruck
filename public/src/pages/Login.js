@@ -33,7 +33,7 @@ function Login() {
     }
   };
 
-  //* Used to keep useEffect Variable up to date
+  //* Used to keep useState method to update Values
   const handleChange = (event) => {
     setValues({ ...values, [event.target.name]: event.target.value });
   };
@@ -42,8 +42,8 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log("Login Submit from Client!")
-    console.log("Valid? = " + validateForm() + " || " + JSON.stringify(values))
+    // console.log("Login Submit from Client!")
+    // console.log("Valid? = " + validateForm() + " || " + JSON.stringify(values))
 
     if (validateForm()) {
       const { username, password } = values;
@@ -52,16 +52,18 @@ function Login() {
         password,
       });
 
-      console.log("Login Data: " + JSON.stringify(data))
+      // console.log("Login Data: " + JSON.stringify(data))
+      const tokenAccess = data.accessToken
+      console.log("PWT Token: " + tokenAccess)
 
-      if (data.status === false) {
+      if (!tokenAccess) {
         // toast.error(data.msg, toastOptions);
       }
-      if (data.status === true) {
-        localStorage.setItem(
-          process.env.REACT_APP_LOCALHOST_KEY,
-          JSON.stringify(data.user)
-        );
+      if (tokenAccess) {
+        // localStorage.setItem(
+        //   process.env.REACT_APP_LOCALHOST_KEY,
+        //   JSON.stringify(data.user)
+        // );
         // toast.success("Login Was Successful", toastOptions);
         navigate("/main_Menu");
       }
