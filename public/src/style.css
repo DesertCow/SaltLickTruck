@@ -58,7 +58,7 @@
 }
 
 .loginBox {
-  margin-top: 30%;
+  margin-top: 20%;
   opacity: 934;
   width: 80%;
   background-color: rgb(255, 255, 255);
@@ -81,9 +81,24 @@
   -o-border-radius: 15px;
 }
 
+.passwordRecoveryLink {
+  text-align: right;
+  color: blue;
+  font-weight: 700;
+  margin-right: 5%;
+}
+
 .inputdiv {
 	margin-top: 10%;
   padding: 4%;
+}
+
+.loginTextBox {
+    width: 100%;
+}
+
+.registerdiv {
+  margin-top: 6%;
 }
 
 .inputlabel {
@@ -93,7 +108,7 @@
 }
 
 .welcometo{
-	font-size: 28px;
+	font-size: 32px;
 	font-weight: 500;
 	/* padding-bottom: 8px; */
 	/* color: #545454; */
@@ -121,6 +136,10 @@
 	-moz-transition: 0.2s;
 	-ms-transition: 0.2s;
 	-o-transition: 0.2s;
+}
+
+.startinputs {
+  width: 95%;
 }
 
 .btndiv {

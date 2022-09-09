@@ -80,6 +80,16 @@ function Login() {
 
   };
 
+  //* Password Recovery
+  const passwordRecovery = async (event) => {
+    event.preventDefault()
+
+    console.log("PASSWORD Recovery Requested!")
+    navigate("/passwordRecovery")
+
+  };
+
+
   //* ########################### RETURN ###########################
   return (
 
@@ -111,7 +121,7 @@ function Login() {
                 <p className="inputlabel">Username:</p>
                 <div className="">
                   <input
-                    className="startinputs"
+                    className="startinputs loginTextBox"
                     type="text"
                     id="username"
                     name="username"
@@ -121,11 +131,11 @@ function Login() {
                 </div>
               </div>
 
-              <div className="inputdiv m-3">
+              <div className="inputdiv mt-2">
                 <p className="inputlabel">Password:</p>
                 <div className="">
                   <input
-                    className="startinputs"
+                    className="startinputs loginTextBox"
                     type="password"
                     id="password"
                     name="password"
@@ -134,9 +144,12 @@ function Login() {
                   />
                 </div>
               </div>
+              <div>
+                <p className="passwordRecoveryLink" onClick={(event) => passwordRecovery(event)}>Forgot Password?</p>
+              </div>
             </div>
 
-            <div className="btndiv text-center">
+            <div className="btndiv text-center mt-4">
               <button className="startbtns" type="button" action="" onClick={(event) => handleSubmit(event)}>Log in</button>
               <h4 className="h2 m-0 p-0">or</h4>
               <button className="startbtns mb-4" type="button" onClick={(event) => handleSignUp(event)}>Sign up</button>

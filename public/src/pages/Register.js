@@ -91,6 +91,12 @@ function Register() {
     }
   }
 
+  const returnHome = async (event) => {
+    event.preventDefault();
+
+    navigate("/");
+
+  };
 
 
   //* ########################### RETURN ###########################
@@ -103,22 +109,22 @@ function Register() {
 
       <div className="row d-flex align-items-center justify-content-center">
 
-        <div className="col-12 mt-3 text-center ">
+        <div className="col-12 my-4 text-center ">
           <img src={require("../img/Salt_Lick_Logo.png")}
             className="logo"
             alt="Salt Lick logo" />
         </div>
 
-        <div className="mid col-4 registerBox">
+        <div className="mid col-4 registerBox mt-5">
 
           {/* <h1 className="text-center startheader">Sign up</h1> */}
 
           <form className="signup">
             {/* <h1 className="homeTitle text-center mt-4"> Salt Lick BBQ</h1> */}
-            <h1 className="text-center welcometo mt-4">Create Account</h1>
+            <h1 className="text-center welcometo mt-4 mb-5">Create Account</h1>
 
             <div className="text-center">
-              <div className="inputdiv">
+              <div className="registerdiv">
                 <p className="inputlabel">Email</p>
                 <div className="">
                   <input
@@ -132,7 +138,7 @@ function Register() {
                 </div>
               </div>
 
-              <div className="inputdiv">
+              <div className="registerdiv">
                 <p className="inputlabel">Username</p>
                 <div className="">
                   <input
@@ -146,7 +152,7 @@ function Register() {
                 </div>
               </div>
 
-              <div className="inputdiv">
+              <div className="registerdiv mt-5">
                 <p className="inputlabel">Password</p>
                 <div className="text-center">
                   <input
@@ -160,8 +166,8 @@ function Register() {
                 </div>
               </div>
 
-              <div className="inputdiv mb-3">
-                <p className="inputlabel">Confirm password</p>
+              <div className="registerdiv mb-4">
+                <p className="inputlabel">Confirm Password</p>
                 <div className="text-center">
                   <input
                     className="startinputs"
@@ -184,6 +190,8 @@ function Register() {
             type="button"
             onClick={(event) => handleSignUp(event)}>Sign Up
           </button>
+          <h4 className="h2 m-0 p-0">or</h4>
+          <button className="startbtns mb-4" type="button" onClick={(event) => returnHome(event)}>Home</button>
         </div>
 
       </div>
