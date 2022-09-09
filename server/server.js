@@ -42,14 +42,23 @@ app.use("/api/auth", authRoutes);
 // app.use("/api/messages", messageRoutes);
 
 //* Share Build output directory
-app.use(express.static(path.join(__dirname, '../public/build')))
-app.get('*', (_, res) => {
-  res.sendFile(path.join(__dirname, '../public/build/index.html'), (err) => {
-    if (err) {
-      res.status(500).send(err)
-    }
-  })
-})
+// app.use(express.static(path.join(__dirname, '../public/build')))
+// app.get('*', (_, res) => {
+//   res.sendFile(path.join(__dirname, '../public/build/index.html'), (err) => {
+//     if (err) {
+//       res.status(500).send(err)
+//     }
+//   })
+// })
+// //* Share PDF Menu
+// app.use(express.static(path.join(__dirname, '../public')))
+// app.get("/pdf_menu_download", (_, res) => {
+//   res.sendFile(path.join(__dirname, '../public/Salt_Lick_Menu_DWood-PDF.pdf'), (err) => {
+//     if (err) {
+//       res.status(500).send(err)
+//     }
+//   })
+// })
 
 
 //* ~~~~~~~~~ MAIN APP SERVER ~~~~~~~~~

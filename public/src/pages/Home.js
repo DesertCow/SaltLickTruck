@@ -27,7 +27,7 @@ function Home() {
 
   const downloadPDF = async (event) => {
     event.preventDefault();
-    // navigate("/Contact");
+    navigate("/pdf_menu_download");
     console.log("Trigger PDF Download...");
 
   };
