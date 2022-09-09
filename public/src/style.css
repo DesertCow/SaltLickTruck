@@ -47,6 +47,74 @@
 .companyEmail {
   font-size: 19px;
 }
+
+.logo {
+  width: 80%;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.loginBox {
+  margin-top: 30%;
+  opacity: 934;
+  width: 80%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.inputdiv {
+	margin-top: 10%;
+  padding: 4%;
+}
+
+.inputlabel {
+	margin-bottom: 7px;
+	font-size: 20px;
+	color: #2f2f2f;
+}
+
+.welcometo{
+	font-size: 28px;
+	font-weight: 500;
+	/* padding-bottom: 8px; */
+	/* color: #545454; */
+}
+
+.startbtns {
+	padding: 12px 26px;
+	color: white;
+	font-weight: 600;
+	border: none;
+	margin: 12px;
+	width: 57%;
+	background-color: rgb(92, 155, 227);
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+}
+
+.startbtns:hover {
+	transition: 0.2s;
+	background-color: rgb(156, 194, 236);
+	-webkit-transition: 0.2s;
+	-moz-transition: 0.2s;
+	-ms-transition: 0.2s;
+	-o-transition: 0.2s;
+}
+
+.btndiv {
+	margin-top: 6%;
+}
+
 body {
   background-color: #DA4453;
   opacity: 93%;

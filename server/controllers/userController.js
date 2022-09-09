@@ -28,7 +28,7 @@ module.exports.login = async (req, res, next) => {
     return res.json({ msg: "Invalid Password", authenticated: false, status: false })
   }
 
-  console.log("\x1b[32mLogin Successful\x1b[0m")
+  console.log("\x1b[32m   Login Successful\x1b[0m\n")
 
   //* ~~~~ JWT ~~~~
   const accessToken = jwt.sign(user.toJSON(), process.env.ACCESS_TOKEN_SECRET)

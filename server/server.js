@@ -9,12 +9,15 @@
 const express = require('express')
 const app = express()
 
+const cors = require('cors');
+const mongoose = require('mongoose')
+
 const path = require('path');
 require('dotenv').config();
 
-
-const cors = require('cors');
-const mongoose = require('mongoose')
+//* CORS Fix
+app.use(cors({ origin: process.env.CurrentHost }));
+app.use(express.json());
 
 //* ~~~ Import Routes ~~~
 const authRoutes = require("./routes/auth");
