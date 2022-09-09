@@ -1,5 +1,5 @@
 {
-  "name": "babel-exchange",
+  "name": "Salt-Lick-Truck-Main",
   "version": "1.0.0",
   "description": "<div align=\"center\"> <h1>Salt Lick Food Truck</h1> <h4>About Food truck management application with a customer facing ordering App with a backend Kitchen management and display application.</h4> </div>",
   "main": "server.js",
