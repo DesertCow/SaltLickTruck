@@ -47,6 +47,45 @@
 .companyEmail {
   font-size: 19px;
 }
+
+.logo {
+  width: 80%;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.loginBox {
+  margin-top: 50%;
+  width: 80%;
+  background-color: beige;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.inputdiv {
+	margin-top: 10%;
+  padding: 4%;
+}
+
+.inputlabel {
+	margin-bottom: 7px;
+	font-size: 20px;
+	color: #2f2f2f;
+}
+
+.welcometo{
+	font-size: 28px;
+	font-weight: 500;
+	/* padding-bottom: 8px; */
+	/* color: #545454; */
+}
+
 body {
   background-color: #DA4453;
   opacity: 93%;
