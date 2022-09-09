@@ -18,28 +18,31 @@ const router = require("express").Router();
 
 router.post("/login", login);
 router.post("/register", register);
-// router.post("/register", authenticateToken, register);
+
+//* ~~~~ Auth Required Routes ~~~~
 router.get("/allusers", authenticateToken, getAllUsers);
 // router.get("/allusers/:id", getAllUsers);
 // router.get("/logout/:id", logOut);
 
-//* ~~~~ Auth MiddleWare ~~~~
 
+//* ~~~~ Auth MiddleWare ~~~~
 function authenticateToken(req, res, next) {
 
   const authHeader = req.headers['authorization']
   const token = authHeader && authHeader.split(' ')[1]
 
-  console.log("authenticateToken MiddleWare Executed!")
-  console.log("Auth Header = " + authHeader)
-  console.log("Token = " + token)
+  // console.log("authenticateToken MiddleWare Executed!")
+  // console.log("Auth Header = " + authHeader)
+  // console.log("Token = " + token)
 
   if (token == null) return res.sendStatus(401)
 
   // jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user))
 
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-    console.log(err)
+
+    // console.log(err)
+
     if (err) return res.sendStatus(403)
     req.user = user
 

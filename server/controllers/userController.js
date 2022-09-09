@@ -78,7 +78,7 @@ module.exports.register = async (req, res, next) => {
 
 module.exports.getAllUsers = async (req, res, next) => {
 
-  console.log("Getallusers!")
+  console.log("\n\x1b[33m[API-GET] - All Users\x1b[0m\n");
 
   //* Returns all users but the user that requested??
   const users = await User.find({ _id: { $ne: req.params.id } }).select([
