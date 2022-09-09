@@ -19,7 +19,7 @@ const mongoose = require('mongoose')
 //* ~~~ Import Routes ~~~
 const authRoutes = require("./routes/auth");
 
-// console.log('Hello World')
+//* ALlows App to use JSON from Body of Requests
 app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URL, {
@@ -46,8 +46,6 @@ app.get('*', (_, res) => {
     }
   })
 })
-
-
 
 
 //* ~~~~~~~~~ MAIN APP SERVER ~~~~~~~~~

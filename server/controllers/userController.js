@@ -1,45 +1,40 @@
 
-const User = require("../models/userModel");
-const bcrypt = require("bcrypt");
+const User = require("../models/userModel")
+const bcrypt = require("bcrypt")
+const jwt = require("jsonwebtoken")
+require('dotenv').config();
 
 
 module.exports.login = async (req, res, next) => {
 
   // try {
 
-  const { username, password } = req.body;
-  const user = await User.findOne({ username });
+  const { username, password } = req.body
+  const user = await User.findOne({ username })
 
-  console.log("\n\x1b[33mLogin Request\x1b[0m\n   User: \x1b[33m" + username + "\x1b[0m\n   Password: \x1b[35m" + password + "\x1b[0m");
+  console.log("\n\x1b[33mLogin Request\x1b[0m\n   User: \x1b[33m" + username + "\x1b[0m\n   Password: \x1b[35m" + password + "\x1b[0m")
 
   if (!user) {
-    console.log("\x1b[35mLogin Failed\x1b[0m");
-    return res.json({ msg: "Invalid Username", status: false });
+    console.log("\x1b[35mLogin Failed\x1b[0m")
+    return res.json({ msg: "Invalid Username", status: false })
   }
 
   //* Validate Password
-  const passValid = await bcrypt.compare(password, user.password);
+  const passValid = await bcrypt.compare(password, user.password)
 
   //* Invalid password, return 
   if (!passValid) {
-    console.log("\x1b[35mLogin Failed\x1b[0m");
+    console.log("\x1b[35mLogin Failed\x1b[0m")
     return res.json({ msg: "Invalid Password", authenticated: false, status: false })
   }
 
+  console.log("\x1b[32mLogin Successful\x1b[0m")
 
-  console.log("\x1b[32mLogin Successful\x1b[0m");
-  return res.json({ msg: "Login Valid", authenticated: true })
+  //* ~~~~ JWT ~~~~
+  const accessToken = jwt.sign(user.toJSON(), process.env.ACCESS_TOKEN_SECRET)
+  res.json({ accessToken: accessToken })
 
-  // } catch {
-  //   res.status(500).send()
-  // }
-
-
-
-
-  // console.log("Login Request from " + username + " ||" + password + " ||| " + user);
-
-
+  //return res.json({ msg: "Login Valid", authenticated: true })
 
 };
 
@@ -77,6 +72,21 @@ module.exports.register = async (req, res, next) => {
 
   console.log("\x1b[32mAccount Creation Successful\x1b[0m");
   return res.json({ status: true, user });
+
+};
+
+
+module.exports.getAllUsers = async (req, res, next) => {
+
+  console.log("Getallusers!")
+
+  //* Returns all users but the user that requested??
+  const users = await User.find({ _id: { $ne: req.params.id } }).select([
+    "email",
+    "username",
+    "_id",
+  ]);
+  return res.json(users);
 
 };
 
