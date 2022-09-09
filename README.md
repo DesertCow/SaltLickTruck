@@ -177,12 +177,12 @@ npm start
 | :---:         | :---          |  :---: | :---          |  :---: | :---            |  :---: | :---             |  :---: | :---            |  :---: |
 |   🚧 ❌ ✔️   | Home/Landing  |    ✂️    |  PDF Menu     |   ✂️     | Sign-Up         |    ❌    | Login            |    ❌    |  Contact Page   |    🚧    |
 |               |               |  🚧 Status 🚧 |               |  🚧 Status 🚧 |                 | 🚧 Status 🚧 |                  | 🚧 Status 🚧 |                 | 🚧 Status🚧  |
-|               | Style / Img   |   ✔️   | Host PDF      |   ✂️   | Style / Img     |   ❌   | Style / Img     |   ❌   | Style / Img     |   🚧   |
-|               | Footer/Header |   ✔️   |               |        | Footer/Header   |   ❌   | Footer/Header   |   ❌   | Footer/Header   |   ✔️   |
-|               | Buttons       |   ✂️   |               |        | Sign-Up Capture |   ❌   | Sign-In Capture |   ❌   | Contact Info    |   ✔️   |
+|               | Style / Img   |   ✔️   | Host PDF      |   ✂️   | Style / Img     |   ❌   | Style / Img     |   🚧   | Style / Img     |   🚧   |
+|               | Footer/Header |   ✔️   |               |        | Footer/Header   |   ❌   | Footer/Header   |   ✔️   | Footer/Header   |   ✔️   |
+|               | Buttons       |   ✂️   |               |        | Sign-Up Capture |   ❌   | Sign-In Capture |   ✔️   | Contact Info    |   ✔️   |
 |               |               |        |               |        | Cap -> Auth0    |   ❌   | Cap -> Auth0    |   ❌   | GitHub Dev Link |   🚧   |
-|               |               |        |               |        | Privacy + TOS   |   ❌   | Keeped Logged In|   ❌   | Buttons         |   🚧   |
-|               |               |        |               |        | Button + Forgot |   ❌   | Buttons         |   ❌   |                 |        |
+|               |               |        |               |        | Privacy + TOS   |   ❌   | Keeped Logged In|   🚧   | Buttons         |   🚧   |
+|               |               |        |               |        | Button + Forgot |   ❌   | Buttons         |   ✔️   |                 |        |
 
 
 <br>
