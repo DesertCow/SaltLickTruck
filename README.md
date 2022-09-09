@@ -33,7 +33,8 @@
 ## [Description](#table-of-contents)
 
 ---
-  Food truck management application with a customer facing ordering App with a backend Kitchen management and display application that utilizes MongoDB, Express, React, and NodeJS (MERN Stack).
+
+  A comprehensive Food Truck management application with a customer ordering App and a separate "In Kitchen" App (React) for order execution and application administration built using MongoDB, Express, React, and NodeJS (MERN Stack).
 <br>
 <br>
 

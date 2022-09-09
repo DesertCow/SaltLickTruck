@@ -69,6 +69,18 @@
   -o-border-radius: 15px;
 }
 
+.registerBox {
+  margin-top: 5%;
+  opacity: 934;
+  width: 80%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
 .inputdiv {
 	margin-top: 10%;
   padding: 4%;
@@ -114,6 +126,8 @@
 .btndiv {
 	margin-top: 6%;
 }
+
+
 
 body {
   background-color: #DA4453;

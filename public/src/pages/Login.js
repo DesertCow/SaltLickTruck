@@ -1,9 +1,11 @@
 
 import { useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
-import { loginRoute, registerRoute } from "../utils/apiRoutes";
+// import { loginRoute, registerRoute } from "../utils/apiRoutes";
+import { loginRoute } from "../utils/apiRoutes";
 
 function Login() {
 
@@ -38,7 +40,7 @@ function Login() {
     setValues({ ...values, [event.target.name]: event.target.value });
   };
 
-
+  //* ########################### Button Handle ###########################
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -78,6 +80,7 @@ function Login() {
 
   };
 
+  //* ########################### RETURN ###########################
   return (
 
     <div className="d-flex flex-column min-vh-100">
@@ -90,7 +93,7 @@ function Login() {
         <div className="col-12 mt-3 text-center ">
           <img src={require("../img/Salt_Lick_Logo.png")}
             className="logo"
-            alt="babble logo" />
+            alt="Salt Lick logo" />
         </div>
 
         <div className="mid col-4 loginBox">
