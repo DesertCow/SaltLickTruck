@@ -1,9 +1,11 @@
 
 import { useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
-import { loginRoute, registerRoute } from "../utils/apiRoutes";
+// import { loginRoute, registerRoute } from "../utils/apiRoutes";
+import { loginRoute } from "../utils/apiRoutes";
 
 function Login() {
 
@@ -38,7 +40,7 @@ function Login() {
     setValues({ ...values, [event.target.name]: event.target.value });
   };
 
-
+  //* ########################### Button Handle ###########################
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -78,6 +80,17 @@ function Login() {
 
   };
 
+  //* Password Recovery
+  const passwordRecovery = async (event) => {
+    event.preventDefault()
+
+    console.log("PASSWORD Recovery Requested!")
+    navigate("/passwordRecovery")
+
+  };
+
+
+  //* ########################### RETURN ###########################
   return (
 
     <div className="d-flex flex-column min-vh-100">
@@ -90,7 +103,7 @@ function Login() {
         <div className="col-12 mt-3 text-center ">
           <img src={require("../img/Salt_Lick_Logo.png")}
             className="logo"
-            alt="babble logo" />
+            alt="Salt Lick logo" />
         </div>
 
         <div className="mid col-4 loginBox">
@@ -108,7 +121,7 @@ function Login() {
                 <p className="inputlabel">Username:</p>
                 <div className="">
                   <input
-                    className="startinputs"
+                    className="startinputs loginTextBox"
                     type="text"
                     id="username"
                     name="username"
@@ -118,11 +131,11 @@ function Login() {
                 </div>
               </div>
 
-              <div className="inputdiv m-3">
+              <div className="inputdiv mt-2">
                 <p className="inputlabel">Password:</p>
                 <div className="">
                   <input
-                    className="startinputs"
+                    className="startinputs loginTextBox"
                     type="password"
                     id="password"
                     name="password"
@@ -131,9 +144,12 @@ function Login() {
                   />
                 </div>
               </div>
+              <div>
+                <p className="passwordRecoveryLink" onClick={(event) => passwordRecovery(event)}>Forgot Password?</p>
+              </div>
             </div>
 
-            <div className="btndiv text-center">
+            <div className="btndiv text-center mt-4">
               <button className="startbtns" type="button" action="" onClick={(event) => handleSubmit(event)}>Log in</button>
               <h4 className="h2 m-0 p-0">or</h4>
               <button className="startbtns mb-4" type="button" onClick={(event) => handleSignUp(event)}>Sign up</button>
