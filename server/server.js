@@ -16,7 +16,8 @@ const path = require('path');
 require('dotenv').config();
 
 //* CORS Fix
-app.use(cors({ origin: process.env.CurrentHost }));
+// app.use(cors({ origin: process.env.CurrentHost }));
+app.use(cors({ origin: '*' }));
 app.use(express.json());
 
 //* ~~~ Import Routes ~~~
