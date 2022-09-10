@@ -4,10 +4,10 @@ const productData = [
   {
     product_name: 'Brisket',
     price: 18.95,
-    serving: null,
-    measurement: null,
+    serving: 1,
+    measurement: 1,
     available: true,
-    top_category: null,
+    top_category: 1,
   },
   {
     product_name: 'Pork Ribs',
@@ -15,7 +15,7 @@ const productData = [
     serving: null,
     measurement: null,
     available: true,
-    top_category: null,
+    top_category: 1,
   },
   {
     product_name: 'Bison Ribs',
@@ -23,7 +23,7 @@ const productData = [
     serving: 2,
     measurement: "Ribs",
     available: true,
-    top_category: null,
+    top_category: 1,
   },
   {
     product_name: 'Beef Ribs',
@@ -31,7 +31,7 @@ const productData = [
     serving: 2,
     measurement: "Ribs",
     available: true,
-    top_category: null,
+    top_category: 1,
   },
   {
     product_name: 'Turkey',
@@ -39,7 +39,7 @@ const productData = [
     serving: null,
     measurement: null,
     available: true,
-    top_category: null,
+    top_category: 1,
   },
   {
     product_name: 'Sausage',
@@ -47,7 +47,7 @@ const productData = [
     serving: null,
     measurement: null,
     available: true,
-    top_category: null,
+    top_category: 1,
   },
   {
     product_name: 'Chicken',
@@ -55,7 +55,7 @@ const productData = [
     serving: 0.5,
     measurement: "LB",
     available: true,
-    top_category: null,
+    top_category: 1,
   },
   {
     product_name: 'Pulled Pork',
@@ -63,7 +63,7 @@ const productData = [
     serving: null,
     measurement: null,
     available: true,
-    top_category: null,
+    top_category: 1,
   },
   {
     product_name: 'Vegetable',
@@ -71,7 +71,7 @@ const productData = [
     serving: null,
     measurement: null,
     available: true,
-    top_category: null,
+    top_category: 1,
   },
   {
     product_name: "Thurman's Choice",
@@ -79,7 +79,7 @@ const productData = [
     serving: null,
     measurement: null,
     available: true,
-    top_category: null,
+    top_category: 1,
   },
 
 ];
