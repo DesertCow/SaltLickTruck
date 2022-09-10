@@ -45,7 +45,7 @@ FoodItems.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'fooditems',
+    modelName: 'fooditem',
   }
 );
 
