@@ -1,4 +1,3 @@
-
 const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../connection');
@@ -46,7 +45,7 @@ FoodItems.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'fooditem',
+    modelName: 'fooditems',
   }
 );
 

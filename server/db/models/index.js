@@ -1,5 +1,5 @@
 // import models
-const FoodItem = require('./FoodItems');
+const FoodItems = require('./FoodItems');
 const Category = require('./Category');
 // const Tag = require('./Tag');
 // const ProductTag = require('./ProductTag');
@@ -35,7 +35,7 @@ const Category = require('./Category');
 
 module.exports = {
   Category,
-  FoodItem,
+  FoodItems,
 };
 
 //!========================= EOF =========================
