@@ -4,10 +4,10 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../connection');
 
 
-class FootItems extends Model { }
+class FoodItems extends Model { }
 
 
-FootItems.init(
+FoodItems.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -20,7 +20,7 @@ FootItems.init(
       allowNull: false,
     },
     price: {
-      type: DataTypes.DECIMAL(4, 2),
+      type: DataTypes.DECIMAL,
       allowNull: false,
     },
     serving: {
@@ -32,12 +32,12 @@ FootItems.init(
       allowNull: true,
     },
     available: {
-      type: DataTypes.TINYINT(1),
+      type: DataTypes.BOOLEAN,
       allowNull: true,
     },
     top_category: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       key: 'cat_id',
     },
   },
@@ -50,6 +50,6 @@ FootItems.init(
   }
 );
 
-module.exports = FootItems;
+module.exports = FoodItems;
 
 //!========================= EOF =========================

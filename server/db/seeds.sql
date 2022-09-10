@@ -14,7 +14,7 @@ VALUES (default, "Salt Lick Plates"),
        (default, "To-Go BBQ Sauce");
 
 -- Salt Lick Plates (p1)
-INSERT INTO Food_Item (product_name, price, serving, measurement, available, top_category)
+INSERT INTO FoodItem (product_name, price, serving, measurement, available, top_category)
 VALUES ("Brisket", 18.95,default,default,true,1),
 	     ("Pork Ribs", 16.95,default,default,true,1),
 	     ("Bison Ribs", 25.95, 2,"Ribs",true,1),
@@ -27,7 +27,7 @@ VALUES ("Brisket", 18.95,default,default,true,1),
        ("Thurman's Choice", 19.95, default,default,true,1);
 
 -- Salt Lick Plates (p2)
-INSERT INTO Food_Item (product_name, price, serving, measurement, available, top_category)
+INSERT INTO FoodItem (product_name, price, serving, measurement, available, top_category)
 VALUES ("Brisket & Pork Ribs", 17.95,default,default,true,1),
 	     ("Brisket & Sausage", 17.95,default,default,true,1),
 	     ("Brisket & Turkey", 17.95, default,default,true,1),
@@ -40,7 +40,7 @@ VALUES ("Brisket & Pork Ribs", 17.95,default,default,true,1),
        ("Brisket & Beef Ribs", 25.95, default,default,true,1);
 
 -- Small Plates
-INSERT INTO Food_Item (product_name, price, serving, measurement, available, top_category)
+INSERT INTO FoodItem (product_name, price, serving, measurement, available, top_category)
 VALUES ("Brisket", 10.95,default,default,true,2),
 	     ("Pork Ribs", 9.95,default,default,true,2),
 	     ("Sausge", 8.95, default,default,true,2),
@@ -49,7 +49,7 @@ VALUES ("Brisket", 10.95,default,default,true,2),
        ("Combo", 10.95, default,default,true,2);
 
 -- Sandwiches
-INSERT INTO Food_Item (product_name, price, serving, measurement, available, top_category)
+INSERT INTO FoodItem (product_name, price, serving, measurement, available, top_category)
 VALUES ("Sliced or Chopped Beef", 13.95,default,default,true,3),
 	     ("Pulled Pork", 11.95,default,default,true,3),
 	     ("Sausge", 10.95, default,default,true,3),

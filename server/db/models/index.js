@@ -1,19 +1,19 @@
 // import models
-const FoodItem = require('./Food-Items');
+const FoodItem = require('./FoodItems');
 const Category = require('./Category');
 // const Tag = require('./Tag');
 // const ProductTag = require('./ProductTag');
 
 //* FoodItem belongsTo Category
-FoodItem.belongsTo(Category, {
-  foreignKey: 'cat_id',
-});
+// FoodItem.belongsTo(Category, {
+//   foreignKey: 'cat_id',
+// });
 
 
 //* Categories have many FoodItems
-FoodItem.hasMany(Category, {
-  foreignKey: 'cat_id',
-});
+// Category.hasMany(FoodItem, {
+//   foreignKey: 'cat_id',
+// });
 
 // //* Products belongToMany Tags (through ProductTag)
 // Product.belongsToMany(Tag, {
