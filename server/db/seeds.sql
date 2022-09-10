@@ -22,9 +22,9 @@ VALUES ("Brisket", 18.95,default,default,true,1),
        ("Turkey", 16.95, default,default,true,1),
        ("Sausage", 12.95, default,default,true,1),
        ("Chicken", 14.95, 0.5,"Chicken",true,1),
-       ("Pulled Pork", 14.95, 2,default,true,1),
-       ("Vegetable", 9.95, 2,default,true,1),
-       ("Thurman's Choice", 19.95, 2,default,true,1);
+       ("Pulled Pork", 14.95, default,default,true,1),
+       ("Vegetable", 9.95, default,default,true,1),
+       ("Thurman's Choice", 19.95, default,default,true,1);
 
 -- Salt Lick Plates (p2)
 INSERT INTO Food_Item (product_name, price, serving, measurement, available, top_category)
