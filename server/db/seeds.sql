@@ -64,6 +64,6 @@ VALUES ("1/2 LB Brisket", 13.95,default,default,true,4),
 	     ("1/2 LB Sausge", 10.95, default,default,true,4),
        ("1/2 LB Turkey", 13.95, default,default,true,4),
        ("1/2 LB Chicken", 13.95, default,default,true,4),
-       ("1/2 LB Pulled Pork", 2.00, default,default,true,4),
+       ("1/2 LB Pulled Pork", 9.95, default,default,true,4),
        ("Bison Ribs", 2.00, "2","Ribs",true,4),
        ("Beef Ribs", 2.00, "2","Ribs",true,4);
