@@ -12,6 +12,9 @@ const app = express()
 const cors = require('cors');
 const mongoose = require('mongoose')
 
+const sequelize = require('./db/connection');
+const seedAll = require('./db/seeds/index');
+
 const path = require('path');
 require('dotenv').config();
 
@@ -26,16 +29,21 @@ const authRoutes = require("./routes/auth");
 //* ALlows App to use JSON from Body of Requests
 app.use(express.json());
 
+
+//* Test Mongoose DB Connection
 mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
   // console.log("DB Connection Successful!")
-  console.log(`| 💡     Database Connection:  \x1b[32mOnline\x1b[0m     💡 |`);
+  console.log(`| 💡     MongooDB Connection:  \x1b[32mOnline\x1b[0m     💡 |`);
 
 }).catch((err) => {
   console.log(err.message);
 });
+
+//* Open mySQL DB Connection
+connectionTest();
 
 //* Setup API Routes
 app.use("/api/auth", authRoutes);
@@ -50,6 +58,35 @@ app.get('*', (_, res) => {
     }
   })
 })
+
+seedServer();
+
+//* ~~~~~ FUNCTIONS ~~~~~
+
+async function connectionTest() {
+  //TODO: Move to seperate File and Import method
+  // console.log
+
+  try {
+    await sequelize.authenticate();
+    // console.log(`\n\x1b[42m  ~~~ Remote DB Connection Valid ~~~  \x1b[0m\n`);
+    console.log(`| 💡     mySQL Connection:  \x1b[32mOnline\x1b[0m     💡 |`);
+  } catch (error) {
+    console.error('\n\n\x1b[41mUnable to connect to the database!\x1b[0m\n\x1b[43mERROR:', error + "\x1b[0m\n\n");
+  }
+
+  //sequelize.close()
+};
+
+async function seedServer() {
+
+  try {
+    await seedAll();
+    console.log('\n\x1b[42m----- SEEDING COMPLETE/VALID -----\x1b[0m\n');
+  } catch (error) {
+    console.log('\n\x1b[41m----- SEEDING FAILED! -----\x1b[0m\n');
+  }
+}
 
 
 //* ~~~~~~~~~ MAIN APP SERVER ~~~~~~~~~
