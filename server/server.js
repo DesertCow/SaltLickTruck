@@ -68,7 +68,7 @@ app.get('*', (_, res) => {
 
 
 //! ~~~~~~~~~~~~~~~ Seed SWITCH  ~~~~~~~~~~~~~~~
-// seedServer();
+seedServer();
 
 //* ~~~~~ FUNCTIONS ~~~~~
 
