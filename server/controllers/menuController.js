@@ -15,3 +15,12 @@ module.exports.getMainMenu = async (req, res, next) => {
   await Category.findAll().then(mainMenuData => res.json(mainMenuData))
 
 };
+
+module.exports.getSubMenu = async (req, res, next) => {
+
+  console.log("\n\x1b[33m[API-GET] - Sub Menu #" + req.params.subMenu + "\x1b[0m\n");
+
+  // await Category.findAll().then(mainMenuData => res.json(mainMenuData))
+  return res.json(req.params.subMenu)
+
+};

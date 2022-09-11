@@ -12,6 +12,7 @@ const jwt = require("jsonwebtoken")
 
 const {
   getMainMenu,
+  getSubMenu,
 } = require("../controllers/menuController.js");
 
 const router = require("express").Router();
@@ -22,6 +23,7 @@ const router = require("express").Router();
 
 //* ~~~~ Auth Required Routes ~~~~
 router.get("/mainMenu", authenticateToken, getMainMenu);
+router.get("/subMenu/:subMenu", authenticateToken, getSubMenu);
 
 
 
