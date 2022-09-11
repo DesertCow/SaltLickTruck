@@ -18,6 +18,8 @@ const seedAll = require('./db/seeds/index');
 const path = require('path');
 require('dotenv').config();
 
+const router = require('express').Router();
+
 //* CORS Fix
 // app.use(cors({ origin: process.env.CurrentHost }));
 app.use(cors({ origin: '*' }));
@@ -25,6 +27,7 @@ app.use(express.json());
 
 //* ~~~ Import Routes ~~~
 const authRoutes = require("./routes/auth");
+const menuRoutes = require("./routes/menu");
 
 //* ALlows App to use JSON from Body of Requests
 app.use(express.json());
@@ -47,7 +50,11 @@ connectionTest();
 
 //* Setup API Routes
 app.use("/api/auth", authRoutes);
-// app.use("/api/messages", messageRoutes);
+app.use("/api/menu", menuRoutes);
+
+router.use((req, res) => {
+  res.send("<h1>Wrong Route!</h1>")
+});
 
 //* Share Build output directory
 app.use(express.static(path.join(__dirname, '../public/build')))
@@ -59,6 +66,8 @@ app.get('*', (_, res) => {
   })
 })
 
+
+//! ~~~~~~~~~~~~~~~ Seed SWITCH  ~~~~~~~~~~~~~~~
 seedServer();
 
 //* ~~~~~ FUNCTIONS ~~~~~
