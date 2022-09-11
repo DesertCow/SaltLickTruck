@@ -25,6 +25,7 @@ app.use(express.json());
 
 //* ~~~ Import Routes ~~~
 const authRoutes = require("./routes/auth");
+const menuRoutes = require("./routes/menu");
 
 //* ALlows App to use JSON from Body of Requests
 app.use(express.json());
@@ -47,7 +48,7 @@ connectionTest();
 
 //* Setup API Routes
 app.use("/api/auth", authRoutes);
-// app.use("/api/messages", messageRoutes);
+app.use("/api/menu", menuRoutes);
 
 //* Share Build output directory
 app.use(express.static(path.join(__dirname, '../public/build')))
@@ -59,7 +60,9 @@ app.get('*', (_, res) => {
   })
 })
 
-seedServer();
+
+//! ~~~~~~~~~~~~~~~ Seed SWITCH  ~~~~~~~~~~~~~~~
+// seedServer();
 
 //* ~~~~~ FUNCTIONS ~~~~~
 

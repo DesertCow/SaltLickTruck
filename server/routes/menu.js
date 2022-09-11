@@ -1,29 +1,30 @@
+
+require('dotenv').config();
+const jwt = require("jsonwebtoken")
+
+// const authenticateToken = require('./utils/authWare');
+
 // const {
 //   login,
 //   register,
 //   getAllUsers,
-//   logOut,
 // } = require("../controllers/userController.js");
 
-require('dotenv').config();
-const jwt = require("jsonwebtoken")
-// const authenticateToken = require('../utils/authWare')
-
 const {
-  login,
-  register,
-  getAllUsers,
-} = require("../controllers/userController.js");
+  getMainMenu,
+} = require("../controllers/menuController.js");
 
 const router = require("express").Router();
 
-router.post("/login", login);
-router.post("/register", register);
+//* ~~~~ Open/Public Routes ~~~~
+// router.post("/mainMenu", mainMenu);
+// router.post("/register", register);
 
 //* ~~~~ Auth Required Routes ~~~~
-router.get("/allusers", authenticateToken, getAllUsers);
-// router.get("/allusers/:id", getAllUsers);
-// router.get("/logout/:id", logOut);
+router.get("/mainMenu", authenticateToken, getMainMenu);
+
+
+
 
 
 //* ~~~~ Auth MiddleWare ~~~~
