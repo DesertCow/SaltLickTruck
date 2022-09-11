@@ -18,6 +18,8 @@ const seedAll = require('./db/seeds/index');
 const path = require('path');
 require('dotenv').config();
 
+const router = require('express').Router();
+
 //* CORS Fix
 // app.use(cors({ origin: process.env.CurrentHost }));
 app.use(cors({ origin: '*' }));
@@ -49,6 +51,10 @@ connectionTest();
 //* Setup API Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/menu", menuRoutes);
+
+router.use((req, res) => {
+  res.send("<h1>Wrong Route!</h1>")
+});
 
 //* Share Build output directory
 app.use(express.static(path.join(__dirname, '../public/build')))
