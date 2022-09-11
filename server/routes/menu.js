@@ -22,7 +22,8 @@ const router = require("express").Router();
 // router.post("/register", register);
 
 //* ~~~~ Auth Required Routes ~~~~
-router.get("/mainMenu", authenticateToken, getMainMenu);
+// router.get("/mainMenu", authenticateToken, getMainMenu);
+router.get("/mainMenu", getMainMenu);
 router.get("/subMenu/:subMenu", authenticateToken, getSubMenu);
 
 

@@ -11,7 +11,8 @@ function Login() {
 
   const navigate = useNavigate();
 
-  const [values, setValues] = useState({ username: "", password: "" });
+  const [values, setValues] = useState({ username: "", password: "", accessToken: "VOID" });
+  // const [sessionToken, setSessionToken] = useState({ token: "" });
 
 
   //TODO: Move to external file... helpers??? and import to cleanup file
@@ -37,7 +38,9 @@ function Login() {
 
   //* Used to keep useState method to update Values
   const handleChange = (event) => {
-    setValues({ ...values, [event.target.name]: event.target.value });
+    setValues({ ...values, [event.target.name]: event.target.value, 'accessToken': "Test" });
+    console.log("VALUES!!!!!!!!!!!!!!!!!!!!!!")
+    console.log(values)
   };
 
   //* ########################### Button Handle ###########################
@@ -55,13 +58,22 @@ function Login() {
       });
 
       // console.log("Login Data: " + JSON.stringify(data))
-      const tokenAccess = data.accessToken
-      console.log("PWT Token: " + tokenAccess)
+      const accessToken = data.accessToken
 
-      if (!tokenAccess) {
+      // await setSessionToken({ ...sessionToken, "token": "FAKE" });
+      // setValues({ ...values, [event.target.name]: event.target.value, 'accessToken': "accessToken" });
+      // setValues({ ...values, [event.target.name]: event.target.value, 'accessToken': "accessToken" });
+
+      console.log("PWT Token: " + accessToken)
+      console.log("~~~~ Session Token ~~~~ ")
+      // console.log(sessionToken)
+      console.log(values)
+
+
+      if (!accessToken) {
         // toast.error(data.msg, toastOptions);
       }
-      if (tokenAccess) {
+      if (accessToken) {
         // localStorage.setItem(
         //   process.env.REACT_APP_LOCALHOST_KEY,
         //   JSON.stringify(data.user)

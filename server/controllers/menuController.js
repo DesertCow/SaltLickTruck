@@ -25,7 +25,12 @@ module.exports.getSubMenu = async (req, res, next) => {
   Category.findOne({
     where: { id: req.params.subMenu },
   })
-    .then(menuData => res.json(menuData))
+    .then(menuData => {
+      res.header('Access-Control-Allow-Origin', '*');
+      res.header('Access-Control-Allow-Headers', 'content-type');
+      res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+      res.json(menuData)
+    })
 
 
   // return res.json(req.params.subMenu)

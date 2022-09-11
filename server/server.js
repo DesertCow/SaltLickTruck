@@ -21,8 +21,16 @@ require('dotenv').config();
 const router = require('express').Router();
 
 //* CORS Fix
+const corsOptions = {
+  origin: "*",
+  optionsSuccessStatus: 200
+  // Access-Control-Allow-Origin: *
+};
+
 // app.use(cors({ origin: process.env.CurrentHost }));
-app.use(cors({ origin: '*' }));
+// app.use(cors({ origin: 'http://localhost:3001/' }));
+// app.use(cors({ origin: '*' }));
+app.use(cors());
 app.use(express.json());
 
 //* ~~~ Import Routes ~~~
@@ -52,9 +60,9 @@ connectionTest();
 app.use("/api/auth", authRoutes);
 app.use("/api/menu", menuRoutes);
 
-router.use((req, res) => {
-  res.send("<h1>Wrong Route!</h1>")
-});
+// router.use((req, res) => {
+//   res.send("<h1>Wrong Route!</h1>")
+// });
 
 //* Share Build output directory
 app.use(express.static(path.join(__dirname, '../public/build')))
@@ -68,7 +76,7 @@ app.get('*', (_, res) => {
 
 
 //! ~~~~~~~~~~~~~~~ Seed SWITCH  ~~~~~~~~~~~~~~~
-seedServer();
+// seedServer();
 
 //* ~~~~~ FUNCTIONS ~~~~~
 
