@@ -22,6 +22,7 @@ router.post("/register", register);
 
 //* ~~~~ Auth Required Routes ~~~~
 router.get("/allusers", authenticateToken, getAllUsers);
+// router.get("/allusers", authenticateToken, getAllUsers);
 // router.get("/allusers/:id", getAllUsers);
 // router.get("/logout/:id", logOut);
 
