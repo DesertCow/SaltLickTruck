@@ -20,6 +20,15 @@ require('dotenv').config();
 
 const router = require('express').Router();
 
+const { ApolloServer } = require('apollo-server-express');
+const { typeDefs, resolvers } = require('./db/schemas');
+// const db = require('./db/connection');
+
+// const gapp = express();
+
+
+// app.use(express.json());
+
 //* CORS Fix
 const corsOptions = {
   origin: "*",
@@ -40,6 +49,7 @@ const menuRoutes = require("./routes/menu");
 //* ALlows App to use JSON from Body of Requests
 app.use(express.json());
 
+app.use(express.urlencoded({ extended: false }));
 
 //* Test Mongoose DB Connection
 mongoose.connect(process.env.MONGO_URL, {
@@ -56,9 +66,20 @@ mongoose.connect(process.env.MONGO_URL, {
 //* Open mySQL DB Connection
 connectionTest();
 
+
+// console.log("typeDefs")
+// console.log(typeDefs)
+
+//* Pass Apollo Config
+const PORT = process.env.PORT || 3002;
+const server = new ApolloServer({
+  typeDefs,
+  resolvers
+});
+
 //* Setup API Routes
-app.use("/api/auth", authRoutes);
-app.use("/api/menu", menuRoutes);
+// app.use("/api/auth", authRoutes);
+// app.use("/api/menu", menuRoutes);
 
 // router.use((req, res) => {
 //   res.send("<h1>Wrong Route!</h1>")
@@ -106,9 +127,24 @@ async function seedServer() {
   }
 }
 
+//* ~~~~~~~~~ GraphQL API SERVER ~~~~~~~~~
+const startApolloServer = async (typeDefs, resolvers) => {
+  await server.start();
+  server.applyMiddleware({ app });
 
-//* ~~~~~~~~~ MAIN APP SERVER ~~~~~~~~~
-const server = app.listen(process.env.PORT || 3001, () => {
-  // console.log(`Server Hosted on Port ${process.env.PORT}`)
-  console.log(`| 🚀  Live API: \x1b[34mhttp://localhost:${process.env.PORT}/api\x1b[0m 🚀 |`);
-})
+  sequelize.once('open', () => {
+    app.listen(PORT, () => {
+      console.log(`API server running on port ${PORT}!`);
+      console.log(`Use GraphQL at http://localhost:${PORT}${gserver.graphqlPath}`);
+    })
+  })
+};
+
+
+//* ~~~~~~~~~ REST API SERVER ~~~~~~~~~
+// const server = app.listen(process.env.PORT || 3001, () => {
+//   // console.log(`Server Hosted on Port ${process.env.PORT}`)
+//   console.log(`| 🚀  Live API: \x1b[34mhttp://localhost:${process.env.PORT}/api\x1b[0m 🚀 |`);
+// })
+
+startApolloServer(typeDefs, resolvers);
