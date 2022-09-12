@@ -26,9 +26,9 @@ module.exports.getSubMenu = async (req, res, next) => {
     where: { id: req.params.subMenu },
   })
     .then(menuData => {
-      res.header('Access-Control-Allow-Origin', '*');
-      res.header('Access-Control-Allow-Headers', 'content-type');
-      res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+      // res.header('Access-Control-Allow-Origin', '*');
+      // res.header('Access-Control-Allow-Headers', 'content-type');
+      // res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
       res.json(menuData)
     })
 
