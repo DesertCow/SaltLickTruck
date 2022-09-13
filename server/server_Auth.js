@@ -74,7 +74,7 @@ app.get('*', (_, res) => {
 
 
 //* ~~~~~~~~~ REST API SERVER ~~~~~~~~~
-const server = app.listen(process.env.PORTAUTH || 3001, () => {
+const server = app.listen(process.env.PORT || 3001, () => {
   // console.log(`Server Hosted on Port ${process.env.PORTAUTH}`)
-  console.log(`| 🚀  Live API: \x1b[34mhttp://localhost:${process.env.PORTAUTH}/api\x1b[0m 🚀 |`);
+  console.log(`| 🚀  Live API: \x1b[34mhttp://localhost:${process.env.PORT}/api\x1b[0m 🚀 |`);
 })
