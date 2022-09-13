@@ -5,8 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "devStart": "nodemon server.js",
-    "start": "node server.js"
+    "fullStackStart": "concurrently \"nodemon server_Auth.js\" \"nodemon server_App.js\"",
+    "authStart": "nodemon server_Auth.js",
+    "appStart": "nodemon server_App.js"
   },
   "keywords": [],
   "author": "",
