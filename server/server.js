@@ -1,4 +1,3 @@
-
 // #####################################################################
 // 
 // Authorization server to support the food truck application
@@ -22,18 +21,7 @@ var { buildSchema } = require('graphql');
 
 //* The resolvers provides a resolver function for each API endpoint
 const resolvers = require('./db/schemas/resolvers');
-
-
-//* ############################## DEMO CODE #######################################
-//* Construct a schema, using GraphQL schema language
-var schema = buildSchema(`
-  type Query {
-    hello: String,
-    partyOn: String
-  }
-`);
-
-//* #############################################################################
+const typeDefs = require('./db/schemas/typeDefs');
 
 //* CORS Config
 const corsOptions = {
@@ -41,10 +29,6 @@ const corsOptions = {
   optionsSuccessStatus: 200
   // Access-Control-Allow-Origin: *
 };
-
-console.log("TESSSSSSSSSSSSSSSSSSSSS")
-console.log(resolvers);
-
 
 //* Initialize Base Application 
 const app = express()
@@ -84,7 +68,7 @@ mongoose.connect(process.env.MONGO_URL, {
 //* ~~~~~~~~~~~~~~~~~ GraphQL Server ~~~~~~~~~~~~~~~~~
 
 app.use('/graphql', graphqlHTTP({
-  schema: schema,
+  schema: typeDefs,
   rootValue: resolvers,
   graphiql: true,
 }));

@@ -6,7 +6,8 @@ const resolvers = {
     categories: async () => {
 
       // return await Category.findAll({});
-      return await Category.find({});
+      // return await Category.find({});
+      console.log("Database Find All!")
     }
     // professors: async () => {
     //   return await Professor.find({});
