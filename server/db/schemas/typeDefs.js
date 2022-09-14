@@ -1,10 +1,6 @@
+const { gql } = require('apollo-server-express');
 
-// const { gql } = require('apollo-server-express');
-var { buildSchema } = require('graphql');
-
-// const typeDefs = gql`
-var schema = buildSchema(`
-
+const typeDefs = gql`
   type Category {
     _id: ID
     category_name: String
@@ -21,12 +17,12 @@ var schema = buildSchema(`
   }
 
   type Query {
-    categories: [Category],
-    hello: String,
+    categories: [Category]
+    hello: String
     partyOn: String
   }
 
-`);
+`;
 
 
-module.exports = schema;
+module.exports = typeDefs;
