@@ -2,22 +2,18 @@ const Category = require("../models/Category")
 
 
 const resolvers = {
-  Query: {
-    categories: async () => {
+  categories: async () => {
 
-      // return await Category.findAll({});
-      // return await Category.find({});
-      console.log("Database Find All!")
-    }
-    // professors: async () => {
-    //   return await Professor.find({});
-    // }
+    // return await Category.findAll({});
+    // return await Category.find({});
+    await console.log("Database Find All!")
+    return 'SAD FACE :('
   },
   hello: () => {
-    return 'Hello world!';
+    return 'Hello world!'
   },
   partyOn: () => {
-    return 'Party On Garth!';
+    return 'Party On Garth!'
   },
 
 
