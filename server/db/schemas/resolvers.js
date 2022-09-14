@@ -1,14 +1,14 @@
-const Category = require("../models/Category")
+// const Category = require("../models/Category")
 
 
 const resolvers = {
   Query: {
-    categories: async () => {
+    // categories: async () => {
 
-      // return await Category.findAll({});
-      // return await Category.find({});
-      console.log("Database Find All!")
-    },
+    //   // return await Category.findAll({});
+    //   // return await Category.find({});
+    //   console.log("Database Find All!")
+    // },
     hello: async () => {
       return 'Hello world!';
     },
