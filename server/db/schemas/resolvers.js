@@ -11,7 +11,13 @@ const resolvers = {
     // professors: async () => {
     //   return await Professor.find({});
     // }
-  }
+  },
+  hello: () => {
+    return 'Hello world!';
+  },
+  partyOn: () => {
+    return 'Party On Garth!';
+  },
 
 
 };
