@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "fullStackStart": "concurrently \"nodemon server_Auth.js\" \"nodemon server_App.js\"",
-    "authStart": "nodemon server_Auth.js",
+    "start": "nodemon server.js",
     "appStart": "nodemon server_App.js"
   },
   "keywords": [],
@@ -18,7 +18,8 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
-    "graphql": "^16.6.0",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.3.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.7",
     "mysql2": "^2.3.3",

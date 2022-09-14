@@ -1,4 +1,3 @@
-
 // #####################################################################
 // 
 // Authorization server to support the food truck application
@@ -16,8 +15,13 @@ const mongoose = require('mongoose')
 const path = require('path');
 require('dotenv').config();
 
-//* ~~~ Import Routes ~~~
-const authRoutes = require("./routes/auth");
+//* GraphQL
+var { graphqlHTTP } = require('express-graphql');
+var { buildSchema } = require('graphql');
+
+//* The resolvers provides a resolver function for each API endpoint
+const resolvers = require('./db/schemas/resolvers');
+const typeDefs = require('./db/schemas/typeDefs');
 
 //* CORS Config
 const corsOptions = {
@@ -25,7 +29,6 @@ const corsOptions = {
   optionsSuccessStatus: 200
   // Access-Control-Allow-Origin: *
 };
-
 
 //* Initialize Base Application 
 const app = express()
@@ -37,6 +40,17 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+//* Share Build output directory
+// app.use(express.static(path.join(__dirname, '../public/build')))
+// app.get('*', (_, res) => {
+//   res.sendFile(path.join(__dirname, '../public/build/index.html'), (err) => {
+//     if (err) {
+//       res.status(500).send(err)
+//     }
+//   })
+// })
+
+//* ~~~~~~~~~~~~~~~~~ Database Connection ~~~~~~~~~~~~~~~~~
 
 //* Test Mongoose DB Connection
 mongoose.connect(process.env.MONGO_URL, {
@@ -51,30 +65,16 @@ mongoose.connect(process.env.MONGO_URL, {
 });
 
 
-//* Setup API Routes
-app.use("/api/auth", authRoutes);
-// app.use("/api/menu", menuRoutes);
-// TODO: Configre return message when any invalid route is attempted
+//* ~~~~~~~~~~~~~~~~~ GraphQL Server ~~~~~~~~~~~~~~~~~
 
+app.use('/graphql', graphqlHTTP({
+  schema: typeDefs,
+  rootValue: resolvers,
+  graphiql: true,
+}));
 
-//* Share Build output directory
-app.use(express.static(path.join(__dirname, '../public/build')))
-app.get('*', (_, res) => {
-  res.sendFile(path.join(__dirname, '../public/build/index.html'), (err) => {
-    if (err) {
-      res.status(500).send(err)
-    }
-  })
-})
+// app.listen(4000);
+app.listen(process.env.PORT);
+console.log(`| 🚀  Live GraphQL API: \x1b[34mhttp://localhost:${process.env.PORT}/graphql\x1b[0m 🚀 |`);
+// console.log('Running a GraphQL API server at http://localhost:4000/graphql');
 
-
-//* ~~~~~ FUNCTIONS ~~~~~
-
-
-
-
-//* ~~~~~~~~~ REST API SERVER ~~~~~~~~~
-const server = app.listen(process.env.PORT || 3001, () => {
-  // console.log(`Server Hosted on Port ${process.env.PORTAUTH}`)
-  console.log(`| 🚀  Live API: \x1b[34mhttp://localhost:${process.env.PORT}/api\x1b[0m 🚀 |`);
-})
