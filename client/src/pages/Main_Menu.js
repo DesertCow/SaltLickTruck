@@ -1,29 +1,21 @@
 
 
-import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
-import axios from "axios";
-
-import { mainMenuRoute, allUsersRoute } from "../utils/apiRoutes";
-
-
-
-async function Main_Menu() {
+function Main_Menu() {
 
   // const { data } = await axios.get(mainMenuRoute, {
   //   username,
   //   password,
   // });
 
-  const response = await fetch(mainMenuRoute, {
-    crossDomain: true,
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-  });
+  // const response = await fetch(mainMenuRoute, {
+  //   crossDomain: true,
+  //   method: 'GET',
+  //   headers: { 'Content-Type': 'application/json' },
+  // });
 
 
-  console.log("\n\nRESPONDSE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-  console.log(response)
+  // console.log("\n\nRESPONDSE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+  // console.log(response)
 
   return (
 
@@ -36,7 +28,6 @@ async function Main_Menu() {
     </div>
 
   )
-
 
 }
 

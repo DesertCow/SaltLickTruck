@@ -1,11 +1,23 @@
 
+import { useQuery, gql } from '@apollo/client';
 import { useNavigate } from "react-router-dom";
 // import React, { useState, useEffect } from "react";
 import React, { useState } from "react";
-import axios from "axios";
+
+// import UseQuery from '@apollo/client';
+import { loginRoute } from "../utils/apiRoutes";
+
+
+// import { LOGIN_Q } from '../utils/queries';
+
+const LOGIN_Q = gql`
+  query Query($email: String!, $password: String!) {
+    login(email: $email, password: $password)
+}
+`;
 
 // import { loginRoute, registerRoute } from "../utils/apiRoutes";
-import { loginRoute } from "../utils/apiRoutes";
+
 
 function Login() {
 
@@ -44,44 +56,51 @@ function Login() {
   };
 
   //* ########################### Button Handle ###########################
-  const handleSubmit = async (event) => {
+  const HandleSubmit = async (event) => {
     event.preventDefault();
 
     // console.log("Login Submit from Client!")
     // console.log("Valid? = " + validateForm() + " || " + JSON.stringify(values))
 
-    if (validateForm()) {
-      const { username, password } = values;
-      const { data } = await axios.post(loginRoute, {
-        username,
-        password,
-      });
+    // if (validateForm()) {
+    const { username, password } = values;
 
-      // console.log("Login Data: " + JSON.stringify(data))
-      const accessToken = data.accessToken
+    // const { data } = await axios.post(loginRoute, {
+    //   username,
+    //   password,
+    // });
+    console.log("~~~~ LoginQ ~~~~ ")
+    console.log(LOGIN_Q);
+    //* Make Server Request
+    //const { loading, data } = useQuery(LOGIN_Q);
+    // const { loading, data } = useQuery(LOGIN_Q);
+    const { loading, error, data } = await useQuery(LOGIN_Q);
 
-      // await setSessionToken({ ...sessionToken, "token": "FAKE" });
-      // setValues({ ...values, [event.target.name]: event.target.value, 'accessToken': "accessToken" });
-      // setValues({ ...values, [event.target.name]: event.target.value, 'accessToken': "accessToken" });
+    console.log("Login Data: " + JSON.stringify(data))
+    // const accessToken = data.accessToken
 
-      console.log("PWT Token: " + accessToken)
-      console.log("~~~~ Session Token ~~~~ ")
-      // console.log(sessionToken)
-      console.log(values)
+    // await setSessionToken({ ...sessionToken, "token": "FAKE" });
+    // setValues({ ...values, [event.target.name]: event.target.value, 'accessToken': "accessToken" });
+    // setValues({ ...values, [event.target.name]: event.target.value, 'accessToken': "accessToken" });
+
+    // console.log("PWT Token: " + accessToken)
+    console.log("~~~~ Session Token ~~~~ ")
+    // console.log(sessionToken)
+    console.log(values)
 
 
-      if (!accessToken) {
-        // toast.error(data.msg, toastOptions);
-      }
-      if (accessToken) {
-        // localStorage.setItem(
-        //   process.env.REACT_APP_LOCALHOST_KEY,
-        //   JSON.stringify(data.user)
-        // );
-        // toast.success("Login Was Successful", toastOptions);
-        navigate("/main_Menu");
-      }
-    }
+    // if (!accessToken) {
+    // toast.error(data.msg, toastOptions);
+    // }
+    // if (accessToken) {
+    // localStorage.setItem(
+    //   process.env.REACT_APP_LOCALHOST_KEY,
+    //   JSON.stringify(data.user)
+    // );
+    // toast.success("Login Was Successful", toastOptions);
+    navigate("/main_Menu");
+    // }
+    // }
 
   };
 
@@ -162,7 +181,7 @@ function Login() {
             </div>
 
             <div className="btndiv text-center mt-4">
-              <button className="startbtns" type="button" action="" onClick={(event) => handleSubmit(event)}>Log in</button>
+              <button className="startbtns" type="button" action="" onClick={(event) => HandleSubmit(event)}>Log in</button>
               <h4 className="h2 m-0 p-0">or</h4>
               <button className="startbtns mb-4" type="button" onClick={(event) => handleSignUp(event)}>Sign up</button>
             </div>
