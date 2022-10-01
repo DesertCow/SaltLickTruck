@@ -1,4 +1,4 @@
-const { FoodItem } = require('../../models');
+const { FoodItems } = require('../models');
 
 const SaltLickPlates = [
   {
@@ -336,22 +336,22 @@ const MeatByTheLB = [
 
 ];
 
-// const seedMenu = () => FoodItem.bulkCreate(productData);
+// const seedMenu = () => FoodItems.bulkCreate(productData);
 // const seedMenu = () => {
-//   FoodItem.bulkCreate(productData);
+//   FoodItems.bulkCreate(productData);
 // }
 
 async function seedMenu() {
-  await FoodItem.bulkCreate(SaltLickPlates);
+  await FoodItems.bulkCreate(SaltLickPlates);
   await console.log("🟢 Main Plates Loaded into Database 🟢\n\n")
 
-  await FoodItem.bulkCreate(SmallPlates);
+  await FoodItems.bulkCreate(SmallPlates);
   await console.log("🟢 Small Plates Loaded into Database 🟢\n\n")
 
-  await FoodItem.bulkCreate(Sandwiches);
+  await FoodItems.bulkCreate(Sandwiches);
   await console.log("🟢 Sandwiches Loaded into Database 🟢\n\n")
 
-  await FoodItem.bulkCreate(MeatByTheLB);
+  await FoodItems.bulkCreate(MeatByTheLB);
   await console.log("🟢 Meat By The LB Loaded into Database 🟢\n\n")
 }
 

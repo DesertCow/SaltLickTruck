@@ -2,43 +2,105 @@
 // 
 // Authorization server to support the food truck application
 //
-// Clayton Skaggs Sep 2022
+// Clayton Skaggs Oct 2022
 // 
 // ---------------------------------------------------------------------
 
-const express = require('express')
-const router = require('express').Router();
+const { ApolloServer, gql } = require("apollo-server-express");
+const express = require("express");
 
-const cors = require('cors');
-const mongoose = require('mongoose')
+const sequelize = require('./db/sqlConnection');
+const db = require('./db/mongoConnection');
 
-const path = require('path');
-require('dotenv').config();
 
-//* GraphQL
-var { graphqlHTTP } = require('express-graphql');
-var { buildSchema } = require('graphql');
+const { typeDefs, resolvers } = require('./db/schemas');
+const seedAll = require('./db/seeds/index');
 
-//* The resolvers provides a resolver function for each API endpoint
-const resolvers = require('./db/schemas/resolvers');
-const typeDefs = require('./db/schemas/typeDefs');
+//TODO: FIX ENV import issues...
+const mySQLport = process.env.mySQLport || 3001;
+const graphQLport = process.env.graphQLport || 4001;
+
+//* Create Base "App"
+const app = express();
+
+//* Apply Configuration to App
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+const server = new ApolloServer({ typeDefs, resolvers });
+
+async function seedServer() {
+
+  try {
+    await seedAll();
+    console.log('\n\x1b[42m----- SEEDING COMPLETE/VALID -----\x1b[0m\n');
+  } catch (error) {
+    console.log('\n\x1b[41m----- SEEDING FAILED! -----\x1b[0m\n');
+    console.log(error);
+  }
+}
+
+
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static(path.join(__dirname, '../client/build')));
+// }
+
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../client/build/index.html'));
+// });
+
+//* Starts all backend servers and DB connections
+async function serverStart() {
+
+  //* Start ApolloServer
+  await server.start()
+
+  //* Apollo Middleware Insert
+  server.applyMiddleware({ app });
+
+  //* Start mongoDB Connection
+  db.once('open', () => {
+
+
+    //* Start SQL Connection
+    sequelize.sync({ force: false }).then(() => {
+      app.listen(mySQLport, () => {
+        console.log("\n~~~       Server Status       ~~~")
+        console.log('~~~ MongoDB Database [' + "\x1b[32mOnline\x1b[0m" + '] ~~~')
+        console.log('~~~ SQL Database     [' + "\x1b[32mOnline\x1b[0m" + '] ~~~')
+        // console.log('\x1b[30m~~~ SQL Connection Valid [' + mySQLport + '] ~~~\x1b[0m\n')
+
+        //* Start GraphQL Server
+        app.listen(graphQLport, () => {
+          console.log(`~~~ GraphQL API      [` + "\x1b[32mOnline\x1b[0m" + `] ~~~ \n\n\x1b[33mAPI Live:\x1b[0m http://localhost:${graphQLport}${server.graphqlPath}\n\n`);
+
+          //! Seed SWITCH
+          // seedServer();
+
+        })
+      });
+    });
+  })
+}
+
+//* ========== Main ===========
+
+// * Main Server Call
+serverStart();
+
+//* ========== EOM ===========
+
+// ================ Old Code ================
 
 //* CORS Config
-const corsOptions = {
-  origin: "*",
-  optionsSuccessStatus: 200
-  // Access-Control-Allow-Origin: *
-};
-
-//* Initialize Base Application 
-const app = express()
+// const corsOptions = {
+//   origin: "*",
+//   optionsSuccessStatus: 200
+//   // Access-Control-Allow-Origin: *
+// };
 
 //* Apply CORS Config
-app.use(cors());
-
-//* ALlows App to use JSON from Body of Requests
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// app.use(cors());
 
 //* Share Build output directory
 // app.use(express.static(path.join(__dirname, '../public/build')))
@@ -53,28 +115,16 @@ app.use(express.urlencoded({ extended: false }));
 //* ~~~~~~~~~~~~~~~~~ Database Connection ~~~~~~~~~~~~~~~~~
 
 //* Test Mongoose DB Connection
-mongoose.connect(process.env.MONGO_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => {
-  // console.log("DB Connection Successful!")
-  console.log(`| 💡     MongooDB Connection:  \x1b[32mOnline\x1b[0m     💡 |`);
+// mongoose.connect(process.env.MONGO_URL, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// }).then(() => {
+//   // console.log("DB Connection Successful!")
+//   console.log(`| 💡     MongooDB Connection:  \x1b[32mOnline\x1b[0m     💡 |`);
 
-}).catch((err) => {
-  console.log(err.message);
-});
+// }).catch((err) => {
+//   console.log(err.message);
+// });
 
 
-//* ~~~~~~~~~~~~~~~~~ GraphQL Server ~~~~~~~~~~~~~~~~~
-
-app.use('/graphql', graphqlHTTP({
-  schema: typeDefs,
-  rootValue: resolvers,
-  graphiql: true,
-}));
-
-// app.listen(4000);
-app.listen(process.env.PORT);
-console.log(`| 🚀  Live GraphQL API: \x1b[34mhttp://localhost:${process.env.PORT}/graphql\x1b[0m 🚀 |`);
-// console.log('Running a GraphQL API server at http://localhost:4000/graphql');
-
+//!========================= EOF =========================

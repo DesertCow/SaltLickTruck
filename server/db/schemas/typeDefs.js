@@ -1,32 +1,39 @@
 
-// const { gql } = require('apollo-server-express');
-var { buildSchema } = require('graphql');
+//* GraphQL Schema Definition
+const { gql } = require("apollo-server-express");
 
-// const typeDefs = gql`
-var schema = buildSchema(`
 
-  type Category {
-    _id: ID
+const typeDefs = gql`
+
+  type Query {
+    login(email: String!, password: String!): String
+    getMainMenu: MainMenu
+    getSubMenu(menuID: Int): [String]
+  }
+
+  type Mutation {
+
+    createUser(email: String!, password: String!): UserCreated
+  }
+
+  type UserCreated {
+    password: String
+    user: User
+  }
+
+  type MainMenu {
+    id: String
     category_name: String
   }
 
-  type Food_Item {
+  type User {
     _id: ID
-    product_name: String
-    price: Int
-    serving: Int
-    measurement: String
-    available: Boolean
-    top_category: [Category]
+    email: String
+    password: String
+    loginValid: Boolean
+    loginToken: String
   }
 
-  type Query {
-    categories: [Category],
-    hello: String,
-    partyOn: String
-  }
+`;
 
-`);
-
-
-module.exports = schema;
+module.exports = typeDefs;
