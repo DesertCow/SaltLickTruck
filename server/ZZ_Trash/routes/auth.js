@@ -13,7 +13,7 @@ const {
   login,
   register,
   getAllUsers,
-} = require("../controllers/userController.js");
+} = require("../../controllers/userController.js");
 
 const router = require("express").Router();
 
