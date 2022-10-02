@@ -1,5 +1,20 @@
-import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+//
+//
+//
+
+import React from 'react';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+
+//* Page Import
 // import Register from './pages/Register';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -7,18 +22,51 @@ import Contact from './pages/Contact';
 import MainMenu from './pages/Main_Menu';
 import Home from './pages/Home';
 
+
+// Construct our main GraphQL API endpoint
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+// Construct request middleware that will attach the JWT token to every request as an `authorization` header
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('id_token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+// const client = new ApolloClient({
+//   // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
+//   // link: authLink.concat(httpLink),
+//   cache: new InMemoryCache(),
+// });
+
+const client = new ApolloClient({
+  uri: 'http://localhost:4001/graphql',
+  //uri: '/graphql',
+  cache: new InMemoryCache(),
+});
+
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* <Route path="/register" element={<Register />} />
-        <Route path="/chat" element={<Chat />} /> */}
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/main_Menu" element={<MainMenu />} />
-      </Routes>
-    </BrowserRouter>
+    <ApolloProvider client={client}>
+      <Router>
+        <Routes>
+          {/* <Route path="/register" element={<Register />} />
+          <Route path="/chat" element={<Chat />} /> */}
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/main_Menu" element={<MainMenu />} />
+        </Routes>
+      </Router>
+    </ApolloProvider>
   );
 }
