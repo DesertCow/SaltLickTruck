@@ -1,5 +1,6 @@
 
-export const host = "http://localhost:3001";
+// export const host = "http://localhost:3001";
+export const host = "http://192.168.25.22:3001";
 // export const host = "https://saltlicktruck.herokuapp.com";
 export const loginRoute = `${host}/api/auth/login`;
 export const registerRoute = `${host}/api/auth/register`;
