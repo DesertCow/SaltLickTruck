@@ -7,6 +7,12 @@
 
 }
 
+.menuTitle {
+  font-family: 'Lakki Reddy', cursive;
+  font-size: 30px;
+
+}
+
 .homePageTruck {
 
     width: 300px;
@@ -24,6 +30,10 @@
 .officeHours {
   font-size: 22px;
   font-weight: 600;
+}
+
+.mainMenuBtns {
+
 }
 
 .infoRow {
