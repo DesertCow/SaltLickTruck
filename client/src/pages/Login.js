@@ -4,49 +4,59 @@ import { useNavigate } from "react-router-dom";
 // import React, { useState, useEffect } from "react";
 import React, { useState } from "react";
 
-// import UseQuery from '@apollo/client';
+// import useQuery from '@apollo/client';
 import { loginRoute } from "../utils/apiRoutes";
 
 
-// import { LOGIN_Q } from '../utils/queries';
+import { LOGIN_Q } from '../utils/queries';
 
-const LOGIN_Q = gql`
-  query Query($email: String!, $password: String!) {
-    login(email: $email, password: $password)
-}
-`;
+// const LOGIN_Q = gql`
+//   query Query($email: String!, $password: String!) {
+//     login(email: $email, password: $password)
+// }
+// `;
 
 // import { loginRoute, registerRoute } from "../utils/apiRoutes";
 
+const Login = (props) => {
+  // const [formState, setFormState] = useState({ email: '', password: '' });
+  const [values, setValues] = useState({ email: "", password: "", accessToken: "VOID" });
+  // const [login, { error, data }] = useMutation(LOGIN_USER);
+  // const [login, data ] = useQuery(LOGIN_Q, {
+  //   variables: {
+  //     email: "test123@gmail.com",
+  //     password: "test2"
+  //   },
+  // })
 
-function Login() {
+  const { login, data } = useQuery(LOGIN_Q, {
+    variables: {
+      email: "test123@gmail.com",
+      password: "test2"
+    },
+  })
 
   const navigate = useNavigate();
+  console.log("\n\n=========== Login ===========")
+  console.log(login)
+  console.log("=========== DATA ===========")
+  console.log(data)
 
-  const [values, setValues] = useState({ username: "", password: "", accessToken: "VOID" });
-  // const [sessionToken, setSessionToken] = useState({ token: "" });
+
+  // update state based on form input changes
+  // const handleChange = (event) => {
+  //   const { name, value } = event.target;
+
+  //   setFormState({
+  //     ...formState,
+  //     [name]: value,
+  //   });
+  // };
 
 
-  //TODO: Move to external file... helpers??? and import to cleanup file
-  const validateForm = () => {
-    const { username, password } = values;
-    if (username === "" && password === "") {
-      // toast.error("Username and Password is required.", toastOptions);
-      console.log("ERROR: Username and Password missing")
-      return false;
-    } else if (username === "") {
-      console.log("ERROR: Username missing")
-      // toast.error("Username is required.", toastOptions);
-      return false;
-    } else if (password === "") {
-      console.log("ERROR: Password missing")
-      // toast.error("Password is required.", toastOptions);
-      return false;
-    }
-    else {
-      return true;
-    }
-  };
+  // const LoginRequest = async () => {
+  //   const { loading, error, data } = await useQuery(LOGIN_Q);
+  // };
 
   //* Used to keep useState method to update Values
   const handleChange = (event) => {
@@ -59,48 +69,13 @@ function Login() {
   const HandleSubmit = async (event) => {
     event.preventDefault();
 
-    // console.log("Login Submit from Client!")
-    // console.log("Valid? = " + validateForm() + " || " + JSON.stringify(values))
+    console.log("Handle Submit!")
 
-    // if (validateForm()) {
-    const { username, password } = values;
-
-    // const { data } = await axios.post(loginRoute, {
-    //   username,
-    //   password,
-    // });
-    console.log("~~~~ LoginQ ~~~~ ")
-    console.log(LOGIN_Q);
-    //* Make Server Request
-    //const { loading, data } = useQuery(LOGIN_Q);
-    // const { loading, data } = useQuery(LOGIN_Q);
-    const { loading, error, data } = await useQuery(LOGIN_Q);
-
-    console.log("Login Data: " + JSON.stringify(data))
-    // const accessToken = data.accessToken
-
-    // await setSessionToken({ ...sessionToken, "token": "FAKE" });
-    // setValues({ ...values, [event.target.name]: event.target.value, 'accessToken': "accessToken" });
-    // setValues({ ...values, [event.target.name]: event.target.value, 'accessToken': "accessToken" });
-
-    // console.log("PWT Token: " + accessToken)
-    console.log("~~~~ Session Token ~~~~ ")
-    // console.log(sessionToken)
-    console.log(values)
+    const { data } = await login({
+      variables: { ...values },
+    });
 
 
-    // if (!accessToken) {
-    // toast.error(data.msg, toastOptions);
-    // }
-    // if (accessToken) {
-    // localStorage.setItem(
-    //   process.env.REACT_APP_LOCALHOST_KEY,
-    //   JSON.stringify(data.user)
-    // );
-    // toast.success("Login Was Successful", toastOptions);
-    navigate("/main_Menu");
-    // }
-    // }
 
   };
 
@@ -201,3 +176,82 @@ function Login() {
 }
 
 export default Login;
+
+
+// TRASHHHHHHHHHHHHHHHHHHHH
+
+
+
+// console.log("Login Submit from Client!")
+// console.log("Valid? = " + validateForm() + " || " + JSON.stringify(values))
+
+// if (validateForm()) {
+  // const { username, password } = values;
+
+  // const { data } = await axios.post(loginRoute, {
+  //   username,
+  //   password,
+  // });
+  // console.log("~~~~ LoginQ ~~~~ ")
+  // console.log(LOGIN_Q);
+  //* Make Server Request
+  // LoginRequest();
+  //const { loading, data } = useQuery(LOGIN_Q);
+  // const { loading, data } = useQuery(LOGIN_Q);
+
+
+  // console.log("Login Data: " + JSON.stringify(data))
+  // const accessToken = data.accessToken
+
+  // await setSessionToken({ ...sessionToken, "token": "FAKE" });
+  // setValues({ ...values, [event.target.name]: event.target.value, 'accessToken': "accessToken" });
+  // setValues({ ...values, [event.target.name]: event.target.value, 'accessToken': "accessToken" });
+
+  // console.log("PWT Token: " + accessToken)
+  // console.log("~~~~ Session Token ~~~~ ")
+  // console.log(sessionToken)
+  // console.log(values)
+
+
+  // if (!accessToken) {
+  // toast.error(data.msg, toastOptions);
+  // }
+  // if (accessToken) {
+  // localStorage.setItem(
+  //   process.env.REACT_APP_LOCALHOST_KEY,
+  //   JSON.stringify(data.user)
+  // );
+  // toast.success("Login Was Successful", toastOptions);
+  // navigate("/main_Menu");
+      // }
+
+
+// function Login() {
+
+//   const navigate = useNavigate();
+
+//   const [values, setValues] = useState({ username: "", password: "", accessToken: "VOID" });
+//   // const [sessionToken, setSessionToken] = useState({ token: "" });
+
+
+//   //TODO: Move to external file... helpers??? and import to cleanup file
+//   const validateForm = () => {
+//     const { username, password } = values;
+//     if (username === "" && password === "") {
+//       // toast.error("Username and Password is required.", toastOptions);
+//       console.log("ERROR: Username and Password missing")
+//       return false;
+//     } else if (username === "") {
+//       console.log("ERROR: Username missing")
+//       // toast.error("Username is required.", toastOptions);
+//       return false;
+//     } else if (password === "") {
+//       console.log("ERROR: Password missing")
+//       // toast.error("Password is required.", toastOptions);
+//       return false;
+//     }
+//     else {
+//       return true;
+//     }
+//   };
+
