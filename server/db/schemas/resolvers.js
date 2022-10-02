@@ -54,11 +54,19 @@ const resolvers = {
 
       // await Category.findAll().then(mainMenuData => mainMenuData.json(mainMenuData))
 
-      console.log("Temp = ")
-      // console.log(json(mainMenuData))
-      console.log(...mainMenuData)
 
-      return mainMenuData
+
+      const finalList = []
+      // mainMenuData = JSON.stringify(mainMenuData)
+      // console.log(mainMenuData)
+      for (i = 0; i < mainMenuData.length; i++) {
+        // console.log(mainMenuData[i].category_name)
+        finalList[i] = mainMenuData[i].category_name
+      }
+
+      console.log("Final List = ")
+      console.log(" /n" + finalList)
+      return finalList
 
 
       //TODO: Return full menu to client

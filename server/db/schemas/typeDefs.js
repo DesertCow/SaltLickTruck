@@ -7,7 +7,7 @@ const typeDefs = gql`
 
   type Query {
     login(email: String!, password: String!): String
-    getMainMenu: MainMenu
+    getMainMenu: [String]
     getSubMenu(menuID: Int): [String]
   }
 
