@@ -5,3 +5,9 @@ export const LOGIN_Q = gql`
     login(email: $email, password: $password)
 }
 `;
+
+export const MainMenu_Q = gql`
+  query GetMainMenu {
+  getMainMenu
+}
+`;
