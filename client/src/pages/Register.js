@@ -8,6 +8,9 @@ import axios from "axios";
 
 import { registerRoute } from "../utils/apiRoutes";
 
+import { useQuery } from '@apollo/client';
+import { MainMenu_Q } from '../utils/queries';
+
 
 function Register() {
 
@@ -63,7 +66,7 @@ function Register() {
 
   //* ######################### Button Handle ###########################
 
-  const handleSignUp = async (event) => {
+  const HandleSignUp = async (event) => {
     event.preventDefault();
 
     // if (validateSignUp()) {
@@ -73,11 +76,15 @@ function Register() {
       // console.log("User Data: " + email + "||" + username + "||" + password + "||" + passwordconfirm);
       console.log("User Data: " + email + "||" + username + "||" + password);
 
-      const { data } = await axios.post(registerRoute, {
-        email,
-        username,
-        password
-      });
+      // const { data } = await axios.post(registerRoute, {
+      //   email,
+      //   username,
+      //   password
+      // });
+
+      //* Get Menu from Database
+      // var { data } = useQuery(MainMenu_Q)
+      let data = "";
 
       if (data.status === false) {
         // toast.error("Account Creation Failed!", toastOptions);
@@ -188,7 +195,7 @@ function Register() {
           <button
             className="startbtns"
             type="button"
-            onClick={(event) => handleSignUp(event)}>Sign Up
+            onClick={(event) => HandleSignUp(event)}>Sign Up
           </button>
           <h4 className="h2 m-0 p-0">or</h4>
           <button className="startbtns mb-4" type="button" onClick={(event) => returnHome(event)}>Home</button>
