@@ -12,6 +12,8 @@ const express = require("express");
 const sequelize = require('./db/sqlConnection');
 const db = require('./db/mongoConnection');
 
+const path = require('path');
+
 
 const { typeDefs, resolvers } = require('./db/schemas');
 const seedAll = require('./db/seeds/index');
@@ -47,6 +49,12 @@ if (process.env.NODE_ENV === 'production') {
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+
+// app.use(express.static(path.join(__dirname, '../client/src/img')));
+
+app.get('/img/Salt_Lick_Menu_DWood-PDF.pdf', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/src/img/Salt_Lick_Menu_DWood-PDF.pdf'));
 });
 
 //* Starts all backend servers and DB connections

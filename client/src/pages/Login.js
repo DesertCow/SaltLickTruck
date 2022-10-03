@@ -9,14 +9,15 @@ import Auth from '../utils/auth';
 
 
 const Login = (props) => {
+  
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { data }] = useMutation(LOGIN_Q);
-
   const navigate = useNavigate();
+  
   // console.log("\n\n=========== Login ===========")
   // console.log(login)
-  console.log("=========== DATA ===========")
-  console.log(data)
+  // console.log("=========== DATA ===========")
+  // console.log(data)
 
   //* update state based on form input changes
   const handleChange = (event) => {
@@ -27,11 +28,6 @@ const Login = (props) => {
       [name]: value,
     });
 
-    //* Used to keep useState method to update Values
-    // const handleChange = (event) => {
-    //   setValues({ ...values, [event.target.name]: event.target.value, 'accessToken': "Test" });
-    //   console.log("VALUES!!!!!!!!!!!!!!!!!!!!!!")
-    //   console.log(values)
   };
 
   //* ########################### Button Handle ###########################
@@ -46,7 +42,7 @@ const Login = (props) => {
         variables: { ...formState },
       });
 
-      //TODO: After Login you get kicked back to top level menu...? 🐛🐛🐛🐛🐛🐛🐛
+      //TODO: Enable Auth 
       // Auth.login(data.login.token);
     } catch (e) {
       console.error(e);
