@@ -3,7 +3,7 @@
 import { useNavigate } from "react-router-dom";
 // import React, { useState, useEffect } from "react";
 import React, { useState } from "react";
-import { LOGIN_Q } from '../utils/queries';
+import { LOGIN_Q } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 
