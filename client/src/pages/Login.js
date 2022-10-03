@@ -1,29 +1,16 @@
 
-import { useQuery, gql } from '@apollo/client';
+
 import { useNavigate } from "react-router-dom";
 // import React, { useState, useEffect } from "react";
 import React, { useState } from "react";
-
-// import useQuery from '@apollo/client';
-import { loginRoute } from "../utils/apiRoutes";
-
-
 import { LOGIN_Q } from '../utils/queries';
 import { useMutation } from '@apollo/client';
+import Auth from '../utils/auth';
 
-// const LOGIN_Q = gql`
-//   query Query($email: String!, $password: String!) {
-//     login(email: $email, password: $password)
-// }
-// `;
-
-// import { loginRoute, registerRoute } from "../utils/apiRoutes";
 
 const Login = (props) => {
-  // const [formState, setFormState] = useState({ email: '', password: '' });
-  // const [values, setValues] = useState({ email: '', password: '' });
   const [formState, setFormState] = useState({ email: '', password: '' });
-  const [login, { error, data }] = useMutation(LOGIN_Q);
+  const [login, { data }] = useMutation(LOGIN_Q);
 
   const navigate = useNavigate();
   // console.log("\n\n=========== Login ===========")
@@ -31,7 +18,7 @@ const Login = (props) => {
   console.log("=========== DATA ===========")
   console.log(data)
 
-  // update state based on form input changes
+  //* update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -53,10 +40,26 @@ const Login = (props) => {
 
     console.log("Handle Submit!")
 
-    const { data } = await login({
-      variables: { ...formState },
+    console.log(formState);
+    try {
+      const { data } = await login({
+        variables: { ...formState },
+      });
+
+      //TODO: After Login you get kicked back to top level menu...? 🐛🐛🐛🐛🐛🐛🐛
+      // Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
+    }
+
+    // clear form values
+    setFormState({
+      email: '',
+      password: '',
     });
 
+
+    console.log(data)
     navigate("/main_Menu")
 
   };
