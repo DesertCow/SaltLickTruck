@@ -28,6 +28,10 @@ function Main_Menu() {
   finalArray[7] = String(dataArray[7]).substring(1, String(dataArray[7]).length - 1)
   finalArray[8] = String(dataArray[8]).substring(1, String(dataArray[8]).length - 3)
 
+
+
+  //TODO: Enable menu buttons to be dynamically generated depending on how many items in Database
+  //TODO: Instead of the hard coding below...
   return (
 
     <div className="d-flex flex-column min-vh-100">

@@ -8,83 +8,46 @@ const sequelize = require('../sqlConnection');
 //* Auth Tools
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
+const { signToken } = require('../../utils/auth');
 
 
 const resolvers = {
 
   Query: {
-    login: async (parent, { email, password }) => {
-
-      console.log("\n\x1b[33mLogin Request\x1b[0m\n   User: \x1b[33m" + email + "\x1b[0m\n   Password: \x1b[35m" + password + "\x1b[0m")
-
-      //* Get User based on provided Email
-      const user = await UserMongo.findOne({ "email": email });
-
-      // TODO: Logic to repsond if Email does not exists
-
-      // console.log("Stored Password: " + user.password)
-
-      //* Validate Password
-      const passValid = await bcrypt.compare(password, user.password)
-
-      //* Invalid password, return 
-      if (!passValid) {
-        console.log("\x1b[35mLogin Failed\x1b[0m")
-        // return res.json({ msg: "Invalid Password", authenticated: false, status: false })
-        return 'Password Invalid -> ACCESS DENIED!'
-      }
-      else {
-
-        console.log("\x1b[32m   Login Successful\x1b[0m\n")
-
-        //* ~~~~ JWT ~~~~
-        const accessToken = jwt.sign(user.toJSON(), process.env.ACCESS_TOKEN_SECRET)
-
-        //* Return generated JWT token to user for use in future graphQL requests
-        console.log("JWT Token Generated!\n \x1b[31m" + accessToken + "\x1b[0m\n")
-        return accessToken
-      }
-    },
     getMainMenu: async () => {
 
       console.log("\n\x1b[33m[API-GET] - Main Menu\x1b[0m\n");
 
-      //TODO: Make Call to get full menu from SQL DB 
+      //* Query Database for Main Menu
       const mainMenuData = await Category.findAll();
 
-      // await Category.findAll().then(mainMenuData => mainMenuData.json(mainMenuData))
-
-
-
-      const finalList = []
-      // mainMenuData = JSON.stringify(mainMenuData)
-      // console.log(mainMenuData)
+      //* Parse response data to create array of Menu Items
+      var mainMenuList = []
       for (i = 0; i < mainMenuData.length; i++) {
-        // console.log(mainMenuData[i].category_name)
-        finalList[i] = mainMenuData[i].category_name
+        mainMenuList[i] = mainMenuData[i].category_name
       }
 
-      console.log("Final List = ")
-      console.log(" /n" + finalList)
-      return finalList
-
-
-      //TODO: Return full menu to client
-
+      //* Return List to Client
+      return mainMenuList
     },
     getSubMenu: async (parent, { menuID }) => {
 
       console.log("\n\x1b[33m[API-GET] - Sub Menu #" + menuID + "\x1b[0m\n");
 
-      subMenuData = await FoodItem.findAll({
+      //* Query Database for Sub Menu based on "menuID" provided in request
+      var subMenuData = await FoodItem.findAll({
         where: { top_category: menuID },
       })
 
-      console.log("================ Sub Menu Data ================ ")
-      console.log(...subMenuData)
+      //* Parse response data to create array of Sub Menu Items
+      const finalList = []
+      for (i = 0; i < subMenuData.length; i++) {
+        // console.log(mainMenuData[i].category_name)
+        finalList[i] = subMenuData[i].product_name
+      }
 
-
-
+      //* Return List to Client
+      return finalList
     },
   },
 
@@ -93,23 +56,48 @@ const resolvers = {
 
       console.log("\n\x1b[33mCreate New User (MongoDB)\x1b[0m\n\x1b[0m\n   Password: \x1b[35m" + password + "\x1b[0m\n   Email: " + email);
 
-      // * Confirm Email does not already Exist
-      const emailExists = await UserMongo.findOne({ "email": email });
-      if (emailExists !== null) {
-        console.log("\x1b[35mAccount Creation Failed: Email already associated with an account \x1b[0m");
-        return { emailExists }
+      //* Request Database create a new "User"
+      const user = await UserMongo.create({ email, password });
+
+      //TODO: Enable way to print this when it fails...
+      //console.log("\x1b[35mAccount Creation Failed: Email already associated with an account \x1b[0m");
+
+
+      // console.log(user)
+      //* Sign/Generate JWT Token
+      const token = signToken(user);
+
+      console.log("\x1b[32mAccount Creation Successful\x1b[0m");
+
+      //* Return Token to User
+      return { token, user };
+    },
+    login: async (parent, { email, password }) => {
+
+      console.log("\n\x1b[33mLogin Request\x1b[0m\n   User: \x1b[33m" + email + "\x1b[0m\n   Password: \x1b[35m" + password + "\x1b[0m")
+
+      //* Query Database for user based off provided "email"
+      const user = await UserMongo.findOne({ email });
+
+      //* Validate User Exists
+      if (!user) {
+        throw new AuthenticationError('No profile with this email found!');
       }
-      else {
-        //* Hash user submitted password
-        password = await bcrypt.hash(password, 10);
 
-        //* Create New User
-        const user = await UserMongo.create({ email, password });
+      //* Validate Password via "isCorrectPassword" method
+      const correctPw = await user.isCorrectPassword(password);
 
-        console.log("\x1b[32mAccount Creation Successful\x1b[0m");
-        return { password, user };
+      //* Error for incorrect password
+      if (!correctPw) {
+        console.log("\x1b[35mLogin Failed\x1b[0m")
+        throw new AuthenticationError('Incorrect password!');
       }
 
+      console.log("\x1b[32m   Login Successful\x1b[0m\n")
+
+      //* Return Token to User
+      const token = signToken(user);
+      return { token, user };
     },
   },
 
