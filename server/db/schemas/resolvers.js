@@ -74,7 +74,7 @@ const resolvers = {
     },
     login: async (parent, { email, password }) => {
 
-      console.log("\n\x1b[33mLogin Request\x1b[0m\n   User: \x1b[33m" + email + "\x1b[0m\n   Password: \x1b[35m" + password + "\x1b[0m")
+      console.log("\n\x1b[33mLogin Request\x1b[0m\n   Email: \x1b[33m" + email + "\x1b[0m\n   Password: \x1b[35m" + password + "\x1b[0m")
 
       //* Query Database for user based off provided "email"
       const user = await UserMongo.findOne({ email });

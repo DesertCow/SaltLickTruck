@@ -9,6 +9,7 @@ import { loginRoute } from "../utils/apiRoutes";
 
 
 import { LOGIN_Q } from '../utils/queries';
+import { useMutation } from '@apollo/client';
 
 // const LOGIN_Q = gql`
 //   query Query($email: String!, $password: String!) {
@@ -20,49 +21,30 @@ import { LOGIN_Q } from '../utils/queries';
 
 const Login = (props) => {
   // const [formState, setFormState] = useState({ email: '', password: '' });
-  const [values, setValues] = useState({ email: "", password: "", accessToken: "VOID" });
-  // const [login, { error, data }] = useMutation(LOGIN_USER);
-  // const [login, data ] = useQuery(LOGIN_Q, {
-  //   variables: {
-  //     email: "test123@gmail.com",
-  //     password: "test2"
-  //   },
-  // })
-
-  const { login, data } = useQuery(LOGIN_Q, {
-    variables: {
-      email: "test123@gmail.com",
-      password: "test2"
-    },
-  })
+  // const [values, setValues] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [login, { error, data }] = useMutation(LOGIN_Q);
 
   const navigate = useNavigate();
-  console.log("\n\n=========== Login ===========")
-  console.log(login)
+  // console.log("\n\n=========== Login ===========")
+  // console.log(login)
   console.log("=========== DATA ===========")
   console.log(data)
 
-
   // update state based on form input changes
-  // const handleChange = (event) => {
-  //   const { name, value } = event.target;
-
-  //   setFormState({
-  //     ...formState,
-  //     [name]: value,
-  //   });
-  // };
-
-
-  // const LoginRequest = async () => {
-  //   const { loading, error, data } = await useQuery(LOGIN_Q);
-  // };
-
-  //* Used to keep useState method to update Values
   const handleChange = (event) => {
-    setValues({ ...values, [event.target.name]: event.target.value, 'accessToken': "Test" });
-    console.log("VALUES!!!!!!!!!!!!!!!!!!!!!!")
-    console.log(values)
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+
+    //* Used to keep useState method to update Values
+    // const handleChange = (event) => {
+    //   setValues({ ...values, [event.target.name]: event.target.value, 'accessToken': "Test" });
+    //   console.log("VALUES!!!!!!!!!!!!!!!!!!!!!!")
+    //   console.log(values)
   };
 
   //* ########################### Button Handle ###########################
@@ -72,10 +54,10 @@ const Login = (props) => {
     console.log("Handle Submit!")
 
     const { data } = await login({
-      variables: { ...values },
+      variables: { ...formState },
     });
 
-
+    navigate("/main_Menu")
 
   };
 
@@ -124,13 +106,13 @@ const Login = (props) => {
 
             <div className="text-center">
               <div className="inputdiv">
-                <p className="inputlabel">Username:</p>
+                <p className="inputlabel">Email:</p>
                 <div className="">
                   <input
                     className="startinputs loginTextBox"
                     type="text"
-                    id="username"
-                    name="username"
+                    id="email"
+                    name="email"
                     placeholder=""
                     onChange={(e) => handleChange(e)}
                   />
