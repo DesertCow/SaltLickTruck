@@ -4,18 +4,16 @@
 import { useNavigate } from "react-router-dom";
 // import React, { useState, useEffect } from "react";
 import React, { useState } from "react";
-import axios from "axios";
 
-import { registerRoute } from "../utils/apiRoutes";
-
-import { useQuery } from '@apollo/client';
-import { MainMenu_Q } from '../utils/queries';
-
+import { useMutation } from '@apollo/client';
+import { CREATE_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 function Register() {
 
+  const [values, setValues] = useState({ email: "", password: "", passwordconfirm: "" });
 
-  const [values, setValues] = useState({ email: "", username: "", password: "", passwordconfirm: "" });
+  const [createUser, { error, data }] = useMutation(CREATE_USER);
 
   const navigate = useNavigate();
 
@@ -25,42 +23,44 @@ function Register() {
   };
 
   //TODO: REFACTOR cleaner, input validation solution...
-  const validateSignUp = () => {
-    const { password, confirmPassword, username, email } = values;
+  // const validateSignUp = () => {
+  //   const { password, confirmPassword, username, email } = values;
 
-    console.log(password + " || " + confirmPassword)
+  //   console.log(password + " || " + confirmPassword)
 
-    if (password !== confirmPassword) {
-      // toast.error(
-      //   "Password and confirm password should be same.",
-      //   toastOptions
-      // );
-      return false;
-    }
+  //   if (password !== confirmPassword) {
+  //     // toast.error(
+  //     //   "Password and confirm password should be same.",
+  //     //   toastOptions
+  //     // );
+  //     return false;
+  //   }
 
-    if (username.length < 3) {
-      // toast.error(
-      //   "Username should be greater than 3 characters.",
-      //   toastOptions
-      // );
-      return false;
-    }
+  //   if (username.length < 3) {
+  //     // toast.error(
+  //     //   "Username should be greater than 3 characters.",
+  //     //   toastOptions
+  //     // );
+  //     return false;
+  //   }
 
-    if (password.length < 8) {
-      // toast.error(
-      //   "Password should be equal or greater than 8 characters.",
-      //   toastOptions
-      // );
-      return false;
-    }
+  //   if (password.length < 8) {
+  //     // toast.error(
+  //     //   "Password should be equal or greater than 8 characters.",
+  //     //   toastOptions
+  //     // );
+  //     return false;
+  //   }
 
-    if (email === "") {
-      // toast.error("Email is required.", toastOptions);
-      return false;
-    }
+  //   if (email === "") {
+  //     // toast.error("Email is required.", toastOptions);
+  //     return false;
+  //   }
 
-    return true;
-  };
+  //   return true;
+  // };
+
+
 
 
 
@@ -71,10 +71,10 @@ function Register() {
 
     // if (validateSignUp()) {
     if (true) {
-      const { email, username, password } = values;
+      const { email, password } = values;
 
       // console.log("User Data: " + email + "||" + username + "||" + password + "||" + passwordconfirm);
-      console.log("User Data: " + email + "||" + username + "||" + password);
+      console.log("User Data: " + email + "||" + password);
 
       // const { data } = await axios.post(registerRoute, {
       //   email,
@@ -82,21 +82,48 @@ function Register() {
       //   password
       // });
 
-      //* Get Menu from Database
-      // var { data } = useQuery(MainMenu_Q)
-      let data = "";
+      //* Create New User In Database
+      try {
+        const { data } = await createUser({
+          variables: { ...values },
+        });
 
-      if (data.status === false) {
-        // toast.error("Account Creation Failed!", toastOptions);
-        console.log("Account Creation FAILED!");
+        // console.log("========================== DATA ==========================")
+        // console.log(data);
+        var Token = JSON.stringify(data)
+        // console.log("========================== TOKEN ==========================")
+        Token = String(Token.split(":"))
+        Token = Token.split(`"`)
+        var finalToken = Token[5]
+
+        Auth.login(finalToken);
+        console.log("Account Created!");
+        console.log("========================== STORED TOKEN ==========================")
+        console.log(Auth.getToken())
+        navigate("/main_Menu")
+        // const Temp = Auth.getToken()
+        // console.log(finalToken + " || " + Temp);
+
+        // if (data.status === false) {
+        //   // toast.error("Account Creation Failed!", toastOptions);
+        //   console.log("Account Creation FAILED!");
+        // }
+        // if (data.status === true) {
+        //   // toast.success("Account Sign-Up Successful", toastOptions);
+        //   console.log("Account Creation PASSED!");
+        //   navigate("/main_Menu")
+        // }
+
+        // Auth.login(data.addUser.token);
+      } catch (e) {
+        console.error(e);
       }
-      if (data.status === true) {
-        // toast.success("Account Sign-Up Successful", toastOptions);
-        console.log("Account Creation PASSED!");
-        navigate("/login");
-      }
-    }
+    };
+    // let data = "";
+
+
   }
+
 
   const returnHome = async (event) => {
     event.preventDefault();
@@ -139,20 +166,6 @@ function Register() {
                     type="text"
                     id="email"
                     name="email"
-                    placeholder=""
-                    onChange={(e) => inputUpdated(e)}
-                  />
-                </div>
-              </div>
-
-              <div className="registerdiv">
-                <p className="inputlabel">Username</p>
-                <div className="">
-                  <input
-                    className="startinputs"
-                    type="text"
-                    id="username"
-                    name="username"
                     placeholder=""
                     onChange={(e) => inputUpdated(e)}
                   />
