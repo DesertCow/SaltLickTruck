@@ -9,11 +9,11 @@ import Auth from '../utils/auth';
 
 
 const Login = (props) => {
-  
+
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { data }] = useMutation(LOGIN_Q);
   const navigate = useNavigate();
-  
+
   // console.log("\n\n=========== Login ===========")
   // console.log(login)
   // console.log("=========== DATA ===========")
@@ -132,19 +132,17 @@ const Login = (props) => {
                 </div>
               </div>
               <div>
-                <p className="passwordRecoveryLink" onClick={(event) => passwordRecovery(event)}>Forgot Password?</p>
+                <p className="passwordRecoveryLink mb-3 mt-2" onClick={(event) => passwordRecovery(event)}>Forgot Password?</p>
               </div>
             </div>
-
-            <div className="btndiv text-center mt-4">
-              <button className="startbtns" type="button" action="" onClick={(event) => HandleSubmit(event)}>Log in</button>
-              <h4 className="h2 m-0 p-0">or</h4>
-              <button className="startbtns mb-4" type="button" onClick={(event) => handleSignUp(event)}>Sign up</button>
-            </div>
-
           </form>
 
         </div >
+        <div className="btndiv text-center mt-4 pt-3 loginBox">
+          <button className="startbtns" type="button" action="" onClick={(event) => HandleSubmit(event)}>Log in</button>
+          <h4 className="h2 m-0 p-0">or</h4>
+          <button className="startbtns mb-4" type="button" onClick={(event) => handleSignUp(event)}>Sign up</button>
+        </div>
       </div >
 
     </div>

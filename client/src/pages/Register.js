@@ -204,9 +204,9 @@ function Register() {
         </div>
 
 
-        <div className="btndiv text-center">
+        <div className="btndiv text-center registerBox">
           <button
-            className="startbtns"
+            className="startbtns mt-4"
             type="button"
             onClick={(event) => HandleSignUp(event)}>Sign Up
           </button>
