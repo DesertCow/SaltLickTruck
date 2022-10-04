@@ -22,6 +22,10 @@ import Contact from './pages/Contact';
 import MainMenu from './pages/Main_Menu';
 import Home from './pages/Home';
 
+//* Component Import
+import Header from './components/Header';
+import MainFooter from './components/Footer';
+
 
 // Construct our main GraphQL API endpoint
 // const httpLink = createHttpLink({
@@ -59,7 +63,7 @@ export default function App() {
       <Router>
         <Routes>
           {/* <Route path="/register" element={<Register />} />
-          <Route path="/chat" element={<Chat />} /> */}
+            <Route path="/chat" element={<Chat />} /> */}
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

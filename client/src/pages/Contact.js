@@ -1,6 +1,6 @@
 
 // import { useNavigate } from "react-router-dom";
-import { FaBeer } from 'react-icons/fa';
+import MainFooter from '../components/Footer';
 
 function Contact() {
 
@@ -39,7 +39,7 @@ function Contact() {
 
 
       {/* <!-- Footer --> */}
-      <footer className="mt-auto mb-1">
+      <footer className="mt-auto mb-0 pb-1">
         <div className="d-flex align-items-left justify-content-around">
           <div className="d-flex flex-column">
             <a href="https://github.com/DesertCow">
@@ -48,16 +48,7 @@ function Contact() {
               </svg>
             </a>
           </div>
-          <div className="d-flex flex-column">
-            <ul className="pb-1 text-center">
-              <li>
-                <p>Made by 🌵 Desert-Cow 🐄</p>
-              </li>
-              <li>
-                <p>© 2022 Monkey See Monkey Do LLC.</p>
-              </li>
-            </ul>
-          </div>
+        <MainFooter />
           <div className="d-flex flex-column">
             <a href="https://desertcow.github.io/Portfolio/">
               <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#FCF2F3" className="bi bi-person-badge-fill" viewBox="0 0 16 16">

@@ -4,6 +4,10 @@ import { MainMenu_Q } from '../utils/queries';
 import React, { useState } from "react";
 import { Button } from 'react-bootstrap';
 
+//* Component Import
+// import Header from '../components/Header';
+import MainFooter from '../components/Footer';
+
 function Main_Menu() {
 
   //* Get Menu from Database
@@ -34,7 +38,8 @@ function Main_Menu() {
   //TODO: Instead of the hard coding below...
   return (
 
-    <div className="d-flex flex-column min-vh-100">
+    <div>
+          <div className="d-flex flex-column min-vh-100">
 
       <h1 className="homeTitle text-center pt-4"> Salt Lick BBQ</h1>
       <h1 className="text-center pt-4 menuTitle"> Main Menu</h1>
@@ -50,9 +55,15 @@ function Main_Menu() {
         <li className="mainMenuBtns m-4"><Button variant="light">{finalArray[7]}</Button>{' '}</li>
         <li className="mainMenuBtns m-4"><Button variant="light">{finalArray[8]}</Button>{' '}</li>
       </ul>
+    </div>
 
+      <footer className="mt-auto mb-0">
+        <MainFooter />
+      </footer>
 
     </div>
+
+    
 
   )
 

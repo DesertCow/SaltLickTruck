@@ -2,6 +2,7 @@
 
 import { useNavigate } from "react-router-dom";
 import menuPDF from '../img/Salt_Lick_Menu_DWood-PDF.pdf';
+import MainFooter from '../components/Footer';
 
 function Home() {
 
@@ -63,7 +64,7 @@ function Home() {
       </div>
 
       {/* <!-- Footer --> */}
-      <footer className="mt-auto mb-0">
+      {/* <footer className="mt-auto mb-0">
         <ul className="pb-1 text-center">
           <li>
             <p>Made by 🌵 Desert-Cow 🐄</p>
@@ -72,8 +73,10 @@ function Home() {
             <p>© 2022 Monkey See Monkey Do LLC.</p>
           </li>
         </ul>
+      </footer> */}
+      <footer className="mt-auto mb-0">
+        <MainFooter />
       </footer>
-
     </div>
   );
 
