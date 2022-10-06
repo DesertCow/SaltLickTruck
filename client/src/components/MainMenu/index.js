@@ -1,8 +1,31 @@
 
 import { Button } from 'react-bootstrap';
 
-const MainMenu = ({ finalArray = [] }) => {
+const MainMenu = ({ finalArray }) => {
 
+  console.log("==================== Passed Array ==================== ");
+  console.log(finalArray[8])
+
+  // const menuList = finalArray.map((menu) => (
+  //   <li>
+  //     {finalArray}
+  //   </li>
+  // ));
+
+  var menuList = []
+  // var menuItems = []
+
+  finalArray.forEach(newMenuItem);
+
+
+  function newMenuItem(item) {
+    console.log("======================== ITEM ======================== ")
+    console.log(item)
+    menuList.push(<li key={item} className="mainMenuBtns m-4"><Button variant="light">{item}</Button>{' '}</li>)
+  }
+
+  console.log("==================== Menu ==================== ");
+  console.log(menuList[8]);
 
   return (
 
@@ -13,17 +36,15 @@ const MainMenu = ({ finalArray = [] }) => {
         <h1 className="text-center pt-4 menuTitle"> Main Menu</h1>
         <hr className="mt-2 mb-3" />
         <ul className="text-center m-4">
-          <li className="mainMenuBtns m-4"><Button variant="light">{finalArray[0]}</Button>{' '}</li>
-          <li className="mainMenuBtns m-4"><Button variant="light">{finalArray[1]}</Button>{' '}</li>
-          <li className="mainMenuBtns m-4"><Button variant="light">{finalArray[2]}</Button>{' '}</li>
-          <li className="mainMenuBtns m-4"><Button variant="light">{finalArray[3]}</Button>{' '}</li>
-          <li className="mainMenuBtns m-4"><Button variant="light">{finalArray[4]}</Button>{' '}</li>
-          <li className="mainMenuBtns m-4"><Button variant="light">{finalArray[5]}</Button>{' '}</li>
-          <li className="mainMenuBtns m-4"><Button variant="light">{finalArray[6]}</Button>{' '}</li>
-          <li className="mainMenuBtns m-4"><Button variant="light">{finalArray[7]}</Button>{' '}</li>
-          <li className="mainMenuBtns m-4"><Button variant="light">{finalArray[8]}</Button>{' '}</li>
+          <div>
+            {/* <ol style={{ listStyleType: "none" }}>{menuList}</ol> */}
+            {menuList}
+          </div>
         </ul>
       </div>
+
+
+
     </div>
   );
 };

@@ -14,7 +14,7 @@ function Main_Menu() {
 
 
   //* Get Menu from Database
-  var { loadingMenu, data } = useQuery(MainMenu_Q)
+  var { loading, data } = useQuery(MainMenu_Q)
   // const { loadingUser, userData } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
   //   variables: { username: userParam },
   // });
@@ -28,15 +28,27 @@ function Main_Menu() {
   //* Massage Title data to get clean menu Titles
   // TODO: Must be a better way to pass data via GraphQL
   var finalArray = []
+  // finalArray[0] = dataArray[0].substring(2, dataArray[0].length - 1)
+  // finalArray[1] = String(dataArray[1]).substring(1, String(dataArray[1]).length - 1)
+  // finalArray[2] = String(dataArray[2]).substring(1, String(dataArray[2]).length - 1)
+  // finalArray[3] = String(dataArray[3]).substring(1, String(dataArray[3]).length - 1)
+  // finalArray[4] = String(dataArray[4]).substring(1, String(dataArray[4]).length - 1)
+  // finalArray[5] = String(dataArray[5]).substring(1, String(dataArray[5]).length - 1)
+  // finalArray[6] = String(dataArray[6]).substring(1, String(dataArray[6]).length - 1)
+  // finalArray[7] = String(dataArray[7]).substring(1, String(dataArray[7]).length - 1)
+  // finalArray[8] = String(dataArray[8]).substring(1, String(dataArray[8]).length - 1)
+
+  dataArray.forEach(parseGraphQL)
+
+  function parseGraphQL(item) {
+    finalArray.push(String(item).substring(1, String(item).length - 1))
+  }
+
   finalArray[0] = dataArray[0].substring(2, dataArray[0].length - 1)
-  finalArray[1] = String(dataArray[1]).substring(1, String(dataArray[1]).length - 1)
-  finalArray[2] = String(dataArray[2]).substring(1, String(dataArray[2]).length - 1)
-  finalArray[3] = String(dataArray[3]).substring(1, String(dataArray[3]).length - 1)
-  finalArray[4] = String(dataArray[4]).substring(1, String(dataArray[4]).length - 1)
-  finalArray[5] = String(dataArray[5]).substring(1, String(dataArray[5]).length - 1)
-  finalArray[6] = String(dataArray[6]).substring(1, String(dataArray[6]).length - 1)
-  finalArray[7] = String(dataArray[7]).substring(1, String(dataArray[7]).length - 1)
-  finalArray[8] = String(dataArray[8]).substring(1, String(dataArray[8]).length - 3)
+  finalArray[finalArray.length-1] = dataArray[finalArray.length-1].substring(1, dataArray[finalArray.length-1].length - 3)
+
+  console.log("==================== Final Array ==================== ");
+  console.log(finalArray[0])
 
   // if (!user?.username) {
   if (false) {
@@ -49,13 +61,13 @@ function Main_Menu() {
   }
 
   //TODO: Add loading screen/color/icon
-  if (loadingMenu) {
+  if (loading) {
     return (
 
       <div className="m-4 p-2 container h-100">
         <div className="row h-100 justify-content-center align-items-center">
-          <h className="col-12 justify-content-center">Loading... </h>
-          <div class="spinner-border ml-auto justify-content-center" role="status" aria-hidden="true"></div>
+          <h1 className="col-12 justify-content-center">Loading... </h1>
+          <div className="spinner-border ml-auto justify-content-center" role="status" aria-hidden="true"></div>
         </div>
 
       </div>
@@ -63,6 +75,8 @@ function Main_Menu() {
 
   }
 
+
+  // console.log(finalArray[1]);
 
   //TODO: Enable menu buttons to be dynamically generated depending on how many items in Database
   //TODO: Instead of the hard coding below...
