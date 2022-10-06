@@ -44,6 +44,7 @@ function Register() {
   //     return false;
   //   }
 
+
   //   if (password.length < 8) {
   //     // toast.error(
   //     //   "Password should be equal or greater than 8 characters.",

@@ -6,12 +6,18 @@ import { Button } from 'react-bootstrap';
 
 //* Component Import
 // import Header from '../components/Header';
+import MainMenu from '../components/MainMenu';
 import MainFooter from '../components/Footer';
 
 function Main_Menu() {
 
+
+
   //* Get Menu from Database
-  var { data } = useQuery(MainMenu_Q)
+  var { loadingMenu, data } = useQuery(MainMenu_Q)
+  // const { loadingUser, userData } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+  //   variables: { username: userParam },
+  // });
 
   //* Extract Menu List from GraphQL Response (data)
   data = String(JSON.stringify(data))
@@ -32,30 +38,40 @@ function Main_Menu() {
   finalArray[7] = String(dataArray[7]).substring(1, String(dataArray[7]).length - 1)
   finalArray[8] = String(dataArray[8]).substring(1, String(dataArray[8]).length - 3)
 
+  // if (!user?.username) {
+  if (false) {
+    return (
+      <h4 className="m-4 p-2">
+        You need to be logged in to see this. Use the navigation links above to
+        sign up or log in!
+      </h4>
+    );
+  }
+
+  //TODO: Add loading screen/color/icon
+  if (loadingMenu) {
+    return (
+
+      <div className="m-4 p-2 container h-100">
+        <div className="row h-100 justify-content-center align-items-center">
+          <h className="col-12 justify-content-center">Loading... </h>
+          <div class="spinner-border ml-auto justify-content-center" role="status" aria-hidden="true"></div>
+        </div>
+
+      </div>
+    )
+
+  }
 
 
   //TODO: Enable menu buttons to be dynamically generated depending on how many items in Database
   //TODO: Instead of the hard coding below...
   return (
-
     <div>
-          <div className="d-flex flex-column min-vh-100">
 
-      <h1 className="homeTitle text-center pt-4"> Salt Lick BBQ</h1>
-      <h1 className="text-center pt-4 menuTitle"> Main Menu</h1>
-      <hr className="mt-2 mb-3" />
-      <ul className="text-center m-4">
-        <li className="mainMenuBtns m-4"><Button variant="light">{finalArray[0]}</Button>{' '}</li>
-        <li className="mainMenuBtns m-4"><Button variant="light">{finalArray[1]}</Button>{' '}</li>
-        <li className="mainMenuBtns m-4"><Button variant="light">{finalArray[2]}</Button>{' '}</li>
-        <li className="mainMenuBtns m-4"><Button variant="light">{finalArray[3]}</Button>{' '}</li>
-        <li className="mainMenuBtns m-4"><Button variant="light">{finalArray[4]}</Button>{' '}</li>
-        <li className="mainMenuBtns m-4"><Button variant="light">{finalArray[5]}</Button>{' '}</li>
-        <li className="mainMenuBtns m-4"><Button variant="light">{finalArray[6]}</Button>{' '}</li>
-        <li className="mainMenuBtns m-4"><Button variant="light">{finalArray[7]}</Button>{' '}</li>
-        <li className="mainMenuBtns m-4"><Button variant="light">{finalArray[8]}</Button>{' '}</li>
-      </ul>
-    </div>
+      <div className="d-flex flex-column min-vh-100">
+        <MainMenu finalArray={finalArray} />
+      </div>
 
       <footer className="mt-auto mb-0">
         <MainFooter />
@@ -63,7 +79,7 @@ function Main_Menu() {
 
     </div>
 
-    
+
 
   )
 
