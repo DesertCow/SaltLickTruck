@@ -8,6 +8,7 @@ import { Button } from 'react-bootstrap';
 // import Header from '../components/Header';
 import MainMenu from '../components/MainMenu';
 import MainFooter from '../components/Footer';
+import LoadingSplash from '../components/LoadingSplash';
 
 function Main_Menu() {
 
@@ -45,7 +46,7 @@ function Main_Menu() {
   }
 
   finalArray[0] = dataArray[0].substring(2, dataArray[0].length - 1)
-  finalArray[finalArray.length-1] = dataArray[finalArray.length-1].substring(1, dataArray[finalArray.length-1].length - 3)
+  finalArray[finalArray.length - 1] = dataArray[finalArray.length - 1].substring(1, dataArray[finalArray.length - 1].length - 3)
 
   console.log("==================== Final Array ==================== ");
   console.log(finalArray[0])
@@ -60,17 +61,10 @@ function Main_Menu() {
     );
   }
 
-  //TODO: Add loading screen/color/icon
   if (loading) {
+
     return (
-
-      <div className="m-4 p-2 container h-100">
-        <div className="row h-100 justify-content-center align-items-center">
-          <h1 className="col-12 justify-content-center">Loading... </h1>
-          <div className="spinner-border ml-auto justify-content-center" role="status" aria-hidden="true"></div>
-        </div>
-
-      </div>
+      <LoadingSplash />
     )
 
   }
