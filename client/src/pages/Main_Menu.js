@@ -7,6 +7,7 @@ import { Button } from 'react-bootstrap';
 //* Component Import
 // import Header from '../components/Header';
 import MainMenu from '../components/MainMenu';
+import SubMenu from '../components/SubMenu';
 import MainFooter from '../components/Footer';
 import LoadingSplash from '../components/LoadingSplash';
 
@@ -69,11 +70,6 @@ function Main_Menu() {
 
   }
 
-
-  // console.log(finalArray[1]);
-
-  //TODO: Enable menu buttons to be dynamically generated depending on how many items in Database
-  //TODO: Instead of the hard coding below...
   return (
     <div>
 
@@ -84,6 +80,10 @@ function Main_Menu() {
       <footer className="mt-auto mb-0">
         <MainFooter />
       </footer>
+
+    <div>
+      {/* <SubMenu menuNumber={1} /> */}
+    </div>
 
     </div>
 
