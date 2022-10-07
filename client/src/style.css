@@ -7,6 +7,23 @@
 
 }
 
+.loadingSpinner {
+
+  margin-top: 75%;
+  /* margin: auto; */
+  /* width: 50%; */
+  text-align: center;
+  height: 250px;
+  width: 250px;
+
+}
+
+.LoadingText {
+  margin-top: 35%;
+  font-size: 50px;
+  color: white;
+}
+
 .menuTitle {
   font-family: 'Lakki Reddy', cursive;
   font-size: 30px;
