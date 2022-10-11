@@ -6,3 +6,10 @@ export const MainMenu_Q = gql`
   getMainMenu
 }
 `;
+
+export const SubMenu_Q = gql`
+  query Query($menuId: Int) {
+  getSubMenu(menuID: $menuId)
+}
+`;
+

@@ -20,6 +20,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Contact from './pages/Contact';
 import MainMenu from './pages/Main_Menu';
+import SubMenu from './pages/Sub_Menu';
 import Home from './pages/Home';
 
 //* Component Import
@@ -69,6 +70,7 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/main_Menu" element={<MainMenu />} />
+          <Route path="/sub_Menu" element={<SubMenu />} />
         </Routes>
       </Router>
     </ApolloProvider>
