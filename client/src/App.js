@@ -82,7 +82,6 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/main_Menu" element={<MainMenu />} />
           <Route path="/sub_Menu/:menuID" element={<SubMenu />} />
-          {/* <Route path="/sub_Menu/:menuID" element={<SubMenuPage />} /> */}
         </Routes>
       </Router>
     </ApolloProvider>
