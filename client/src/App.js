@@ -12,6 +12,7 @@ import {
 } from '@apollo/client';
 // import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 
 //* Page Import
@@ -52,6 +53,16 @@ import MainFooter from './components/Footer';
 //   cache: new InMemoryCache(),
 // });
 
+function SubMenuPage() {
+  // Get the userId param from the URL.
+  let { menuID } = useParams();
+
+  // return (
+  //   <Route path="/sub_Menu/:menuID" element={<SubMenu menuID={menuID} />} />
+  // );
+  // ...
+}
+
 const client = new ApolloClient({
   uri: 'http://192.168.25.22:4001/graphql',
   //uri: '/graphql',
@@ -70,7 +81,8 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/main_Menu" element={<MainMenu />} />
-          <Route path="/sub_Menu" element={<SubMenu />} />
+          <Route path="/sub_Menu/:menuID" element={<SubMenu />} />
+          {/* <Route path="/sub_Menu/:menuID" element={<SubMenuPage />} /> */}
         </Routes>
       </Router>
     </ApolloProvider>

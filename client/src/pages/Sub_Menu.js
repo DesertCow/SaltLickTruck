@@ -17,9 +17,16 @@ function Sub_Menu() {
   //   variables: { username: userParam },
   // });
 
-  let menuNumber = 2
+  // const routeTokens = location.pathname.replace(/^\/+/g, '').split('/')
 
-  console.log(menuNumber)
+  // let menuNumber = 2
+  // console.log("======== PATH ========")
+  // console.log(window.location.href)
+  let menuNumber = window.location.href.split(`sub_menu/`)
+  // console.log("======== Number ========")
+  // console.log(menuNumber[1])
+  menuNumber = Number(menuNumber[1])
+  // console.log(menuNumber)
 
   return (
     <div>
