@@ -52,6 +52,7 @@ function Main_Menu() {
   console.log("==================== Final Array ==================== ");
   console.log(finalArray[0])
 
+
   // if (!user?.username) {
   if (false) {
     return (
@@ -80,10 +81,6 @@ function Main_Menu() {
       <footer className="mt-auto mb-0">
         <MainFooter />
       </footer>
-
-    <div>
-      {/* <SubMenu menuNumber={1} /> */}
-    </div>
 
     </div>
 

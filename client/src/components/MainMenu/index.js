@@ -1,7 +1,10 @@
 
 import { Button } from 'react-bootstrap';
+import { useNavigate } from "react-router-dom";
 
 const MainMenu = ({ finalArray }) => {
+
+  const navigate = useNavigate();
 
   console.log("==================== Passed Array ==================== ");
   console.log(finalArray[8])
@@ -15,17 +18,29 @@ const MainMenu = ({ finalArray }) => {
   var menuList = []
   // var menuItems = []
 
+  const subMenuRequest = async (buttonNum, event) => {
+    event.preventDefault()
+    console.log("Menu Click!")
+    console.log(event.target)
+    // const menuID = 3
+    navigate("/sub_menu/" + buttonNum);
+
+  };
+
+
   finalArray.forEach(newMenuItem);
 
 
-  function newMenuItem(item) {
+
+  function newMenuItem(item, index) {
     console.log("======================== ITEM ======================== ")
     console.log(item)
-    menuList.push(<li key={item} className="mainMenuBtns m-4"><Button variant="light">{item}</Button>{' '}</li>)
+    // let buttonNum = index
+    menuList.push(<li key={item} className="mainMenuBtns m-4"><Button onClick={(event) => subMenuRequest(index + 1, event)} variant="light">{item}</Button>{' '}</li>)
   }
 
   console.log("==================== Menu ==================== ");
-  console.log(menuList[8]);
+  console.log(menuList);
 
   return (
 
