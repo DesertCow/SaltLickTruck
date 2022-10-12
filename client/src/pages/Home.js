@@ -44,21 +44,21 @@ function Home() {
 
       <div className="text-center homeMenu row d-flex align-items-center justify-content-center">
         <div className="row px-5 py-3">
-          <button type="button" className="btn btn-primary" onClick={(event) => handleMainMenu(event)}>Order</button>
+          <div className="homeMenuBtn p-2" onClick={(event) => handleMainMenu(event)}>Order</div>
         </div>
         <div className="row px-5 py-3">
-          <a href={menuPDF} className="btn btn-primary" download="Salt_Lick_Menu_DWood-PDF.pdf" target='_blank'>
-            <button type="submit" className="btn btn-primary">PDF Menu</button>
+          <a href={menuPDF} className="homeMenuBtn p-2 text-decoration-none text-reset" download="Salt_Lick_Menu_DWood-PDF.pdf" target='_blank'>
+            <div type="submit" className="">PDF Menu</div>
           </a>
         </div>
         <div className="row px-5 py-3">
-          <button type="button" className="btn btn-primary" onClick={(event) => handleLogin(event)}>Login</button>
+          <div className="homeMenuBtn p-2" onClick={(event) => handleLogin(event)}>Login</div>
         </div>
         <div className="row px-5 py-3">
-          <button type="button" className="btn btn-primary" onClick={(event) => handleRegister(event)}>Sign Up</button>
+          <div className="homeMenuBtn p-2" onClick={(event) => handleRegister(event)}>Sign Up</div>
         </div>
         <div className="row px-5 py-3">
-          <button type="button" className="btn btn-primary" onClick={(event) => handleContact(event)}>Contact Information</button>
+          <div className="homeMenuBtn p-2" onClick={(event) => handleContact(event)}>Contact Information</div>
         </div>
 
       </div>

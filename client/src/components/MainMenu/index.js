@@ -22,7 +22,7 @@ const MainMenu = ({ finalArray }) => {
 
   function newMenuItem(item, index) {
 
-    menuList.push(<li key={item} className="mainMenuBtns m-4"><Button onClick={(event) => subMenuRequest(index + 1, event)} variant="light">{item}</Button>{' '}</li>)
+    menuList.push(<li key={item} className="mainMenuBtns m-4 p-3"><div onClick={(event) => subMenuRequest(index + 1, event)} variant="light">{item}</div>{' '}</li>)
   }
 
   // console.log("==================== Menu ==================== ");
