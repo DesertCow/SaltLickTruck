@@ -2,13 +2,14 @@
 //* GraphQL Schema Definition
 const { gql } = require("apollo-server-express");
 
+//getSubMenu(menuID: Int): [String]
 
 const typeDefs = gql`
 
   type Query {
     login(email: String!, password: String!): Auth
     getMainMenu: [String]
-    getSubMenu(menuID: Int): [String]
+    getSubMenu(menuID: Int): subMenu
   }
 
   type Mutation {
@@ -19,6 +20,11 @@ const typeDefs = gql`
   type UserCreated {
     password: String
     user: User
+  }
+
+  type subMenu {
+    menuList: [String]
+    menuTitle: String
   }
 
   # Set up an Auth type to handle returning data from a profile creating or user login

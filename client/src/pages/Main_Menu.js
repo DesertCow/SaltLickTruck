@@ -42,16 +42,17 @@ function Main_Menu() {
 
   dataArray.forEach(parseGraphQL)
 
-  function parseGraphQL(item) {
-    finalArray.push(String(item).substring(1, String(item).length - 1))
+  async function parseGraphQL(item) {
+    await finalArray.push(String(item).substring(1, String(item).length - 1))
   }
 
   finalArray[0] = dataArray[0].substring(2, dataArray[0].length - 1)
   finalArray[finalArray.length - 1] = dataArray[finalArray.length - 1].substring(1, dataArray[finalArray.length - 1].length - 3)
 
-  console.log("==================== Final Array ==================== ");
-  console.log(finalArray[0])
-
+  // if (!loading) {
+  //   console.log("==================== Final Array ==================== ");
+  //   console.log(finalArray)
+  // }
 
   // if (!user?.username) {
   if (false) {
