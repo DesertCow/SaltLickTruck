@@ -36,6 +36,7 @@ const typeDefs = gql`
   type subMenu {
     menuList: [String]
     menuTitle: String
+    menuIndex: [Int]
   }
 
   # Set up an Auth type to handle returning data from a profile creating or user login

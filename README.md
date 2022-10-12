@@ -1,5 +1,5 @@
 <div align="center">
-<h1>Salt Lick Food Truck Demo</h1>
+<h1>Chuckwagon</h1>
 <h4>A Food truck ordering and management system</h4>
 </div>
   
@@ -12,7 +12,7 @@
 * [Features](#features)
 * [Installation](#installation)
 * [Wireframe](#wireframe)
-* [Technology Stack](#Technology)
+* [Technology](#technology)
 * [Demo](#demo)
 
   <br>
@@ -166,28 +166,6 @@ npm start
 <br>
 <br>
 
-## [Development-Roadmap](#table-of-contents)
-
-  ----
-
-  
-<h5 align="center"></h5>
-
-
-|      |   |        |       |        | Version 0.5        |        |            |        |    |      |
-| :---:         | :---          |  :---: | :---          |  :---: | :---            |  :---: | :---             |  :---: | :---            |  :---: |
-|   🚧 ❌ ✔️   | Home/Landing  |    ✂️    |  PDF Menu     |   ✂️     | Sign-Up         |    ❌    | Login            |    ❌    |  Contact Page   |    🚧    |
-|               |               |  🚧 Status 🚧 |               |  🚧 Status 🚧 |                 | 🚧 Status 🚧 |                  | 🚧 Status 🚧 |                 | 🚧 Status🚧  |
-|               | Style / Img   |   ✔️   | Host PDF      |   ✂️   | Style / Img     |   ❌   | Style / Img     |   🚧   | Style / Img     |   🚧   |
-|               | Footer/Header |   ✔️   |               |        | Footer/Header   |   ❌   | Footer/Header   |   ✔️   | Footer/Header   |   ✔️   |
-|               | Buttons       |   ✂️   |               |        | Sign-Up Capture |   ❌   | Sign-In Capture |   ✔️   | Contact Info    |   ✔️   |
-|               |               |        |               |        | Cap -> Auth0    |   ❌   | Cap -> Auth0    |   ❌   | GitHub Dev Link |   🚧   |
-|               |               |        |               |        | Privacy + TOS   |   ❌   | Keeped Logged In|   🚧   | Buttons         |   🚧   |
-|               |               |        |               |        | Button + Forgot |   ❌   | Buttons         |   ✔️   |                 |        |
-
-
-<br>
-<br>
 
 ## [Demo](#table-of-contents)
 

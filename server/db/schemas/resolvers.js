@@ -41,9 +41,11 @@ const resolvers = {
 
       //* Parse response data to create array of Sub Menu Items
       const finalList = []
+      const indexList = []
       for (i = 0; i < subMenuData.length; i++) {
         // console.log(mainMenuData[i].category_name)
         finalList[i] = subMenuData[i].product_name
+        indexList[i] = subMenuData[i].id
       }
 
       var subMenuTitle = await Category.findOne({
@@ -52,11 +54,18 @@ const resolvers = {
       // console.log("==================== Sub menu Title ==================== ");
       // console.log(subMenuTitle.category_name)
 
+      // var menuIndex = await FoodItem.findOne({
+      //   where: { top_category: menuID },
+      // })
+
+      console.log("==================== Menu Index ==================== ");
+      console.log(indexList)
+
       subMenuTitle = String(subMenuTitle.category_name)
       // var subMenuTitle = "Test Title"
 
       //* Return List to Client
-      return { menuList: finalList, menuTitle: subMenuTitle }
+      return { menuList: finalList, menuTitle: subMenuTitle, menuIndex: indexList }
     },
     getItemInfo: async (parent, { itemID }) => {
 

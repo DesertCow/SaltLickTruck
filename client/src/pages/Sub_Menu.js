@@ -1,14 +1,14 @@
 
-import { useQuery } from '@apollo/client';
-import { SubMenu_Q } from '../utils/queries';
-import React, { useState } from "react";
-import { Button } from 'react-bootstrap';
+// import { useQuery } from '@apollo/client';
+// import { SubMenu_Q } from '../utils/queries';
+import React from "react";
+// import { Button } from 'react-bootstrap';
 
 //* Component Import
 // import Header from '../components/Header';
 import SubMenu from '../components/SubMenu';
 import MainFooter from '../components/Footer';
-import LoadingSplash from '../components/LoadingSplash';
+// import LoadingSplash from '../components/LoadingSplash';
 
 // function Sub_Menu({ menuNumber }) {
 function Sub_Menu() {

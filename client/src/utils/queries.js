@@ -12,6 +12,7 @@ export const SubMenu_Q = gql`
   getSubMenu(menuID: $menuId) {
     menuList
     menuTitle
+    menuIndex
   }
 }
 `;
