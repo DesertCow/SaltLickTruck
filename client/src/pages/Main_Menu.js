@@ -30,15 +30,6 @@ function Main_Menu() {
   //* Massage Title data to get clean menu Titles
   // TODO: Must be a better way to pass data via GraphQL
   var finalArray = []
-  // finalArray[0] = dataArray[0].substring(2, dataArray[0].length - 1)
-  // finalArray[1] = String(dataArray[1]).substring(1, String(dataArray[1]).length - 1)
-  // finalArray[2] = String(dataArray[2]).substring(1, String(dataArray[2]).length - 1)
-  // finalArray[3] = String(dataArray[3]).substring(1, String(dataArray[3]).length - 1)
-  // finalArray[4] = String(dataArray[4]).substring(1, String(dataArray[4]).length - 1)
-  // finalArray[5] = String(dataArray[5]).substring(1, String(dataArray[5]).length - 1)
-  // finalArray[6] = String(dataArray[6]).substring(1, String(dataArray[6]).length - 1)
-  // finalArray[7] = String(dataArray[7]).substring(1, String(dataArray[7]).length - 1)
-  // finalArray[8] = String(dataArray[8]).substring(1, String(dataArray[8]).length - 1)
 
   dataArray.forEach(parseGraphQL)
 
