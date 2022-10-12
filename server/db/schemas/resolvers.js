@@ -46,8 +46,17 @@ const resolvers = {
         finalList[i] = subMenuData[i].product_name
       }
 
+      var subMenuTitle = await Category.findOne({
+        where: { id: menuID },
+      })
+      // console.log("==================== Sub menu Title ==================== ");
+      // console.log(subMenuTitle.category_name)
+
+      subMenuTitle = String(subMenuTitle.category_name)
+      // var subMenuTitle = "Test Title"
+
       //* Return List to Client
-      return finalList
+      return { menuList: finalList, menuTitle: subMenuTitle }
     },
   },
 

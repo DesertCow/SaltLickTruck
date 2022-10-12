@@ -8,8 +8,11 @@ export const MainMenu_Q = gql`
 `;
 
 export const SubMenu_Q = gql`
-  query Query($menuId: Int) {
-  getSubMenu(menuID: $menuId)
+  query GetSubMenu($menuId: Int) {
+  getSubMenu(menuID: $menuId) {
+    menuList
+    menuTitle
+  }
 }
 `;
 
