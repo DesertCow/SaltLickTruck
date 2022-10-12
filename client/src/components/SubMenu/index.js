@@ -24,56 +24,30 @@ const SubMenu = ({ menuNumber }) => {
   if (!loading) {
     //* Extract Menu List from GraphQL Response (data)
     // console.log("==================== GraphQL Data ==================== ");
+    // console.log(data)
+
     data = String(JSON.stringify(data))
     var dataArray = data.split(":")
-    var menuTitle = dataArray[4].split(",")
-    var finalTitle = menuTitle[0]
 
-    console.log("==================== menuTitle ### ==================== ");
+
+    // console.log("==================== Item ==================== ");
     // console.log(String(item))
 
-
+    //* Parse Sub Menu Title
+    var finalTitle = dataArray[4].split(",")[0]
     finalTitle = String(finalTitle.replace(/[^\w\s]/gi, ''))
-    console.log(finalTitle)
+
+    // console.log("==================== Final Title ==================== ");
+    // console.log(finalTitle)
 
     var indexArray = dataArray[5].replace(/[^a-zA-Z0-9 ,]/g, '', '')
 
-    console.log(indexArray.length)
-    console.log(indexArray[0])
-    console.log(indexArray[1])
-    console.log(indexArray[2])
-
-    var finalIndexArray = []
-    var finalArrayIndex = 0
-
-    // for (let i = 0; i < indexArray.length; i++) {
-
-    //   var tempNumber = 0;
-
-    //   if (indexArray[i] != ",") {
-    //     // finalIndexArray[i] = 
-    //     console.log(indexArray[i])
-    //     tempNumber = concat(tempNumber, indexArray[i])
-    //   }
-    //   else {
-
-    //     console.log("Final" + tempNumber)
-    //     finalIndexArray[finalArrayIndex] = tempNumber;
-    //     finalArrayIndex = finalArrayIndex++
-    //   }
-    // }
-
-    // menuTitle = String(menuTitle.replace(/[^\w\s]/gi, ''))
-
-    console.log("==================== menuTitle # ==================== ");
-    // console.log(String(item))
-    console.log(menuTitle)
+    var arrayOffset = parseInt(indexArray[0].concat(indexArray[1]))
 
     dataArray = String(dataArray[3])
     dataArray = dataArray.split(',')
 
-
-
+    //* Loop Over Each Item to create Final List
     dataArray.forEach(parseGraphQL)
   }
 
@@ -83,23 +57,13 @@ const SubMenu = ({ menuNumber }) => {
     item = item.replace(/[^\w\s]/gi, '')
     finalArray.push(String(item))
 
-    console.log("==================== Item ==================== ");
-    console.log(String(item))
-    console.log(finalArray)
   }
 
-  const displayItem = async (event, item) => {
+  const displayItem = async (event, item, index) => {
     event.preventDefault()
-    console.log("Item Requested! [" + item + "]")
-    // console.log(event)
+    var location = index + arrayOffset
 
-    // navigate("/item/" + item);
-
-    // var { loading, data } = useQuery(Item_Q, {
-    //   variables: { menuId: menuNumber },
-    // });
-
-    // navigate("/sub_menu/" + buttonNum);
+    navigate("/item/" + location);
 
   };
 
@@ -110,7 +74,7 @@ const SubMenu = ({ menuNumber }) => {
   function populateSubMenu(item, index) {
 
     //* Create Buttons based off array
-    menuList.push(<li key={item} onClick={(event) => displayItem(event, item)} className="mainMenuBtns m-4"><Button variant="light">{item}</Button>{' '}</li>)
+    menuList.push(<li key={item} onClick={(event) => displayItem(event, item, index)} className="mainMenuBtns m-4"><Button variant="light">{item}</Button>{' '}</li>)
   }
 
   if (loading) {
@@ -120,32 +84,6 @@ const SubMenu = ({ menuNumber }) => {
     )
 
   }
-
-
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-    },
-  };
 
   menuList.pop()
 
@@ -165,30 +103,6 @@ const SubMenu = ({ menuNumber }) => {
           </div>
         </ul>
       </div>
-      {/* <div>
-        <button onClick={openModal}>Open Modal</button>
-        <Modal
-          isOpen={modalIsOpen}
-          onAfterOpen={afterOpenModal}
-          onRequestClose={closeModal}
-          style={customStyles}
-          contentLabel="Example Modal"
-        >
-          <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
-          <button onClick={closeModal}>close</button>
-          <div>I am a modal</div>
-          <form>
-            <input />
-            <button>tab navigation</button>
-            <button>stays</button>
-            <button>inside</button>
-            <button>the modal</button>
-          </form>
-        </Modal>
-      </div> */}
-
-
-
     </div>
 
 
