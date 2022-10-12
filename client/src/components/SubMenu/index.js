@@ -14,6 +14,7 @@ const SubMenu = ({ menuNumber }) => {
     variables: { menuId: menuNumber },
   });
 
+  if (!loading) {
   //* Extract Menu List from GraphQL Response (data)
   // console.log("==================== GraphQL Data ==================== ");
   data = String(JSON.stringify(data))
@@ -26,7 +27,8 @@ const SubMenu = ({ menuNumber }) => {
   dataArray = dataArray.split(',')
 
   dataArray.forEach(parseGraphQL)
-
+  }
+  
   function parseGraphQL(item) {
 
     //* Remove special Chars

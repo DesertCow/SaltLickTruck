@@ -63,25 +63,20 @@ const resolvers = {
       console.log("\n\x1b[33m[API-GET] - Item Info #" + itemID + "\x1b[0m\n");
       console.log("ITEM INFO REQUEST! [" + itemID + "]")
 
-      // var itemID = itemID
-      var itemData = await FoodItem.findAll({
+
+      var itemData = await FoodItem.findOne({
         where: { id: itemID },
       })
 
-      itemData = itemData[0]
-
-      var itemName = itemData.product_name
-      var itemPrice = itemData.price
-      var inStock = itemData.available
-      var itemServing = itemData.serving
-      var itemMeasurement = itemData.measurement
-      var subMenuNumber = itemData.top_category
-
-
-      // console.log("==================== Item Data ==================== ");
-      // console.log(itemData.product_name)
-
-      return { itemID: itemID, itemName: itemName, itemPrice: itemPrice, inStock: inStock, itemServing: itemServing, itemMeasurement: itemMeasurement, subMenuNumber: subMenuNumber }
+      return {
+        itemID: itemID,
+        itemName: itemData.product_name,
+        itemPrice: itemData.price,
+        inStock: itemData.available,
+        itemServing: itemData.serving,
+        itemMeasurement: itemData.measurement,
+        subMenuNumber: itemData.top_category
+      }
     },
   },
 

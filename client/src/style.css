@@ -7,6 +7,16 @@
 
 }
 
+.dishTitle {
+  font-family: 'Lakki Reddy', cursive;
+  font-size: 35px;
+}
+
+.dishPrice {
+  font-family: 'Lakki Reddy', cursive;
+  font-size: 25px;
+}
+
 .loadingSpinner {
 
   margin-top: 75%;
