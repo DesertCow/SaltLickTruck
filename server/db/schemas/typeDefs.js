@@ -21,7 +21,7 @@ const typeDefs = gql`
   type Item {
     itemID: Int
     itemName: String
-    itemPrice: Int
+    itemPrice: Float
     inStock: Boolean
     itemServing: Int
     itemMeasurement: String
