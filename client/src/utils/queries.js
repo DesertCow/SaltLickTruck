@@ -12,7 +12,23 @@ export const SubMenu_Q = gql`
   getSubMenu(menuID: $menuId) {
     menuList
     menuTitle
+    menuIndex
   }
 }
 `;
+
+export const Item_Q = gql`
+query GetItemInfo($itemId: Int) {
+  getItemInfo(itemID: $itemId) {
+    itemID
+    itemName
+    itemPrice
+    inStock
+    itemServing
+    itemMeasurement
+    subMenuNumber
+  }
+}
+`;
+
 
