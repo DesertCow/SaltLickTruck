@@ -58,6 +58,9 @@ const resolvers = {
       //* Return List to Client
       return { menuList: finalList, menuTitle: subMenuTitle }
     },
+    getItemInfo: async (parent, { itemID }) => {
+      console.log("ITEM INFO REQUEST! [" + itemID + "]")
+    },
   },
 
   Mutation: {

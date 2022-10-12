@@ -10,11 +10,22 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     getMainMenu: [String]
     getSubMenu(menuID: Int): subMenu
+    getItemInfo(itemID: Int): Item
   }
 
   type Mutation {
     createUser(email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+  }
+
+  type Item {
+    itemID: Int
+    itemName: String
+    itemPrice: Int
+    inStock: Boolean
+    itemServing: Int
+    itemMeasurement: String
+    subMenuNumber: Int
   }
 
   type UserCreated {
