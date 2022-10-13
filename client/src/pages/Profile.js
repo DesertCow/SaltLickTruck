@@ -10,8 +10,8 @@ import LoadingSplash from '../components/LoadingSplash';
 function Profile() {
 
 
-  let userEmail = "test@gmail.com"
-  let userName = "David Smith"
+  let userEmail = "tryncatchmeslipin@gmail.com"
+  let userName = "Slippy Toad"
 
 
   return (
@@ -32,7 +32,7 @@ function Profile() {
       </div>
       {/* <hr></hr> */}
       <div className="mx-4 text-center">
-        <h3 className="profileUserInfo mt-3">Email: {userEmail}</h3>
+        <h3 className="emailUserInfo my-3">Email: {userEmail}</h3>
         <input type="email" className="form-control profileInputBox" id="updatedEmail" aria-describedby="emailHelp" placeholder="Email Address"></input>
         <button type="button" className="btn btn-success mt-3 text-center">Update Email</button>
       </div>

@@ -49,6 +49,11 @@
 
 }
 
+.emailUserInfo {
+  font-size: 20px;
+  font-family: 'Lakki Reddy', cursive;
+}
+
 .profileInputBox {
   /* margin:50px; */
 }
