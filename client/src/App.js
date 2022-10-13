@@ -24,6 +24,9 @@ import MainMenu from './pages/Main_Menu';
 import SubMenu from './pages/Sub_Menu';
 import ItemMenu from './components/MenuItemScreen';
 import Home from './pages/Home';
+import Cart from './pages/Cart';
+import Profile from './pages/Profile';
+import OrderSubmit from './pages/OrderSubmit';
 
 //* Component Import
 import Header from './components/Header';
@@ -84,6 +87,9 @@ export default function App() {
           <Route path="/main_Menu" element={<MainMenu />} />
           <Route path="/sub_Menu/:menuID" element={<SubMenu />} />
           <Route path="/item/:menuItem" element={<ItemMenu />} />
+          <Route path="/user/cart" element={<Cart />} />
+          <Route path="/user/profile" element={<Profile />} />
+          <Route path="/user/orderSubmit" element={<OrderSubmit />} />
         </Routes>
       </Router>
     </ApolloProvider>
