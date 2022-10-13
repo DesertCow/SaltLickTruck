@@ -8,8 +8,8 @@ function Contact() {
 
     <div className="d-flex flex-column min-vh-100">
 
-      <h1 className="homeTitle text-center mt-5"> Salt Lick BBQ</h1>
-      {/* <h1 className="text-center pt-4"> Contact Page</h1> */}
+      {/* <h1 className="chuckTitle text-center mt-5"> Chuckwagon</h1> */}
+      <h1 className="chuckTitle text-center mt-5"> Salt Lick BBQ</h1>
       <div className="d-flex flex-column align-items-center">
         <div className="row infoRow">
           <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" className="bi col bi-mailbox m-4" viewBox="0 0 16 16">
@@ -48,7 +48,7 @@ function Contact() {
               </svg>
             </a>
           </div>
-        <MainFooter />
+          <MainFooter />
           <div className="d-flex flex-column">
             <a href="https://desertcow.github.io/Portfolio/">
               <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#FCF2F3" className="bi bi-person-badge-fill" viewBox="0 0 16 16">

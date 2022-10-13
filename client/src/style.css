@@ -17,6 +17,11 @@
   font-size: 25px;
 }
 
+.chuckTitle {
+  font-size: 50px;
+  font-family: 'Lakki Reddy', cursive;
+}
+
 .loadingSpinner {
 
   margin-top: 75%;
@@ -38,6 +43,15 @@
   font-family: 'Lakki Reddy', cursive;
   font-size: 30px;
 
+}
+
+.navFooterHomeIcon {
+  width: auto;
+}
+
+.NavBarClass {
+  width: 100%;
+  /* height: 50px; */
 }
 
 .qtyClass {

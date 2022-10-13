@@ -4,10 +4,12 @@
 import React from "react";
 // import { Button } from 'react-bootstrap';
 
+
 //* Component Import
 // import Header from '../components/Header';
 import SubMenu from '../components/SubMenu';
-import MainFooter from '../components/Footer';
+// import MainFooter from '../components/Footer';
+import NavFooter from '../components/NavFooter';
 // import LoadingSplash from '../components/LoadingSplash';
 
 // function Sub_Menu({ menuNumber }) {
@@ -35,8 +37,9 @@ function Sub_Menu() {
         <SubMenu menuNumber={menuNumber} />
       </div>
 
-      <footer className="mt-auto mb-0">
-        <MainFooter />
+      <footer className="mt-5">
+        {/* <MainFooter /> */}
+        <NavFooter />
       </footer>
 
       <div>
