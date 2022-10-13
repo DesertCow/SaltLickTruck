@@ -74,7 +74,7 @@ const SubMenu = ({ menuNumber }) => {
   function populateSubMenu(item, index) {
 
     //* Create Buttons based off array
-    menuList.push(<li key={item} onClick={(event) => displayItem(event, item, index)} className="mainMenuBtns m-4"><Button variant="light">{item}</Button>{' '}</li>)
+    menuList.push(<li key={item} onClick={(event) => displayItem(event, item, index)} className="subMenuBtns m-4 p-2"><div variant="light">{item}</div>{' '}</li>)
   }
 
   if (loading) {
@@ -93,10 +93,10 @@ const SubMenu = ({ menuNumber }) => {
       <div className="d-flex flex-column min-vh-100">
 
         <h1 className="homeTitle text-center pt-4"> Salt Lick BBQ</h1>
-        <hr className="mt-2 mb-3" />
-        <h1 className="text-center pt-4 menuTitle"> {finalTitle}</h1>
+        <hr className="mt-0 mb-3" />
+        <h1 className="text-center mt-3 pt-4 subMenuTitle"> ~ {finalTitle} ~</h1>
         {/* <h1 className="text-center pt-4 menuTitle">Menu</h1> */}
-        <hr className="mt-2 mb-3" />
+        {/* <hr className="mt-2 mb-3" /> */}
         <ul className="text-center m-4">
           <div>
             {menuList}

@@ -58,8 +58,8 @@ const resolvers = {
       //   where: { top_category: menuID },
       // })
 
-      console.log("==================== Menu Index ==================== ");
-      console.log(indexList)
+      // console.log("==================== Menu Index ==================== ");
+      // console.log(indexList)
 
       subMenuTitle = String(subMenuTitle.category_name)
       // var subMenuTitle = "Test Title"

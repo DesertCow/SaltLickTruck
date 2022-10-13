@@ -9,7 +9,7 @@
 
 .dishTitle {
   font-family: 'Lakki Reddy', cursive;
-  font-size: 35px;
+  font-size: 40px;
 }
 
 .dishPrice {
@@ -40,6 +40,26 @@
 
 }
 
+.qtyClass {
+  font-family: 'Lakki Reddy', cursive;
+  font-size: 20px;
+}
+
+.itemPhoto {
+  max-width: 80%;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.subMenuTitle {
+  font-family: 'Lakki Reddy', cursive;
+  font-size: 40px;
+
+}
+
 .homePageTruck {
 
     width: 300px;
@@ -60,7 +80,51 @@
 }
 
 .mainMenuBtns {
+  font-weight: 600;
+  font-size: 25px;
+  background-color: #E9FFFD;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  opacity: 94%;
+}
 
+.homeMenuBtn {
+  font-weight: 600;
+  font-size: 25px;
+  background-color: #FFE9EA;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  opacity: 94%;
+}
+
+.addBtn {
+  font-weight: 600;
+  font-size: 25px;
+  background-color: #FFE9EA;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  opacity: 94%;
+}
+
+.subMenuBtns {
+  font-weight: 600;
+  font-size: 25px;
+  background-color: #FFE9EA;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  opacity: 94%;
 }
 
 .infoRow {
