@@ -22,6 +22,17 @@
   font-family: 'Lakki Reddy', cursive;
 }
 
+.cartTitle {
+  font-size: 45px;
+  font-family: 'Lakki Reddy', cursive;
+}
+
+.submitTitle {
+  font-size: 30px;
+  font-family: 'Lakki Reddy', cursive;
+  
+}
+
 .loadingSpinner {
 
   margin-top: 75%;
@@ -31,6 +42,61 @@
   height: 250px;
   width: 250px;
 
+}
+
+.barH {
+  height: 50px;
+}
+
+.proBar1 {
+  width: 25%;
+}
+
+.proBar2 {
+  width: 40%;
+}
+
+.proBar3 {
+  width: 60%;
+}
+
+.proBar4 {
+  width: 80%;
+}
+
+.proBar5 {
+  width: 100%;
+  font-size: 30px;
+}
+
+.readyBar {
+  margin-top: 70%;
+}
+
+.menuBtn {
+  font-weight: 600;
+  font-size: 25px;
+  background-color: #A5BBB2;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  opacity: 94%;
+  margin-top: 20%;
+}
+
+.orderBtn {
+  font-weight: 600;
+  font-size: 25px;
+  background-color: #81FC7A;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  opacity: 94%;
+  margin-top: 30%;
 }
 
 .LoadingText {
