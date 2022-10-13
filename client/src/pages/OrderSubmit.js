@@ -14,10 +14,6 @@ function OrderSubmit() {
 
       <h1 className="submitTitle text-center mt-4 p-3">Order Submitted!</h1>
 
-      {/* <footer className="mt-5">
-        <NavFooter />
-      </footer> */}
-
       <div>
         <div className="progress m-5 barH">
           <div className="progress-bar progress-bar-striped proBar1 progress-bar-animated" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
@@ -36,9 +32,12 @@ function OrderSubmit() {
         </div>
       </div>
 
+
+      {/* <footer className="mt-5">
+        <NavFooter />
+      </footer> */}
+
     </div>
-
-
 
   )
 

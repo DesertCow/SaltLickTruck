@@ -33,6 +33,11 @@
   
 }
 
+.profileUserInfo {
+  font-size: 30px;
+  font-family: 'Lakki Reddy', cursive;
+}
+
 .loadingSpinner {
 
   margin-top: 75%;
@@ -42,6 +47,19 @@
   height: 250px;
   width: 250px;
 
+}
+
+.profileInputBox {
+  /* margin:50px; */
+}
+
+.userProfilePicture {
+  height: 150px;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
 }
 
 .barH {
