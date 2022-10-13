@@ -8,7 +8,8 @@ import { MainMenu_Q } from '../utils/queries';
 // import Header from '../components/Header';
 import MainMenu from '../components/MainMenu';
 // import SubMenu from '../components/SubMenu';
-import MainFooter from '../components/Footer';
+// import MainFooter from '../components/Footer';
+import NavFooter from '../components/NavFooter';
 import LoadingSplash from '../components/LoadingSplash';
 
 function Main_Menu() {
@@ -71,7 +72,8 @@ function Main_Menu() {
       </div>
 
       <footer className="mt-auto mb-0">
-        <MainFooter />
+        {/* <MainFooter /> */}
+        <NavFooter />
       </footer>
 
     </div>

@@ -1,12 +1,12 @@
 
 
-import { Button } from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
 import { SubMenu_Q, Item_Q } from '../../utils/queries';
-import { concat, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import LoadingSplash from '../LoadingSplash';
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Modal from 'react-modal';
+// import ReactDOM from 'react-dom';
+// import Modal from 'react-modal';
 import { useNavigate } from "react-router-dom";
 
 const SubMenu = ({ menuNumber }) => {
@@ -97,7 +97,7 @@ const SubMenu = ({ menuNumber }) => {
         <h1 className="text-center mt-3 pt-4 subMenuTitle"> ~ {finalTitle} ~</h1>
         {/* <h1 className="text-center pt-4 menuTitle">Menu</h1> */}
         {/* <hr className="mt-2 mb-3" /> */}
-        <ul className="text-center m-4">
+        <ul className="text-center mb-4">
           <div>
             {menuList}
           </div>

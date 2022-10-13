@@ -5,6 +5,8 @@ import { useQuery } from '@apollo/client';
 import LoadingSplash from '../LoadingSplash';
 import { useNavigate } from "react-router-dom";
 
+import NavFooter from '../NavFooter';
+
 
 const ItemMenu = ({ menuItemNumber }) => {
 
@@ -98,8 +100,10 @@ const ItemMenu = ({ menuItemNumber }) => {
 
         </div>
       </div>
+      <footer className="mt-5">
+        <NavFooter />
+      </footer>
     </div>
-
 
   )
 
