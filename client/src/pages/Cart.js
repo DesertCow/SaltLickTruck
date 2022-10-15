@@ -12,7 +12,6 @@ import SubMenu from '../components/SubMenu';
 import NavFooter from '../components/NavFooter';
 // import LoadingSplash from '../components/LoadingSplash';
 
-// function Sub_Menu({ menuNumber }) {
 function Cart() {
 
   const navigate = useNavigate();

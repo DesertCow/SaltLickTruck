@@ -59,7 +59,15 @@ function Main_Menu() {
   if (loading) {
 
     return (
-      <LoadingSplash />
+      <div>
+        <LoadingSplash />
+
+        <footer className="mt-5">
+          {/* <MainFooter /> */}
+          <NavFooter />
+        </footer>
+      </div>
+
     )
 
   }
@@ -71,7 +79,7 @@ function Main_Menu() {
         <MainMenu finalArray={finalArray} />
       </div>
 
-      <footer className="mt-auto mb-0">
+      <footer className="mt-5">
         {/* <MainFooter /> */}
         <NavFooter />
       </footer>
