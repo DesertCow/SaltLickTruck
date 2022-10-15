@@ -46,7 +46,13 @@ const ItemMenu = ({ menuItemNumber }) => {
   if (loading) {
 
     return (
-      <LoadingSplash />
+      <div>
+        <LoadingSplash />
+        <footer className="mt-5">
+          <NavFooter />
+        </footer>
+      </div>
+
     )
 
   }

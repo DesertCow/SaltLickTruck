@@ -2,8 +2,8 @@ import React from "react";
 
 
 //* Component Import
-import NavFooter from '../components/NavFooter';
-import LoadingSplash from '../components/LoadingSplash';
+// import NavFooter from '../components/NavFooter';
+// import LoadingSplash from '../components/LoadingSplash';
 
 
 function OrderSubmit() {
