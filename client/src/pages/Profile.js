@@ -16,6 +16,7 @@ function Profile() {
   const [updatePass, { passData }] = useMutation(PASS_UPDATE);
   const [updateEmail, { emailData }] = useMutation(EMAIL_UPDATE);
 
+
   let userEmail = "tryncatchmeslipin@gmail.com"
   let userName = "Slippy Toad"
 
@@ -65,7 +66,7 @@ function Profile() {
     // console.log(name)
     // console.log(value)
 
-    const { emailData } = await updatePass({
+    const { emailData } = await updateEmail({
       variables: { ...emailState },
     });
 
@@ -82,7 +83,7 @@ function Profile() {
     console.log("   Password: " + passwordState.password)
     console.log("   Confirm : " + passwordState.confirm)
 
-    const { passData } = await updateEmail({
+    const { passData } = await updatePass({
       variables: { ...passwordState },
     });
 
