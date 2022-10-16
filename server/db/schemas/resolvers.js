@@ -125,6 +125,8 @@ const resolvers = {
       //* Validate Password via "isCorrectPassword" method
       const correctPw = await user.isCorrectPassword(password);
 
+      console.log("Correct Password = " + correctPw)
+
       //* Error for incorrect password
       if (!correctPw) {
         console.log("\x1b[35mLogin Failed\x1b[0m")
@@ -137,6 +139,31 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+    updateEmail: async (parent, { email, _id }) => {
+
+      //TODO: Confirm new email does not already exists in DB
+      //TODO: Add Try/Catch logic to print failed update to console
+      console.log("\n\x1b[33mUpdate User Email (MongoDB)\x1b[0m\n\x1b[0m\n   Email: \x1b[35m" + email + "\n\x1b[0m   ID: \x1b[35m" + _id);
+      await UserMongo.updateOne({ _id: _id }, { $set: { email: email } })
+
+      console.log("\x1b[32m   Email Update Successful\x1b[0m\n")
+
+    },
+    updatePassword: async (parent, { password, _id }) => {
+
+      console.log("\n\x1b[33mUpdate User Password (MongoDB)\x1b[0m\n\x1b[0m\n   Password: \x1b[35m" + password + "\n\x1b[0m   ID: \x1b[35m" + _id + "\x1b[0m");
+
+      const user = await UserMongo.findOne({ _id });
+      const hashword = await user.generateHash(password);
+
+
+      //TODO: Add Try/Catch logic to print failed update to console
+      await UserMongo.updateOne({ _id: _id }, { $set: { password: hashword } })
+
+      console.log("\x1b[32m   Password Update Successful\x1b[0m\n")
+
+    },
+
   },
 
 };

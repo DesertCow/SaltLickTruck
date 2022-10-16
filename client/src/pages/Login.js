@@ -37,13 +37,20 @@ const Login = (props) => {
     console.log("Handle Submit!")
 
     console.log(formState);
+
     try {
       const { data } = await login({
         variables: { ...formState },
       });
 
       //TODO: Enable Auth 
+      console.log("DATA")
+      console.log(data)
+
       // Auth.login(data.login.token);
+      Auth.login(JSON.stringify(data.login));
+      // Auth.login(data.login);
+
     } catch (e) {
       console.error(e);
     }

@@ -34,8 +34,9 @@
 }
 
 .profileUserInfo {
-  font-size: 30px;
-  font-family: 'Lakki Reddy', cursive;
+  font-size: 22px;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-weight: 700;
 }
 
 .loadingSpinner {
@@ -50,8 +51,9 @@
 }
 
 .emailUserInfo {
-  font-size: 20px;
+  font-size: 19px;
   font-family: 'Lakki Reddy', cursive;
+  font-weight: 700;
 }
 
 .profileInputBox {
@@ -350,7 +352,22 @@
 	margin-top: 6%;
 }
 
+.emailUserInfo {
+  /* opacity: 96%; */
+  /* width: 80%; */
+  font-family: monospace;
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
 
+.idText {
+  font-size: 20px;
+  margin-bottom: 100px;
+}
 
 body {
   background-color: #fc636b;
