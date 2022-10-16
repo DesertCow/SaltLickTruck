@@ -125,6 +125,8 @@ const resolvers = {
       //* Validate Password via "isCorrectPassword" method
       const correctPw = await user.isCorrectPassword(password);
 
+      console.log("Correct Password = " + correctPw)
+
       //* Error for incorrect password
       if (!correctPw) {
         console.log("\x1b[35mLogin Failed\x1b[0m")
@@ -147,12 +149,26 @@ const resolvers = {
     },
     updatePassword: async (parent, { password, _id }) => {
 
-      console.log("\n\x1b[33mUpdate User Password (MongoDB)\x1b[0m\n\x1b[0m\n   Password: \x1b[35m" + password + "\n\x1b[0m   ID: \x1b[35m" + _id);
+      console.log("\n\x1b[33mUpdate User Password (MongoDB)\x1b[0m\n\x1b[0m\n   Password: \x1b[35m" + password + "\n\x1b[0m   ID: \x1b[35m" + _id + "\x1b[0m");
 
 
       //TODO: Add Logic to hash new password then update in MongoDB
 
-      // await UserMongo.updateOne({ _id: _id }, { $set: { email: email } })
+
+      // const res = await user.updatePassword(password);
+
+      const user = await UserMongo.findOne({ _id });
+      // await UserMongo.updateOne({ _id: _id }, { $set: { password: password } })
+
+      // console.log("User")
+      // console.log(user)
+      const hashword = await user.generateHash(password);
+      // const hashword = password
+
+      console.log("   Hashword = " + hashword)
+
+      await UserMongo.updateOne({ _id: _id }, { $set: { password: hashword } })
+
     },
 
   },

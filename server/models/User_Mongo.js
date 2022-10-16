@@ -18,7 +18,9 @@ const userSchema = new Schema({
 
 //* set up pre-save middleware to create password
 userSchema.pre('save', async function (next) {
-  if (this.isNew || this.isModified('password')) {
+  console.log('New User Triggered Via Middleware during MongoDB Create');
+  // if (this.isNew || this.isModified('password')) {
+  if (this.isNew) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
   }
@@ -26,9 +28,21 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
+// userSchema.methods.updatePassword('updateOne', { document: true, query: false }, async function (next) {
+userSchema.methods.generateHash = async function (password) {
+
+  const saltRounds = 10;
+  password = await bcrypt.hash(password, saltRounds);
+
+  return password
+
+};
+
 //* compare the incoming password with the hashed password
 userSchema.methods.isCorrectPassword = async function (password) {
-  return bcrypt.compare(password, this.password);
+
+  console.log("PASSWORD: " + password + "|| THIS PASSWORD:" + this.password)
+  return await bcrypt.compare(password, this.password);
 };
 
 const User = model('User', userSchema);
