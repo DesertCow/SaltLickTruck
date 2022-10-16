@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { PASS_UPDATE, EMAIL_UPDATE } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
+import Auth from '../utils/auth';
 
 //* Component Import
 import NavFooter from '../components/NavFooter';
@@ -10,15 +11,22 @@ import LoadingSplash from '../components/LoadingSplash';
 
 function Profile() {
 
-  const [emailState, setEmailState] = useState({ email: '' });
-  const [passwordState, setPasswordState] = useState({ password: '', confirm: '' });
+  const [emailState, setEmailState] = useState({ email: '', id: '' });
+  const [passwordState, setPasswordState] = useState({ password: '', confirm: '', id: '' });
 
   const [updatePass, { passData }] = useMutation(PASS_UPDATE);
   const [updateEmail, { emailData }] = useMutation(EMAIL_UPDATE);
 
+  let login = Auth.getToken()
 
-  let userEmail = "tryncatchmeslipin@gmail.com"
+  console.log("TOKEN!!!!!!!!")
+  login = JSON.parse(login)
+  console.log(login.user.email)
+
+  // let userEmail = "tryncatchmeslipin@gmail.com"
   let userName = "Slippy Toad"
+
+
 
   //* update state based on form input changes
   const handleEmailChange = (event) => {
@@ -30,6 +38,7 @@ function Profile() {
     setEmailState({
       ...emailState,
       [name]: value,
+      id: login.user._id,
     });
 
     // console.log("Email State = ")
@@ -46,6 +55,7 @@ function Profile() {
     setPasswordState({
       ...passwordState,
       [name]: value,
+      id: login.user._id,
     });
 
     // console.log("Password State = ")
@@ -95,7 +105,8 @@ function Profile() {
     <div>
 
       <h1 className="px-4 pt-4 text-center cartTitle">Welcome</h1>
-      <h1 className="px-4 pt-4 text-center cartTitle">{userName}</h1>
+      {/* <h1 className="px-4 pt-4 text-center cartTitle">{userName}</h1> */}
+      <h1 className="px-4 text-center idText">({login.user._id})</h1>
       <hr></hr>
       <div className="text-center">
         <img src={require("../img/TempUserPic.jpg")}
@@ -109,15 +120,23 @@ function Profile() {
       </div>
       {/* <hr></hr> */}
       <div className="mx-4 text-center">
-        <h3 className="emailUserInfo my-3">Email: {userEmail}</h3>
-        <input type="email" className="form-control profileInputBox" id="updatedEmail" aria-describedby="emailHelp" placeholder="Email Address" name="email" onChange={(e) => handleEmailChange(e)}></input>
+        {/* <h3 className="emailUserInfo my-3">Email</h3> */}
+
+        <h3 className="mt-3 p-2 mb-3">
+          <div className="emailUserInfo text-center pt-3 pb-2">{login.user.email}</div>
+        </h3>
+
+        <input type="email" className="form-control profileInputBox" id="updatedEmail"
+          aria-describedby="emailHelp" placeholder="Email Address" name="email" onChange={(e) => handleEmailChange(e)}></input>
         <button type="button" className="btn btn-success mt-3 text-center" onClick={(event) => HandleEmailSubmit(event)}>Update Email</button>
       </div>
       <hr></hr>
       <div className="mx-5 mb-5 text-center">
         <h1 className="p-2 px-4 pt-4 text-center profileUserInfo">Update Password</h1>
-        <input type="email" className="form-control profileInputBox m-2" id="updatePassword" aria-describedby="emailHelp" placeholder="New Password" name="password" onChange={(e) => handlePasswordChange(e)}></input>
-        <input type="email" className="form-control profileInputBox m-2" id="updatePassword" aria-describedby="emailHelp" placeholder="Confirm Password" name="confirm" onChange={(e) => handlePasswordChange(e)}></input>
+        <input type="email" className="form-control profileInputBox m-2" id="updatePassword" aria-describedby="emailHelp"
+          placeholder="New Password" name="password" onChange={(e) => handlePasswordChange(e)}></input>
+        <input type="email" className="form-control profileInputBox m-2" id="updatePassword" aria-describedby="emailHelp"
+          placeholder="Confirm Password" name="confirm" onChange={(e) => handlePasswordChange(e)}></input>
         <button type="button" className="btn btn-success mt-3 text-center" onClick={(event) => HandlePasswordSubmit(event)}>Update Password</button>
       </div>
       <hr></hr>

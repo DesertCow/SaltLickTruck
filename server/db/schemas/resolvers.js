@@ -137,15 +137,22 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    updateEmail: async (parent, { email }) => {
+    updateEmail: async (parent, { email, _id }) => {
 
-      console.log("\n\x1b[33mUpdate User Email (MongoDB)\x1b[0m\n\x1b[0m\n   Email: \x1b[35m" + email);
+      //TODO: Confirm new email does not already exists in DB
+
+      console.log("\n\x1b[33mUpdate User Email (MongoDB)\x1b[0m\n\x1b[0m\n   Email: \x1b[35m" + email + "\n\x1b[0m   ID: \x1b[35m" + _id);
+      await UserMongo.updateOne({ _id: _id }, { $set: { email: email } })
 
     },
-    updatePassword: async (parent, { password }) => {
+    updatePassword: async (parent, { password, _id }) => {
 
-      console.log("\n\x1b[33mUpdate User Password (MongoDB)\x1b[0m\n\x1b[0m\n   Password: \x1b[35m" + password);
+      console.log("\n\x1b[33mUpdate User Password (MongoDB)\x1b[0m\n\x1b[0m\n   Password: \x1b[35m" + password + "\n\x1b[0m   ID: \x1b[35m" + _id);
 
+
+      //TODO: Add Logic to hash new password then update in MongoDB
+
+      // await UserMongo.updateOne({ _id: _id }, { $set: { email: email } })
     },
 
   },

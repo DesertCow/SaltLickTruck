@@ -24,16 +24,16 @@ export const CREATE_USER = gql`
 `;
 
 export const PASS_UPDATE = gql`
-  mutation UpdatePassword($password: String!) {
-    updatePassword(password: $password) {
+  mutation UpdatePassword($id: String!, $password: String!) {
+    updatePassword(_id: $id, password: $password) {
       token
     }
   }
 `;
 
 export const EMAIL_UPDATE = gql`
-  mutation UpdateEmail($email: String!) {
-    updateEmail(email: $email) {
+  mutation Mutation($id: String!, $email: String!) {
+    updateEmail(_id: $id, email: $email) {
       token
     }
   }

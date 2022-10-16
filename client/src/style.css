@@ -350,7 +350,20 @@
 	margin-top: 6%;
 }
 
+.emailUserInfo {
+  /* opacity: 96%; */
+  /* width: 80%; */
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
 
+.idText {
+  font-size: 20px;
+}
 
 body {
   background-color: #fc636b;
