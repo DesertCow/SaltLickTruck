@@ -137,6 +137,17 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+    updateEmail: async (parent, { email }) => {
+
+      console.log("\n\x1b[33mUpdate User Email (MongoDB)\x1b[0m\n\x1b[0m\n   Email: \x1b[35m" + email);
+
+    },
+    updatePassword: async (parent, { password }) => {
+
+      console.log("\n\x1b[33mUpdate User Password (MongoDB)\x1b[0m\n\x1b[0m\n   Password: \x1b[35m" + password);
+
+    },
+
   },
 
 };

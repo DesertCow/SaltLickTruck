@@ -66,7 +66,7 @@ function Profile() {
     // console.log(value)
 
     const { emailData } = await updatePass({
-      variables: { ...emailState.email },
+      variables: { ...emailState },
     });
 
     console.log(emailData)
