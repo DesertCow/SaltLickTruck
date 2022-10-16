@@ -19,12 +19,12 @@ function Profile() {
 
   let login = Auth.getToken()
 
-  console.log("TOKEN!!!!!!!!")
+  // console.log("TOKEN!!!!!!!!")
   login = JSON.parse(login)
-  console.log(login.user.email)
+  // console.log(login.user.email)
 
   // let userEmail = "tryncatchmeslipin@gmail.com"
-  let userName = "Slippy Toad"
+  // let userName = "Slippy Toad"
 
 
 
@@ -106,7 +106,6 @@ function Profile() {
 
       <h1 className="px-4 pt-4 text-center cartTitle">Welcome</h1>
       {/* <h1 className="px-4 pt-4 text-center cartTitle">{userName}</h1> */}
-      <h1 className="px-4 text-center idText">({login.user._id})</h1>
       <hr></hr>
       <div className="text-center">
         <img src={require("../img/TempUserPic.jpg")}
@@ -114,16 +113,16 @@ function Profile() {
           alt="User Profile Pictur3" />
       </div>
       <hr></hr>
-      <div className="mt-4 mb-1 text-center profileUserInfo">
+      <div className="mt-3 text-center profileUserInfo">
         {/* <h3 className="mb-4">Name: {userName}</h3> */}
-        <h1 className="mb-4 text-center profileUserInfo">Update Email</h1>
+        <h1 className="mb-3 text-center profileUserInfo">Update Email</h1>
       </div>
       {/* <hr></hr> */}
       <div className="mx-4 text-center">
         {/* <h3 className="emailUserInfo my-3">Email</h3> */}
 
-        <h3 className="mt-3 p-2 mb-3">
-          <div className="emailUserInfo text-center pt-3 pb-2">{login.user.email}</div>
+        <h3 className="mt-0 p-2 mb-3">
+          <div className="emailUserInfo text-center pt-3 pb-3">{login.user.email}</div>
         </h3>
 
         <input type="email" className="form-control profileInputBox" id="updatedEmail"
@@ -131,8 +130,8 @@ function Profile() {
         <button type="button" className="btn btn-success mt-3 text-center" onClick={(event) => HandleEmailSubmit(event)}>Update Email</button>
       </div>
       <hr></hr>
-      <div className="mx-5 mb-5 text-center">
-        <h1 className="p-2 px-4 pt-4 text-center profileUserInfo">Update Password</h1>
+      <div className="mx-5 text-center">
+        <h1 className="p-2 px-4 pt-2 text-center profileUserInfo">Update Password</h1>
         <input type="email" className="form-control profileInputBox m-2" id="updatePassword" aria-describedby="emailHelp"
           placeholder="New Password" name="password" onChange={(e) => handlePasswordChange(e)}></input>
         <input type="email" className="form-control profileInputBox m-2" id="updatePassword" aria-describedby="emailHelp"
@@ -140,6 +139,8 @@ function Profile() {
         <button type="button" className="btn btn-success mt-3 text-center" onClick={(event) => HandlePasswordSubmit(event)}>Update Password</button>
       </div>
       <hr></hr>
+
+      <h1 className="text-center idText">User_ID: {login.user._id}</h1>
 
 
       <footer className="mt-5">

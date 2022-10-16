@@ -41,7 +41,7 @@ userSchema.methods.generateHash = async function (password) {
 //* compare the incoming password with the hashed password
 userSchema.methods.isCorrectPassword = async function (password) {
 
-  console.log("PASSWORD: " + password + "|| THIS PASSWORD:" + this.password)
+  // console.log("PASSWORD: " + password + "|| THIS PASSWORD:" + this.password)
   return await bcrypt.compare(password, this.password);
 };
 
