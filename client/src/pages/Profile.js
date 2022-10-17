@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { PASS_UPDATE, EMAIL_UPDATE } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
+import { useNavigate } from "react-router-dom";
 
 //* Component Import
 import NavFooter from '../components/NavFooter';
@@ -11,6 +12,7 @@ import LoadingSplash from '../components/LoadingSplash';
 //* React Toastify
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import auth from "../utils/auth";
 
 
 function Profile() {
@@ -20,6 +22,8 @@ function Profile() {
 
   const [updatePass, { passData }] = useMutation(PASS_UPDATE);
   const [updateEmail, { emailData }] = useMutation(EMAIL_UPDATE);
+
+  const navigate = useNavigate();
 
   //* Toastify Config
   const toastOptions = {
@@ -118,6 +122,28 @@ function Profile() {
 
   }
 
+  const HandleLogoutSubmit = async (event) => {
+    event.preventDefault();
+
+    // const { name, value } = event.target;
+
+    console.log("Logout Requested!")
+    // console.log(JSON.stringify(emailState))
+    // console.log("   " + emailState.email)
+    // console.log(name)
+    // console.log(value)
+
+    // const { emailData } = await updateEmail({
+    //   variables: { ...emailState },
+    // });
+
+    // console.log(emailData)
+
+    toast.success("Logout Has Been Successful", toastOptions);
+    navigate("/")
+    auth.logout()
+  }
+
   return (
     <div>
 
@@ -147,7 +173,7 @@ function Profile() {
         <button type="button" className="btn btn-success mt-3 text-center" onClick={(event) => HandleEmailSubmit(event)}>Update Email</button>
       </div>
       <hr></hr>
-      <div className="mx-5 text-center">
+      <div className="mx-5 mb-3 text-center">
         <h1 className="p-2 px-4 pt-2 text-center profileUserInfo">Update Password</h1>
         <input type="email" className="form-control profileInputBox m-2" id="updatePassword" aria-describedby="emailHelp"
           placeholder="New Password" name="password" onChange={(e) => handlePasswordChange(e)}></input>
@@ -155,12 +181,19 @@ function Profile() {
           placeholder="Confirm Password" name="confirm" onChange={(e) => handlePasswordChange(e)}></input>
         <button type="button" className="btn btn-success mt-3 text-center" onClick={(event) => HandlePasswordSubmit(event)}>Update Password</button>
       </div>
+      <hr className="m-1"></hr>
+      <div className="d-flex row m-0 justify-content-center">
+        <h1 className="text-center idText p-2">User_ID: {login.user._id}</h1>
+        <hr></hr>
+        <div className="mb-5 text-center">
+          <button type="button" className="btn btn-warning mt-0 mb-2 text-center logoutBTN" onClick={(event) => HandleLogoutSubmit(event)}>Logout</button>
+        </div>
+      </div>
       <hr></hr>
 
-      <h1 className="text-center idText">User_ID: {login.user._id}</h1>
 
 
-      <footer className="mt-5">
+      <footer className="mt-auto">
         {/* <MainFooter /> */}
         <NavFooter />
       </footer>

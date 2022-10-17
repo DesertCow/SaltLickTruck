@@ -7,6 +7,10 @@ import { useNavigate } from "react-router-dom";
 
 import NavFooter from '../NavFooter';
 
+//* React Toastify
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const ItemMenu = ({ menuItemNumber }) => {
 
@@ -18,6 +22,15 @@ const ItemMenu = ({ menuItemNumber }) => {
 
   // console.log("==================== menuItemNumber ==================== ");
   // console.log(menuItemNumber)
+
+  //* Toastify Config
+  const toastOptions = {
+    position: "top-center",
+    autoClose: 3000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
 
   var { loading, data } = useQuery(Item_Q, {
     variables: { itemId: menuItemNumber },
@@ -67,7 +80,9 @@ const ItemMenu = ({ menuItemNumber }) => {
   const addToCart = async (event) => {
     event.preventDefault();
     // navigate("/main_Menu");
+    console.log(event)
     console.log("Add to Cart!")
+    toast.success(data.getItemInfo.itemName + " added to cart!", toastOptions);
 
   };
 
