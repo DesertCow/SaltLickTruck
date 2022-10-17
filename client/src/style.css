@@ -176,6 +176,11 @@
 
 }
 
+.logoutBTN {
+  width: 80%;
+  margin-bottom: 150px;
+}
+
 .homePageTruck {
 
     width: 300px;
@@ -377,7 +382,7 @@
 
 .idText {
   font-size: 20px;
-  margin-bottom: 100px;
+  /* margin-bottom: 60px; */
 }
 
 body {
