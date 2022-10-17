@@ -7,6 +7,9 @@ import "./reset.css";
 // import { BrowserRouter as Router } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 
+// * ~~ Toastify ~~
+import { ToastContainer } from "react-toastify";
+
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
@@ -18,5 +21,6 @@ const root = createRoot(rootElement);
 root.render(
   <div>
     <App />
+    <ToastContainer />
   </div>
 );

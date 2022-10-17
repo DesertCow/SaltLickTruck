@@ -8,6 +8,10 @@ import Auth from '../utils/auth';
 import NavFooter from '../components/NavFooter';
 import LoadingSplash from '../components/LoadingSplash';
 
+//* React Toastify
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 function Profile() {
 
@@ -16,6 +20,15 @@ function Profile() {
 
   const [updatePass, { passData }] = useMutation(PASS_UPDATE);
   const [updateEmail, { emailData }] = useMutation(EMAIL_UPDATE);
+
+  //* Toastify Config
+  const toastOptions = {
+    position: "top-center",
+    autoClose: 6000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
 
   let login = Auth.getToken()
 
@@ -82,6 +95,8 @@ function Profile() {
 
     console.log(emailData)
 
+    toast.success("Email Address Has Been Updated!", toastOptions);
+
   }
 
   const HandlePasswordSubmit = async (event) => {
@@ -98,6 +113,8 @@ function Profile() {
     });
 
     console.log(passData)
+
+    toast.success("Password Has Been Updated!", toastOptions);
 
   }
 

@@ -9,6 +9,10 @@ import { useMutation } from '@apollo/client';
 import { CREATE_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
+//* React Toastify
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function Register() {
 
   const [values, setValues] = useState({ email: "", password: "", passwordconfirm: "" });
@@ -16,6 +20,15 @@ function Register() {
   const [createUser, { error, data }] = useMutation(CREATE_USER);
 
   const navigate = useNavigate();
+
+  //* Toastify Config
+  const toastOptions = {
+    position: "top-center",
+    autoClose: 4000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
 
   //* Update values when input Changed
   const inputUpdated = (event) => {
@@ -102,6 +115,7 @@ function Register() {
         console.log("========================== STORED TOKEN ==========================")
         console.log(Auth.getToken())
         navigate("/main_Menu")
+        toast.success("Sign-Up Successful!", toastOptions);
         // const Temp = Auth.getToken()
         // console.log(finalToken + " || " + Temp);
 
@@ -117,6 +131,7 @@ function Register() {
 
         // Auth.login(data.addUser.token);
       } catch (e) {
+        toast.error("Sign-Up Failed", toastOptions);
         console.error(e);
       }
     };
