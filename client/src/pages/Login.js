@@ -7,12 +7,26 @@ import { LOGIN_Q } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 
+//* React Toastify
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const Login = (props) => {
 
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { data }] = useMutation(LOGIN_Q);
   const navigate = useNavigate();
+
+  //* Toastify Config
+  const toastOptions = {
+    position: "top-center",
+    autoClose: 3000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
+
 
   // console.log("\n\n=========== Login ===========")
   // console.log(login)
@@ -34,9 +48,8 @@ const Login = (props) => {
   const HandleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log("Handle Submit!")
-
-    console.log(formState);
+    // console.log("Handle Submit!")
+    // console.log(formState);
 
     try {
       const { data } = await login({
@@ -44,15 +57,18 @@ const Login = (props) => {
       });
 
       //TODO: Enable Auth 
-      console.log("DATA")
-      console.log(data)
+      // console.log("DATA")
+      // console.log(data)
 
       // Auth.login(data.login.token);
       Auth.login(JSON.stringify(data.login));
       // Auth.login(data.login);
+      navigate("/main_Menu")
+      toast.success("Login Successful!", toastOptions);
 
     } catch (e) {
-      console.error(e);
+      toast.error("Login Failed!", toastOptions);
+      // console.error(e);
     }
 
     // clear form values
@@ -60,10 +76,6 @@ const Login = (props) => {
       email: '',
       password: '',
     });
-
-
-    console.log(data)
-    navigate("/main_Menu")
 
   };
 

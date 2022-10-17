@@ -4,9 +4,24 @@ import { useNavigate } from "react-router-dom";
 import menuPDF from '../img/Salt_Lick_Menu_DWood-PDF.pdf';
 import MainFooter from '../components/Footer';
 
+//* React Toastify
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+var fileDownload = require('js-file-download');
+
 function Home() {
 
   const navigate = useNavigate();
+
+  //* Toastify Config
+  const toastOptions = {
+    position: "top-center",
+    autoClose: 2000,
+    pauseOnHover: false,
+    draggable: true,
+    theme: "dark",
+  };
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -32,6 +47,14 @@ function Home() {
 
   };
 
+  const pdfDownload = async (event) => {
+    event.preventDefault();
+    toast.info("Menu Download Started!", toastOptions);
+    fileDownload(menuPDF, "Salt_Lick_Menu_DWood-PDF.pdf");
+    // navigate("/main_Menu");
+
+  };
+
   return (
     <div className="d-flex flex-column min-vh-100">
       <h1 className="homeTitle text-center mt-5"> Salt Lick BBQ</h1>
@@ -48,7 +71,7 @@ function Home() {
         </div>
         <div className="row px-5 py-3">
           <a href={menuPDF} className="homeMenuBtn p-2 text-decoration-none text-reset" download="Salt_Lick_Menu_DWood-PDF.pdf" target='_blank'>
-            <div type="submit" className="">PDF Menu</div>
+            <div type="submit" className="" onClick={(event) => pdfDownload(event)}>PDF Menu</div>
           </a>
         </div>
         <div className="row px-5 py-3">
