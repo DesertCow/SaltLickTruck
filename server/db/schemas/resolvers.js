@@ -78,13 +78,14 @@ const resolvers = {
       })
 
       return {
-        itemID: itemID,
-        itemName: itemData.product_name,
-        itemPrice: itemData.price,
+        id: itemID,
+        name: itemData.product_name,
+        price: itemData.price,
         inStock: itemData.available,
-        itemServing: itemData.serving,
-        itemMeasurement: itemData.measurement,
+        serving: itemData.serving,
+        measurement: itemData.measurement,
         subMenuNumber: itemData.top_category
+        // quantity: 1
       }
     },
   },
