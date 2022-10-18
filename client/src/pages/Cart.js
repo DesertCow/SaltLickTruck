@@ -3,6 +3,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 // import { Button } from 'react-bootstrap';
+import { useCart } from "react-use-cart";
 
 
 //* Component Import
@@ -28,6 +29,12 @@ function Cart() {
 
   };
 
+  const { addItem, totalItems, items, emptyCart, cartTotal } = useCart();
+
+  console.log("======== Cart Array [" + totalItems + "] ======= ")
+  console.log("Total Cost: $" + cartTotal)
+  // console.log(totalItems)
+  console.log(items)
 
   return (
     <div>

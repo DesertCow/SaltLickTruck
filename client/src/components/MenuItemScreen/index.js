@@ -11,8 +11,13 @@ import NavFooter from '../NavFooter';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+//* ~~ Cart ~~
+import { useCart } from "react-use-cart";
+
 
 const ItemMenu = ({ menuItemNumber }) => {
+
+  const { addItem, totalItems, items, emptyCart } = useCart();
 
   let inStock
   const navigate = useNavigate();
@@ -81,11 +86,39 @@ const ItemMenu = ({ menuItemNumber }) => {
     event.preventDefault();
     // navigate("/main_Menu");
     console.log(event)
-    console.log("Add to Cart!")
-    toast.success(data.getItemInfo.itemName + " added to cart!", toastOptions);
 
+    console.log("Add to Cart! ID")
+    console.log(data.getItemInfo)
+    // data.getItemInfo.id = data.getItemInfo.itemID
+    // console.log(data.getItemInfo.id)
+    // setItems(data.getItemInfo)
+
+    //* Add Item To Cart
+    addItem(data.getItemInfo)
+
+    console.log("======== Cart Array ======= ")
+    console.log(items)
+    console.log("======== Total ======= ")
+    // emptyCart()
+    console.log(totalItems)
+
+    // console.log()
+
+    toast.success(data.getItemInfo.name + " added to cart!", toastOptions);
   };
 
+  function Cart() {
+    const {
+      isEmpty,
+      totalUniqueItems,
+      items,
+      totalItems,
+      updateItemQuantity,
+      removeItem,
+      addItem,
+      emptyCart,
+    } = useCart();
+  }
 
 
   return (
@@ -95,13 +128,13 @@ const ItemMenu = ({ menuItemNumber }) => {
       {/* <h1>{menuItemNumber}</h1> */}
       {/* <h1>{data}</h1> */}
       <div className="">
-        <h1 className="text-center mt-5 dishTitle">~ {data.getItemInfo.itemName} ~</h1>
+        <h1 className="text-center mt-5 dishTitle">~ {data.getItemInfo.name} ~</h1>
         <hr></hr>
         <div className="text-center">
           <img className="itemPhoto" src={require("../../img/PlaceHolder_BBQ_Item_IMG.jpg")} alt="Tasty BBQ"></img>
         </div>
         <hr></hr>
-        <h1 className="text-left m-5 dishPrice">Price: ${data.getItemInfo.itemPrice}</h1>
+        <h1 className="text-left m-5 dishPrice">Price: ${data.getItemInfo.price}</h1>
         {/* <h1 className="text-left m-5 dishPrice">Available {inStock}</h1> */}
         <div className="mx-5 qtyClass col-auto my-1">
           <label className="mr-sm-2 sr-only" htmlFor="inlineFormCustomSelect">Amount: </label>

@@ -21,12 +21,12 @@ const typeDefs = gql`
   }
 
   type Item {
-    itemID: Int
-    itemName: String
-    itemPrice: Float
+    id: Int
+    name: String
+    price: Float
     inStock: Boolean
-    itemServing: Int
-    itemMeasurement: String
+    serving: Int
+    measurement: String
     subMenuNumber: Int
   }
 

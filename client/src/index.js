@@ -10,6 +10,9 @@ import { createRoot } from 'react-dom/client';
 // * ~~ Toastify ~~
 import { ToastContainer } from "react-toastify";
 
+// * ~~ Cart Wrapper ~~
+import { CartProvider } from "react-use-cart";
+
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
@@ -20,7 +23,9 @@ const root = createRoot(rootElement);
 
 root.render(
   <div>
-    <App />
-    <ToastContainer />
+    <CartProvider>
+      <App />
+      <ToastContainer />
+    </CartProvider>
   </div>
 );

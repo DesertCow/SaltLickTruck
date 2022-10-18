@@ -20,12 +20,12 @@ export const SubMenu_Q = gql`
 export const Item_Q = gql`
 query GetItemInfo($itemId: Int) {
   getItemInfo(itemID: $itemId) {
-    itemID
-    itemName
-    itemPrice
+    id
+    name
+    price
     inStock
-    itemServing
-    itemMeasurement
+    serving
+    measurement
     subMenuNumber
   }
 }
