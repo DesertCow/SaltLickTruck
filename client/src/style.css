@@ -112,14 +112,14 @@
 .menuBtn {
   font-weight: 600;
   font-size: 25px;
-  background-color: #A5BBB2;
+  background-color: #FDF4F5;
   border-radius: 15px;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
   opacity: 94%;
-  margin-top: 20%;
+  /* margin-top: 20%; */
 }
 
 .orderBtn {
@@ -132,7 +132,7 @@
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
   opacity: 94%;
-  margin-top: 30%;
+  /* margin-top: 30%; */
 }
 
 .LoadingText {
@@ -176,15 +176,35 @@
 
 }
 
-.CartTableText {
-  background-color: #7a9ffc;
-  font-size: 16px;
-  font-weight: 700;
+.cartTableText {
+  /* background-color: #7a9ffc; */
+  font-size: 14px;
+  font-weight: 500;
 }
 
-.CartTableTitle {
-  background-color: #7a9ffc;
-  font-size: 22px;
+.cartTotalText {
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.cartTotalBox {
+  font-size: 16px;
+  font-weight: 900;
+  background-color: #FDF4F5;
+  width: 80%;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+
+.cartTableTitle {
+  /*background-color: #7a9ffc;
+  */font-size: 22px;
+  font-weight: 600;
+  opacity: 94%;
+  /* width: 95% */
 }
 
 .logoutBTN {
@@ -214,7 +234,7 @@
 .mainMenuBtns {
   font-weight: 600;
   font-size: 25px;
-  background-color: #E9FFFD;
+  background-color: #ffffffe2;
   border-radius: 15px;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
@@ -226,7 +246,7 @@
 .homeMenuBtn {
   font-weight: 600;
   font-size: 25px;
-  background-color: #FFE9EA;
+  background-color: #ffffffe2;
   border-radius: 15px;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
@@ -238,7 +258,7 @@
 .addBtn {
   font-weight: 600;
   font-size: 25px;
-  background-color: #FFE9EA;
+  background-color: #ffffffe2;
   border-radius: 15px;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
@@ -250,7 +270,7 @@
 .subMenuBtns {
   font-weight: 600;
   font-size: 25px;
-  background-color: #FFE9EA;
+  background-color: #ffffffe2;
   border-radius: 15px;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
