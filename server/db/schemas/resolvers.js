@@ -10,6 +10,24 @@ const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const { signToken } = require('../../utils/auth');
 
+const stripe = require('stripe')('sk_test_51LuIxTCJixNyxu8CJ8xVsFs9KoZXJWyHU95UUXQc1Bnj5n8LncArHVC3n5mka17185hn64pjkcX9Yd4sKhhxtHUq00n2a9L5NR');
+
+// stripe.products.create({
+//   name: 'Starter Subscription',
+//   description: '$12/Month subscription',
+// }).then(product => {
+//   stripe.prices.create({
+//     unit_amount: 1200,
+//     currency: 'usd',
+//     recurring: {
+//       interval: 'month',
+//     },
+//     product: product.id,
+//   }).then(price => {
+//     console.log('Success! Here is your starter subscription product id: ' + product.id);
+//     console.log('Success! Here is your premium subscription price id: ' + price.id);
+//   });
+// });
 
 const resolvers = {
 
@@ -164,6 +182,48 @@ const resolvers = {
       console.log("\x1b[32m   Password Update Successful\x1b[0m\n")
 
     },
+    checkOut: async (parent, { items }) => {
+
+      //TODO: Take array of Items and translate into corect format to send to Stripe for checkout
+
+      stripe.products.create({
+        name: 'Starter Subscription',
+        description: '$12/Month subscription',
+      }).then(product => {
+        stripe.prices.create({
+          unit_amount: 1200,
+          currency: 'usd',
+          recurring: {
+            interval: 'month',
+          },
+          product: product.id,
+        }).then(price => {
+          console.log('Success! Here is your starter subscription product id: ' + product.id);
+          console.log('Success! Here is your premium subscription price id: ' + price.id);
+        });
+      });
+
+      const productsList = await stripe.products.list({
+        limit: 100,
+      });
+
+      console.log(" ================ Cart List (" + productsList.data.length + ") ================")
+      console.log("================ Product 0 ================")
+      console.log(productsList.data[0])
+      console.log("================ Product 1 ================")
+      console.log(productsList.data[1])
+      console.log("================ Product 2 ================")
+      console.log(productsList.data[2])
+      console.log("================ Product 3 ================")
+      console.log(productsList.data[3])
+      console.log("================ Product 4 ================")
+      console.log(productsList.data[4])
+      console.log("================ Product 5 ================")
+      console.log(productsList.data[5])
+      console.log("================ Product 6 ================")
+      console.log(productsList.data[6])
+
+    }
 
   },
 
