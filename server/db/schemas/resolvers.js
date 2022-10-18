@@ -182,46 +182,63 @@ const resolvers = {
       console.log("\x1b[32m   Password Update Successful\x1b[0m\n")
 
     },
-    checkOut: async (parent, { items }) => {
+    checkOut: async (parent, finalCart) => {
 
       //TODO: Take array of Items and translate into corect format to send to Stripe for checkout
 
-      stripe.products.create({
-        name: 'Starter Subscription',
-        description: '$12/Month subscription',
-      }).then(product => {
-        stripe.prices.create({
-          unit_amount: 1200,
-          currency: 'usd',
-          recurring: {
-            interval: 'month',
-          },
-          product: product.id,
-        }).then(price => {
-          console.log('Success! Here is your starter subscription product id: ' + product.id);
-          console.log('Success! Here is your premium subscription price id: ' + price.id);
-        });
-      });
+      console.log("======= Items ======")
+      console.log(JSON.stringify(finalCart))
+      console.log(finalCart)
+      // console.log(parent)
 
-      const productsList = await stripe.products.list({
-        limit: 100,
-      });
 
-      console.log(" ================ Cart List (" + productsList.data.length + ") ================")
-      console.log("================ Product 0 ================")
-      console.log(productsList.data[0])
-      console.log("================ Product 1 ================")
-      console.log(productsList.data[1])
-      console.log("================ Product 2 ================")
-      console.log(productsList.data[2])
-      console.log("================ Product 3 ================")
-      console.log(productsList.data[3])
-      console.log("================ Product 4 ================")
-      console.log(productsList.data[4])
-      console.log("================ Product 5 ================")
-      console.log(productsList.data[5])
-      console.log("================ Product 6 ================")
-      console.log(productsList.data[6])
+      // for (let i = 0; i < items.length; i++) {
+      for (let i = 0; i < 6; i++) {
+
+        // console.log("======= Items ======")
+        // console.log(items[i]);
+        // stripe.products.create({
+        //   name: 'Starter Subscription',
+        //   description: '$12/Month subscription',
+        // }).then(product => {
+        //   stripe.prices.create({
+        //     unit_amount: 1200,
+        //     currency: 'usd',
+        //     recurring: {
+        //       interval: 'month',
+        //     },
+        //     product: product.id,
+        //   }).then(price => {
+        //     console.log('Success! Here is your starter subscription product id: ' + product.id);
+        //     console.log('Success! Here is your premium subscription price id: ' + price.id);
+        //   });
+        // });
+        // console.log(finalCart[i])
+
+
+      }
+
+      // const productsList = await stripe.products.list({
+      //   limit: 100,
+      // });
+
+      // console.log(" ================ Cart List (" + productsList.data.length + ") ================")
+      // console.log("================ Product 0 ================")
+      // console.log(productsList.data[0])
+      // console.log("================ Product 1 ================")
+      // console.log(productsList.data[1])
+      // console.log("================ Product 2 ================")
+      // console.log(productsList.data[2])
+      // console.log("================ Product 3 ================")
+      // console.log(productsList.data[3])
+      // console.log("================ Product 4 ================")
+      // console.log(productsList.data[4])
+      // console.log("================ Product 5 ================")
+      // console.log(productsList.data[5])
+      // console.log("================ Product 6 ================")
+      // console.log(productsList.data[6])
+      return "Party on Garth"
+
 
     }
 

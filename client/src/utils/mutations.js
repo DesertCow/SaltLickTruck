@@ -43,3 +43,9 @@ export const EMAIL_UPDATE = gql`
     }
   }
 `;
+
+export const CHECKOUT = gql`
+  mutation CheckOut($finalCart: [String]) {
+    checkOut(finalCart: $finalCart)
+  }
+`;

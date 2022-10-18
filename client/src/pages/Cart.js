@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 // import { Button } from 'react-bootstrap';
 import { useCart } from "react-use-cart";
 
+import { CHECKOUT } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
 
 //* Component Import
 // import Header from '../components/Header';
@@ -17,10 +19,29 @@ function Cart() {
 
   const navigate = useNavigate();
 
+  const [userCheckout, { error, data }] = useMutation(CHECKOUT);
+
   const handleCheckout = async (event) => {
     event.preventDefault();
+    console.log("======== Handle Checkout Items ========")
+
+    // console.log(JSON.stringify(items))
+    // let FinalCart = items
+    let FinalCart = JSON.stringify(items)
+    console.log(FinalCart)
+
+    const { data } = await userCheckout({
+      finalCart: FinalCart,
+      // finalCart: ["Test", "Test", "Test", "Test"],
+      // variables: { ...FinalCart },
+    });
+
+    console.log("======== UserCheckout Data ========")
+    console.log(data)
+
+
     // navigate("/user/orderSubmit");
-    navigate("/user/checkout");
+    // navigate("/user/checkout");
 
   };
 
@@ -32,14 +53,14 @@ function Cart() {
 
   const { addItem, totalItems, items, emptyCart, cartTotal } = useCart();
 
-  console.log("======== Cart Array [" + totalItems + "] ======= ")
-  console.log("Total Cost: $" + cartTotal)
+  // console.log("======== Cart Array [" + totalItems + "] ======= ")
+  // console.log("Total Cost: $" + cartTotal)
   // console.log(totalItems)
-  console.log(items)
+  // console.log(items)
 
   //* Construct Table from CartArray
 
-  console.log(items.length)
+  // console.log(items.length)
 
   let cartTableHTML = []
 
@@ -51,7 +72,7 @@ function Cart() {
 
   for (let i = 0; i < items.length; i++) {
 
-    console.log("Item (" + i + ")" + JSON.stringify(items[i]))
+    // console.log("Item (" + i + ")" + JSON.stringify(items[i]))
 
     // cartTableHTML.push(<li key={items[i]} className="m-2 p-2">{items[i].name}</li>)
     cartTableHTML.push(<tr><th scope="row" className="py-2 px-3">{items[i].name}</th><td>$ {items[i].price}</td><td className="text-center">{items[i].quantity}</td><td>${items[i].price}</td></tr>)
