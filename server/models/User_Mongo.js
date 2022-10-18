@@ -42,6 +42,11 @@ userSchema.methods.generateHash = async function (password) {
 userSchema.methods.isCorrectPassword = async function (password) {
 
   // console.log("PASSWORD: " + password + "|| THIS PASSWORD:" + this.password)
+  if (password == this.password) {
+    console.log("Pre Hashed Password")
+    console.log(password + " == " + this.password)
+    return true
+  }
   return await bcrypt.compare(password, this.password);
 };
 

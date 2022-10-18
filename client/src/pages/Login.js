@@ -56,13 +56,8 @@ const Login = (props) => {
         variables: { ...formState },
       });
 
-      //TODO: Enable Auth 
-      // console.log("DATA")
-      // console.log(data)
-
-      // Auth.login(data.login.token);
       Auth.login(JSON.stringify(data.login));
-      // Auth.login(data.login);
+
       navigate("/main_Menu")
       toast.success("Login Successful!", toastOptions);
 
