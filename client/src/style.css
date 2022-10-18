@@ -176,6 +176,17 @@
 
 }
 
+.CartTableText {
+  background-color: #7a9ffc;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.CartTableTitle {
+  background-color: #7a9ffc;
+  font-size: 22px;
+}
+
 .logoutBTN {
   width: 80%;
   margin-bottom: 150px;

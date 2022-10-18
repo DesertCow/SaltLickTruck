@@ -36,6 +36,27 @@ function Cart() {
   // console.log(totalItems)
   console.log(items)
 
+  //* Construct Table from CartArray
+
+  console.log(items.length)
+
+  let cartTableHTML = []
+
+  //* Table Header
+  // cartTableHTML.push()
+  cartTableHTML.push(
+
+  )
+
+  for (let i = 0; i < items.length; i++) {
+
+    console.log("Item (" + i + ")" + JSON.stringify(items[i]))
+
+    // cartTableHTML.push(<li key={items[i]} className="m-2 p-2">{items[i].name}</li>)
+    cartTableHTML.push(<tr><th scope="row">{items[i].name}</th><td>{items[i].name}</td><td>{items[i].quantity}</td><td>{items[i].price}</td></tr>)
+
+  }
+
   return (
     <div>
 
@@ -43,8 +64,27 @@ function Cart() {
       <h1 className="cartTitle text-center mb-0">Summary</h1>
       <hr className="mt-0"></hr>
       <div>
-        <div className="CartButtonZone mt-5">
-          <table className="table table-striped table-dark table-hover p-5">
+        <div className="mt-5">
+          <table className="table CartTableTitle table-striped table-dark table-hover p-5">
+            <thead className="text-center">
+              <tr>
+                <th scope="col">Item #</th>
+                <th scope="col">Price</th>
+                <th scope="col">Qty</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody className="CartTableText">
+              {cartTableHTML}
+              <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td>Item Total:</td>
+                <td>{cartTotal}</td>
+              </tr>
+            </tbody>
+          </table>
+          {/* <table className="table table-striped table-dark table-hover p-5">
             <thead>
               <tr>
                 <th scope="col">Item #</th>
@@ -79,7 +119,7 @@ function Cart() {
                 <td>24.97</td>
               </tr>
             </tbody>
-          </table>
+          </table> */}
           {/* <div className="d-flex flex-row mt-5">
             <button type="button" className="btn btn-info m-2 col menuBtn">Menu</button>
             <button type="button" className="btn btn-success m-2 col orderBtn">Order</button>
