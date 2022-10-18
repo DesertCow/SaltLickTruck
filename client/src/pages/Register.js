@@ -88,13 +88,7 @@ function Register() {
       const { email, password } = values;
 
       // console.log("User Data: " + email + "||" + username + "||" + password + "||" + passwordconfirm);
-      console.log("User Data: " + email + "||" + password);
-
-      // const { data } = await axios.post(registerRoute, {
-      //   email,
-      //   username,
-      //   password
-      // });
+      // console.log("User Data: " + email + "||" + password);
 
       //* Create New User In Database
       try {
@@ -102,41 +96,16 @@ function Register() {
           variables: { ...values },
         });
 
-        // console.log("========================== DATA ==========================")
-        // console.log(data);
-        var Token = JSON.stringify(data)
-        // console.log("========================== TOKEN ==========================")
-        Token = String(Token.split(":"))
-        Token = Token.split(`"`)
-        var finalToken = Token[5]
+        Auth.login(JSON.stringify(data.createUser));
 
-        Auth.login(finalToken);
-        console.log("Account Created!");
-        console.log("========================== STORED TOKEN ==========================")
-        console.log(Auth.getToken())
         navigate("/main_Menu")
         toast.success("Sign-Up Successful!", toastOptions);
-        // const Temp = Auth.getToken()
-        // console.log(finalToken + " || " + Temp);
 
-        // if (data.status === false) {
-        //   // toast.error("Account Creation Failed!", toastOptions);
-        //   console.log("Account Creation FAILED!");
-        // }
-        // if (data.status === true) {
-        //   // toast.success("Account Sign-Up Successful", toastOptions);
-        //   console.log("Account Creation PASSED!");
-        //   navigate("/main_Menu")
-        // }
-
-        // Auth.login(data.addUser.token);
       } catch (e) {
         toast.error("Sign-Up Failed", toastOptions);
-        console.error(e);
+        //console.error(e);
       }
     };
-    // let data = "";
-
 
   }
 

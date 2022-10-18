@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { PASS_UPDATE, EMAIL_UPDATE } from '../utils/mutations';
+import { PASS_UPDATE, EMAIL_UPDATE, LOGIN_Q } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { useNavigate } from "react-router-dom";
@@ -22,6 +22,7 @@ function Profile() {
 
   const [updatePass, { passData }] = useMutation(PASS_UPDATE);
   const [updateEmail, { emailData }] = useMutation(EMAIL_UPDATE);
+  const [loginTwo, { loginData }] = useMutation(LOGIN_Q);
 
   const navigate = useNavigate();
 
@@ -38,7 +39,7 @@ function Profile() {
 
   // console.log("TOKEN!!!!!!!!")
   login = JSON.parse(login)
-  // console.log(login.user.email)
+  // console.log(login)
 
   // let userEmail = "tryncatchmeslipin@gmail.com"
   // let userName = "Slippy Toad"
@@ -93,11 +94,24 @@ function Profile() {
     // console.log(name)
     // console.log(value)
 
-    const { emailData } = await updateEmail({
+    const { data2 } = await updateEmail({
       variables: { ...emailState },
     });
 
-    console.log(emailData)
+    const { data } = await loginTwo({
+      variables: { email: emailState.email, password: login.user.password },
+    });
+
+    // console.log("Email Data")
+    // console.log(emailData)
+
+    console.log("Login Data")
+    console.log(data)
+    Auth.login(JSON.stringify(data.login))
+
+    // login.user.email = emailData;
+
+    console.log(login.user.password)
 
     toast.success("Email Address Has Been Updated!", toastOptions);
 
