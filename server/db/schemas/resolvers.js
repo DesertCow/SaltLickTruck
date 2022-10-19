@@ -182,13 +182,21 @@ const resolvers = {
       console.log("\x1b[32m   Password Update Successful\x1b[0m\n")
 
     },
-    checkOut: async (parent, finalCart) => {
+    checkout: async (parent, finalCART) => {
 
       //TODO: Take array of Items and translate into corect format to send to Stripe for checkout
 
+      console.log(finalCART)
+      // finalCART = JSON.parse(finalCART)
+      // finalCART = JSON.parse(finalCART)
       console.log("======= Items ======")
-      console.log(JSON.stringify(finalCart))
-      console.log(finalCart)
+      finalCART = String(finalCART)
+      finalCART = finalCART.split(":", 1)
+      console.log(finalCART[0])
+      // console.log(JSON.parse(finalCart))
+      // finalCART.substring(1, finalCART.length - 1)
+      // finalCART = JSON.parse(finalCART)
+      // console.log(JSON.stringify(finalCART))
       // console.log(parent)
 
 

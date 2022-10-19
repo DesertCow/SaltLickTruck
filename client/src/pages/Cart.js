@@ -23,19 +23,22 @@ function Cart() {
 
   const handleCheckout = async (event) => {
     event.preventDefault();
-    console.log("======== Handle Checkout Items ========")
+
 
     // console.log(JSON.stringify(items))
     // let FinalCart = items
-    let FinalCart = JSON.stringify(items)
-    console.log(FinalCart)
+    // let FinalCart = JSON.parse(items)
+    console.log("======== Items Array ========")
+    console.log(items)
 
     const { data } = await userCheckout({
-      finalCart: FinalCart,
-      // finalCart: ["Test", "Test", "Test", "Test"],
-      // variables: { ...FinalCart },
+      // finalCart: "Test"
+      // variables: { finalCart: FinalCart },
+      variables: { finalCart: items },
     });
 
+    // finalCart: ["Test", "Test", "Test", "Test"],
+    // variables: { ...FinalCart },
     console.log("======== UserCheckout Data ========")
     console.log(data)
 
