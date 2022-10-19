@@ -54,6 +54,15 @@ function Cart() {
 
   };
 
+  const handleCartClear = async (event) => {
+    event.preventDefault();
+    // navigate("/main_Menu");
+    // console.log("Cart Clear!")
+
+    emptyCart();
+
+  };
+
   const { addItem, totalItems, items, emptyCart, cartTotal } = useCart();
 
   // console.log("======== Cart Array [" + totalItems + "] ======= ")
@@ -117,9 +126,10 @@ function Cart() {
           </div>
 
           <hr></hr>
-          <div className="mt-4">
-            <div className="m-5 p-3 text-center orderBtn" onClick={(event) => handleCheckout(event)}>Checkout</div>
-            <div className="m-5 p-3 text-center menuBtn" onClick={(event) => handleMenuReturn(event)}>Menu</div>
+          <div className="mt-5">
+            <div className="m-2 p-3 text-center orderBtn" onClick={(event) => handleCheckout(event)}>Checkout</div>
+            <div className="m-2 mt-5 p-3 text-center menuBtn" onClick={(event) => handleMenuReturn(event)}>Menu</div>
+            <div className="m-2 mt-5 p-3 text-center clearBtn" onClick={(event) => handleCartClear(event)}>Clear Cart</div>
           </div>
         </div>
       </div>
