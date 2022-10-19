@@ -27,14 +27,15 @@ function Cart() {
 
     // console.log(JSON.stringify(items))
     // let FinalCart = items
-    // let FinalCart = JSON.parse(items)
+    let FinalCart = JSON.stringify(items)
     console.log("======== Items Array ========")
-    console.log(items)
+    console.log(FinalCart)
+    console.log(JSON.parse(FinalCart))
 
     const { data } = await userCheckout({
       // finalCart: "Test"
       // variables: { finalCart: FinalCart },
-      variables: { finalCart: items },
+      variables: { finalCart: FinalCart },
     });
 
     // finalCart: ["Test", "Test", "Test", "Test"],

@@ -18,7 +18,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     updateEmail(_id: String!, email: String!): Auth
     updatePassword(_id: String!, password: String!): Auth
-    checkout(finalCART: [String]): String
+    checkout(finalCART: String): String
   }
 
   type Item {

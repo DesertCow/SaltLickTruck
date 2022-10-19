@@ -10,7 +10,9 @@ const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const { signToken } = require('../../utils/auth');
 
-const stripe = require('stripe')('sk_test_51LuIxTCJixNyxu8CJ8xVsFs9KoZXJWyHU95UUXQc1Bnj5n8LncArHVC3n5mka17185hn64pjkcX9Yd4sKhhxtHUq00n2a9L5NR');
+const { config } = require('dotenv');
+
+const stripe = require('stripe')(process.env.STRIPE_KEY);
 
 // stripe.products.create({
 //   name: 'Starter Subscription',
@@ -185,14 +187,21 @@ const resolvers = {
     checkout: async (parent, finalCART) => {
 
       //TODO: Take array of Items and translate into corect format to send to Stripe for checkout
-
+      console.log("======= Final Cart ======")
       console.log(finalCART)
-      // finalCART = JSON.parse(finalCART)
+      // finalCART = String(finalCART)
+      // console.log(finalCART)
+      // finalCART = JSON.stringify(finalCART)
+      console.log("======= Final 2 Cart ======")
+      let splitCart = finalCART.substring(5)
+      // let parsedCART = JSON.parse(finalCART)
+      console.log(splitCart)
+      // console.log(splitCart[1])
       // finalCART = JSON.parse(finalCART)
       console.log("======= Items ======")
-      finalCART = String(finalCART)
-      finalCART = finalCART.split(":", 1)
-      console.log(finalCART[0])
+      // finalCART = String(finalCART)
+      // finalCART = finalCART.split(":", 1)
+      // console.log(finalCART[0])
       // console.log(JSON.parse(finalCart))
       // finalCART.substring(1, finalCART.length - 1)
       // finalCART = JSON.parse(finalCART)
@@ -201,30 +210,30 @@ const resolvers = {
 
 
       // for (let i = 0; i < items.length; i++) {
-      for (let i = 0; i < 6; i++) {
+      // for (let i = 0; i < 6; i++) {
 
-        // console.log("======= Items ======")
-        // console.log(items[i]);
-        // stripe.products.create({
-        //   name: 'Starter Subscription',
-        //   description: '$12/Month subscription',
-        // }).then(product => {
-        //   stripe.prices.create({
-        //     unit_amount: 1200,
-        //     currency: 'usd',
-        //     recurring: {
-        //       interval: 'month',
-        //     },
-        //     product: product.id,
-        //   }).then(price => {
-        //     console.log('Success! Here is your starter subscription product id: ' + product.id);
-        //     console.log('Success! Here is your premium subscription price id: ' + price.id);
-        //   });
-        // });
-        // console.log(finalCart[i])
+      // console.log("======= Items ======")
+      // console.log(items[i]);
+      // stripe.products.create({
+      //   name: 'Starter Subscription',
+      //   description: '$12/Month subscription',
+      // }).then(product => {
+      //   stripe.prices.create({
+      //     unit_amount: 1200,
+      //     currency: 'usd',
+      //     recurring: {
+      //       interval: 'month',
+      //     },
+      //     product: product.id,
+      //   }).then(price => {
+      //     console.log('Success! Here is your starter subscription product id: ' + product.id);
+      //     console.log('Success! Here is your premium subscription price id: ' + price.id);
+      //   });
+      // });
+      // console.log(finalCart[i])
 
 
-      }
+      // }
 
       // const productsList = await stripe.products.list({
       //   limit: 100,
