@@ -78,7 +78,7 @@ function Cart() {
     // console.log("Item (" + i + ")" + JSON.stringify(items[i]))
 
     // cartTableHTML.push(<li key={items[i]} className="m-2 p-2">{items[i].name}</li>)
-    cartTableHTML.push(<tr><th scope="row" className="py-2 px-3">{items[i].name}</th><td>$ {items[i].price}</td><td className="text-center">{items[i].quantity}</td><td>${items[i].price}</td></tr>)
+    cartTableHTML.push(<tr key={items[i].id}><th scope="row" className="py-2 px-3">{items[i].name}</th><td>$ {items[i].price}</td><td className="text-center">{items[i].quantity}</td><td>${items[i].price}</td></tr>)
 
   }
 
