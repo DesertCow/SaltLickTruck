@@ -106,7 +106,7 @@
 }
 
 .readyBar {
-  margin-top: 70%;
+  margin-top: 53%;
 }
 
 .menuBtn {
@@ -118,7 +118,7 @@
   -moz-border-radius: 15px;
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
-  opacity: 94%;
+  opacity: 90%;
   /* margin-top: 20%; */
 }
 
@@ -131,7 +131,7 @@
   -moz-border-radius: 15px;
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
-  opacity: 94%;
+  opacity: 90%;
   /* margin-top: 30%; */
 }
 
@@ -264,7 +264,7 @@
   -moz-border-radius: 15px;
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
-  opacity: 94%;
+  opacity: 90%;
 }
 
 .addBtn {
