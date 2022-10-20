@@ -1,6 +1,6 @@
 
 //* Models for SQL and MongoDB 
-const { UserMongo, FoodItem, Category } = require('../../models');
+const { UserMongo, FoodItem, Category, Orders } = require('../../models');
 
 //* SQL Connection
 const sequelize = require('../sqlConnection');
@@ -10,6 +10,26 @@ const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const { signToken } = require('../../utils/auth');
 
+const { config } = require('dotenv');
+
+const stripe = require('stripe')(process.env.STRIPE_KEY);
+
+// stripe.products.create({
+//   name: 'Starter Subscription',
+//   description: '$12/Month subscription',
+// }).then(product => {
+//   stripe.prices.create({
+//     unit_amount: 1200,
+//     currency: 'usd',
+//     recurring: {
+//       interval: 'month',
+//     },
+//     product: product.id,
+//   }).then(price => {
+//     console.log('Success! Here is your starter subscription product id: ' + product.id);
+//     console.log('Success! Here is your premium subscription price id: ' + price.id);
+//   });
+// });
 
 const resolvers = {
 
@@ -164,6 +184,139 @@ const resolvers = {
       console.log("\x1b[32m   Password Update Successful\x1b[0m\n")
 
     },
+    checkout: async (parent, CART) => {
+
+      //* ------------------------------------------------------------------------------------------------
+      //*                                         LOCAL CHECKOUT ZONE
+      //* ------------------------------------------------------------------------------------------------
+      console.log("======= Local Checkout Start ======")
+
+
+      let items = JSON.stringify(CART.items)
+      let qty = JSON.stringify(CART.qty)
+      let prices = JSON.stringify(CART.prices)
+      let bill = 0
+      let status = "Submitted"
+
+      for (let i = 0; i < CART.items.length; i++) {
+        // console.log("CART Price (" + i + ")")
+        // console.log(CART.prices[i])
+        bill = bill + CART.prices[i]
+      }
+
+      console.log(items)
+      console.log(qty)
+      console.log(prices)
+      console.log(bill)
+
+
+
+      const orderRes = await Orders.create({ items, qty, prices, bill, status })
+
+      console.log("======= orderRes ======")
+      console.log(orderRes)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      //* ------------------------------------------------------------------------------------------------
+      //*                                         STRIPE CHECKOUT ZONE
+      //* ------------------------------------------------------------------------------------------------
+
+
+      //TODO: Take array of Items and translate into corect format to send to Stripe for checkout
+      // console.log("======= Final Cart ======")
+      // console.log(finalCART)
+      // finalCART = String(finalCART)
+      // console.log(finalCART)
+      // finalCART = JSON.stringify(finalCART)
+      // console.log("======= Final 2 Cart ======")
+
+      // let splitCart = finalCART.substring(5)
+      // let parsedCART = JSON.parse(finalCART)
+      // console.log(splitCart)
+      // console.log(splitCart[1])
+      // finalCART = JSON.parse(finalCART)
+      // console.log(finalCART)
+      // console.log("======= Items ======")
+
+      // await stripe.products.create({
+      //   name: 'Gold Special',
+      //   price: 7.99
+      // });
+      // finalCART = String(finalCART)
+      // finalCART = finalCART.split(":", 1)
+      // console.log(finalCART[0])
+      // console.log(JSON.parse(finalCart))
+      // finalCART.substring(1, finalCART.length - 1)
+      // finalCART = JSON.parse(finalCART)
+      // console.log(JSON.stringify(finalCART))
+      // console.log(parent)
+
+
+      // for (let i = 0; i < items.length; i++) {
+      // for (let i = 0; i < 6; i++) {
+
+      // console.log("======= Items ======")
+      // console.log(items[i]);
+      // await stripe.products.create({
+      //   name: '1/2 LB Pork Ribs',
+      //   description: '$1/2 lbs of Pork Ribs',
+      // }).then(product => {
+      //   stripe.prices.create({
+      //     unit_amount: 1195,
+      //     currency: 'usd',
+      //     product: product.id,
+      //   }).then(price => {
+      //     console.log('Success! Here is your starter subscription product id: ' + product.id);
+      //     console.log('Success! Here is your premium subscription price id: ' + price.id);
+      //   });
+      // });
+      // console.log(finalCart[i])
+
+      // }
+
+      // const productsList = await stripe.products.list({
+      //   limit: 100,
+      // });
+
+      // console.log(" ================ Cart List (" + productsList.data.length + ") ================")
+      // console.log("================ Product 0 ================")
+      // console.log(productsList.data[0])
+      // console.log("================ Product 1 ================")
+      // console.log(productsList.data[1])
+      // console.log("================ Product 2 ================")
+      // console.log(productsList.data[2])
+      // console.log("================ Product 3 ================")
+      // console.log(productsList.data[3])
+      // console.log("================ Product 4 ================")
+      // console.log(productsList.data[4])
+      // console.log("================ Product 5 ================")
+      // console.log(productsList.data[5])
+      // console.log("================ Product 6 ================")
+      // console.log(productsList.data[6])
+      // return "Party on Garth"
+
+
+    }
 
   },
 

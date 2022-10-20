@@ -255,6 +255,18 @@
   opacity: 94%;
 }
 
+.clearBtn {
+  font-weight: 600;
+  font-size: 25px;
+  background-color: #ff2020e2;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  opacity: 94%;
+}
+
 .addBtn {
   font-weight: 600;
   font-size: 25px;
