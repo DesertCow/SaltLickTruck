@@ -1,6 +1,6 @@
 
 //* Models for SQL and MongoDB 
-const { UserMongo, FoodItem, Category } = require('../../models');
+const { UserMongo, FoodItem, Category, Orders } = require('../../models');
 
 //* SQL Connection
 const sequelize = require('../sqlConnection');
@@ -184,21 +184,84 @@ const resolvers = {
       console.log("\x1b[32m   Password Update Successful\x1b[0m\n")
 
     },
-    checkout: async (parent, finalCART) => {
+    checkout: async (parent, CART) => {
+
+      //* ------------------------------------------------------------------------------------------------
+      //*                                         LOCAL CHECKOUT ZONE
+      //* ------------------------------------------------------------------------------------------------
+      console.log("======= Local Checkout Start ======")
+
+
+      let items = JSON.stringify(CART.items)
+      let qty = JSON.stringify(CART.qty)
+      let prices = JSON.stringify(CART.prices)
+      let bill = 0
+      let status = "Submitted"
+
+      for (let i = 0; i < CART.items.length; i++) {
+        // console.log("CART Price (" + i + ")")
+        // console.log(CART.prices[i])
+        bill = bill + CART.prices[i]
+      }
+
+      console.log(items)
+      console.log(qty)
+      console.log(prices)
+      console.log(bill)
+
+
+
+      const orderRes = await Orders.create({ items, qty, prices, bill, status })
+
+      console.log("======= orderRes ======")
+      console.log(orderRes)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      //* ------------------------------------------------------------------------------------------------
+      //*                                         STRIPE CHECKOUT ZONE
+      //* ------------------------------------------------------------------------------------------------
+
 
       //TODO: Take array of Items and translate into corect format to send to Stripe for checkout
-      console.log("======= Final Cart ======")
-      console.log(finalCART)
+      // console.log("======= Final Cart ======")
+      // console.log(finalCART)
       // finalCART = String(finalCART)
       // console.log(finalCART)
       // finalCART = JSON.stringify(finalCART)
-      console.log("======= Final 2 Cart ======")
-      let splitCart = finalCART.substring(5)
+      // console.log("======= Final 2 Cart ======")
+
+      // let splitCart = finalCART.substring(5)
       // let parsedCART = JSON.parse(finalCART)
-      console.log(splitCart)
+      // console.log(splitCart)
       // console.log(splitCart[1])
       // finalCART = JSON.parse(finalCART)
-      console.log("======= Items ======")
+      // console.log(finalCART)
+      // console.log("======= Items ======")
+
+      // await stripe.products.create({
+      //   name: 'Gold Special',
+      //   price: 7.99
+      // });
       // finalCART = String(finalCART)
       // finalCART = finalCART.split(":", 1)
       // console.log(finalCART[0])
@@ -214,16 +277,13 @@ const resolvers = {
 
       // console.log("======= Items ======")
       // console.log(items[i]);
-      // stripe.products.create({
-      //   name: 'Starter Subscription',
-      //   description: '$12/Month subscription',
+      // await stripe.products.create({
+      //   name: '1/2 LB Pork Ribs',
+      //   description: '$1/2 lbs of Pork Ribs',
       // }).then(product => {
       //   stripe.prices.create({
-      //     unit_amount: 1200,
+      //     unit_amount: 1195,
       //     currency: 'usd',
-      //     recurring: {
-      //       interval: 'month',
-      //     },
       //     product: product.id,
       //   }).then(price => {
       //     console.log('Success! Here is your starter subscription product id: ' + product.id);
@@ -231,7 +291,6 @@ const resolvers = {
       //   });
       // });
       // console.log(finalCart[i])
-
 
       // }
 
@@ -254,7 +313,7 @@ const resolvers = {
       // console.log(productsList.data[5])
       // console.log("================ Product 6 ================")
       // console.log(productsList.data[6])
-      return "Party on Garth"
+      // return "Party on Garth"
 
 
     }
