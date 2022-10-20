@@ -27,23 +27,45 @@ function Cart() {
 
     // console.log(JSON.stringify(items))
     // let FinalCart = items
-    let FinalCart = JSON.stringify(items)
-    console.log("======== Items Array ========")
-    console.log(FinalCart)
-    console.log(JSON.parse(FinalCart))
+    // let FinalCart = JSON.stringify(items)
+    // console.log("======== Items Array ========")
+    // console.log(FinalCart)
+    // console.log(JSON.parse(FinalCart))
+
+    console.log(items)
+
+    let qlItems = []
+    let qlPrices = []
+    let qlQty = []
+
+    let itemCount = items.length
+
+    for (let i = 0; i < itemCount; i++) {
+
+      qlItems[i] = items[i].name
+      qlPrices[i] = items[i].price
+      qlQty[i] = items[i].quantity
+
+    }
+
+    // console.log("Item Count = " + itemCount)
+
+    // let qlItems = ["1/2 LB Pork Ribs", "Chopped Beef", "Soda", "Homemade Pecan Pie"]
+    // let qlPrices = [11.95, 13.95, 2.50, 6.45]
+    // let qlQty = [1, 1, 2, 1]
 
     const { data } = await userCheckout({
-      // finalCart: "Test"
-      // variables: { finalCart: FinalCart },
-      variables: { finalCart: FinalCart },
+      variables: { items: qlItems, prices: qlPrices, qty: qlQty },
     });
 
-    // finalCart: ["Test", "Test", "Test", "Test"],
-    // variables: { ...FinalCart },
-    console.log("======== UserCheckout Data ========")
-    console.log(data)
+    console.log("========= Order Recived! =========")
+    console.log("Order ID: " + data.checkout)
 
 
+    if (data.checkout) {
+      emptyCart();
+      navigate("/user/orderSubmit");
+    }
     // navigate("/user/orderSubmit");
     // navigate("/user/checkout");
 
@@ -128,9 +150,9 @@ function Cart() {
 
           <hr></hr>
           <div className="mt-5">
-            <div className="m-2 p-3 text-center orderBtn" onClick={(event) => handleCheckout(event)}>Checkout</div>
-            <div className="m-2 mt-5 p-3 text-center menuBtn" onClick={(event) => handleMenuReturn(event)}>Menu</div>
-            <div className="m-2 mt-5 p-3 text-center clearBtn" onClick={(event) => handleCartClear(event)}>Clear Cart</div>
+            <div className="mx-4 p-3 text-center orderBtn" onClick={(event) => handleCheckout(event)}>Checkout</div>
+            <div className="mx-4 mt-4 p-3 text-center menuBtn" onClick={(event) => handleMenuReturn(event)}>Menu</div>
+            <div className="mx-4 mt-4 p-3 text-center clearBtn" onClick={(event) => handleCartClear(event)}>Clear Cart</div>
           </div>
         </div>
       </div>

@@ -201,7 +201,7 @@ const resolvers = {
       for (let i = 0; i < CART.items.length; i++) {
         // console.log("CART Price (" + i + ")")
         // console.log(CART.prices[i])
-        bill = bill + CART.prices[i]
+        bill = bill + CART.prices[i] * CART.qty[i]
       }
 
       console.log(items)
@@ -209,33 +209,20 @@ const resolvers = {
       console.log(prices)
       console.log(bill)
 
-
+      //TODO: Add payment status in Create. When Stripe respond 200 (Unpaid -> Paid)
 
       const orderRes = await Orders.create({ items, qty, prices, bill, status })
 
       console.log("======= orderRes ======")
       console.log(orderRes)
 
+      orderID = String(orderRes._id)
 
+      console.log(orderID)
 
+      // finalRes = "Order Received! Order ID:" + 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      return orderID
 
       //* ------------------------------------------------------------------------------------------------
       //*                                         STRIPE CHECKOUT ZONE
@@ -314,6 +301,9 @@ const resolvers = {
       // console.log("================ Product 6 ================")
       // console.log(productsList.data[6])
       // return "Party on Garth"
+
+
+      // return orderRes
 
 
     }

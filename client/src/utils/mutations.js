@@ -51,7 +51,7 @@ export const EMAIL_UPDATE = gql`
 // `;
 
 export const CHECKOUT = gql`
-  mutation Checkout($finalCart: [String]) {
-    checkout(finalCART: $finalCart)
+  mutation Checkout($items: [String], $prices: [Float], $qty: [Float]) {
+    checkout(items: $items, prices: $prices, qty: $qty)
   }
 `;

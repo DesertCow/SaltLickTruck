@@ -2,7 +2,7 @@ import React from "react";
 
 
 //* Component Import
-// import NavFooter from '../components/NavFooter';
+import NavFooter from '../components/NavFooter';
 // import LoadingSplash from '../components/LoadingSplash';
 
 
@@ -33,9 +33,9 @@ function OrderSubmit() {
       </div>
 
 
-      {/* <footer className="mt-5">
+      <footer className="mt-5">
         <NavFooter />
-      </footer> */}
+      </footer>
 
     </div>
 
