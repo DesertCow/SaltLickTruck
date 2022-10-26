@@ -184,8 +184,28 @@ function Register() {
                   />
                 </div>
               </div>
+
             </div>
           </form>
+
+          <div>
+            {/* <div className="tosBox d-flex m-2 form-check"> */}
+            <div className="form-check m-1">
+              <div className="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                {/* <div className="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."> */}
+                {/* </input> */}
+                {/* <label className="tosText form-check-label" for="flexCheckDefault"> */}
+                {/* <label className="form-check-label" for="flexCheckDefault">
+                  By signing up you are accepting the Terms Of Service and Privacy Policy
+                </label> */}
+
+              </div>
+              <div>
+                <h1 className="tosText pb-2 px-2" for="tosBoxID">By signing up you are accepting the <a href="/TermsOfService">Terms Of Service</a> and <a href="/PrivacyPolicy">Privacy Policy.</a></h1>
+              </div>
+            </div>
+          </div>
+
         </div>
 
 
@@ -201,7 +221,7 @@ function Register() {
 
       </div>
 
-    </div>
+    </div >
 
   )
 

@@ -122,6 +122,15 @@
   /* margin-top: 20%; */
 }
 
+.tosText {
+  width: 100%;
+  font-size: 11px;
+}
+
+.form-check-input {
+  display:block;
+}
+
 .orderBtn {
   font-weight: 600;
   font-size: 25px;
