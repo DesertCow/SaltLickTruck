@@ -20,7 +20,7 @@ const seedAll = require('./db/seeds/index');
 
 //TODO: FIX ENV import issues...
 const mySQLport = process.env.mySQLport || 3001;
-const graphQLport = process.env.graphQLport || 4001;
+const graphQLport = process.env.PORT || 4001;
 
 //* Create Base "App"
 const app = express();
