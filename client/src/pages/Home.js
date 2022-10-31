@@ -50,7 +50,7 @@ function Home() {
   const pdfDownload = async (event) => {
     event.preventDefault();
     toast.info("Menu Download Started!", toastOptions);
-    fileDownload(menuPDF, "Salt_Lick_Menu_DWood-PDF.pdf");
+    fileDownload(require(menuPDF), "Salt_Lick_Menu_DWood-PDF.pdf");
     // navigate("/main_Menu");
 
   };

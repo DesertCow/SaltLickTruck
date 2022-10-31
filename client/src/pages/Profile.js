@@ -12,7 +12,7 @@ import LoadingSplash from '../components/LoadingSplash';
 //* React Toastify
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import auth from "../utils/auth";
+// import auth from "../utils/auth";
 
 
 function Profile() {
@@ -37,12 +37,32 @@ function Profile() {
 
   let login = Auth.getToken()
 
-  // console.log("TOKEN!!!!!!!!")
   login = JSON.parse(login)
-  // console.log(login)
 
-  // let userEmail = "tryncatchmeslipin@gmail.com"
-  // let userName = "Slippy Toad"
+  if (login == null) {
+
+    return (
+      <div>
+        {/* <LoadingSplash /> */}
+        <h1 className="pleaseLogin text-center">Hello,</h1>
+        <h1 className="pleaseLogin2 text-center mt-3">Please Login or Create and Account to view your profile page!</h1>
+        <div className="loginText text-center">
+          <a href="/login">Login</a>
+        </div>
+        <div className="regsiterLink text-center">
+          <a href="/register">Register</a>
+        </div>
+
+
+        <footer className="mt-5">
+          {/* <MainFooter /> */}
+          <NavFooter />
+        </footer>
+      </div>
+
+    )
+
+  }
 
 
 
@@ -155,7 +175,7 @@ function Profile() {
 
     toast.success("Logout Has Been Successful", toastOptions);
     navigate("/")
-    auth.logout()
+    Auth.logout()
   }
 
   return (
