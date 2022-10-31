@@ -27,6 +27,7 @@ import Home from './pages/Home';
 import Cart from './pages/Cart';
 import Profile from './pages/Profile';
 import OrderSubmit from './pages/OrderSubmit';
+import Kitchen from './pages/Kitchen';
 
 //* Component Import
 import Header from './components/Header';
@@ -91,6 +92,7 @@ export default function App() {
           <Route path="/user/cart" element={<Cart />} />
           <Route path="/user/profile" element={<Profile />} />
           <Route path="/user/orderSubmit" element={<OrderSubmit />} />
+          <Route path="/kitchen" element={<Kitchen />} />
         </Routes>
       </Router>
     </ApolloProvider>

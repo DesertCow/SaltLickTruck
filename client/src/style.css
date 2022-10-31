@@ -88,8 +88,17 @@
   width: 25%;
 }
 
+.kitchenPageTitle {
+  font-size: 50px;
+}
+
 .proBar2 {
   width: 40%;
+}
+
+.tableText {
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .proBar3 {

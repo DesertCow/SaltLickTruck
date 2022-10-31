@@ -108,6 +108,29 @@ const resolvers = {
         // quantity: 1
       }
     },
+    getAllOrders: async () => {
+
+      console.log("\n\x1b[33m[API-GET] - Get All Orders\x1b[0m");
+
+      //* Query Database for Main Menu
+      const ordersData = await Orders.find();
+
+      console.log(" ~~ Order Count = \x1b[31m" + ordersData.length + "  \x1b[0m~~")
+
+      // console.log(ordersData)
+
+      //* Parse response data to create array of Menu Items
+      var orderList = []
+      for (i = 0; i < ordersData.length; i++) {
+
+        // console.log("Order(" + i + ") " + ordersData[i])
+
+        orderList[i] = ordersData[i]._id + "|" + JSON.parse(ordersData[i].items) + "|" + JSON.parse(ordersData[i].qty) + "|" + ordersData[i].status
+      }
+
+      //* Return List to Client
+      return orderList
+    },
   },
 
   Mutation: {
