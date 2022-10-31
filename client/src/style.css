@@ -100,9 +100,28 @@
   width: 80%;
 }
 
+.pleaseLogin {
+  margin-top: 60%;
+  font-size: 50px;
+}
+
+.loginText {
+  margin-top: 30%;
+  font-size: 60px;
+}
+
+.pleaseLogin2 {
+  font-size: 30px;
+}
+
 .proBar5 {
   width: 100%;
   font-size: 30px;
+}
+
+.regsiterLink {
+  font-size: 50px;
+  margin-top: 20%;
 }
 
 .readyBar {
