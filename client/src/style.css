@@ -88,8 +88,108 @@
   width: 25%;
 }
 
+.orderItems {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.submittedDrop {
+  background-color: #31a531;
+  font-weight: 700;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.submittedWIP {
+  background-color: #fff200;
+  font-weight: 700;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.dropMenuKitchen {
+  opacity: 90%;
+}
+
+.submittedReady {
+  background-color: #00ff00;
+  font-weight: 700;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.submittedPickedUp {
+  background-color: #a1a1a1;
+  font-weight: 700;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.statusBox {
+  border-style: solid;
+  border-width: 6px;
+  border-color: #828282;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.updateStatusBox {
+  background-color: #31a531;
+  opacity: 94%;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.statusText {
+  font-size: 18px;
+  font-weight: 700;
+
+}
+.itemsTitle {
+  font-size: 30px;
+  font-weight: 700;
+}
+
 .kitchenPageTitle {
   font-size: 50px;
+}
+
+.orderStatusBox {
+  background-color: #bec1be;
+  opacity: 94%;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+.orderRow {
+  height: 15%;
+  background-color: #81FC7A;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
 }
 
 .proBar2 {

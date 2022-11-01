@@ -16,9 +16,12 @@ function Kitchen() {
     <div>
       <h1 className="kitchenPageTitle text-center mt-3">Kitchen Page</h1>
       <hr></hr>
-      <h2 className="text-center mt-4 tableText">Orders Table</h2>
+      <h2 className="text-center mt-3 tableText">Orders Table</h2>
+      <hr></hr>
       <div>
-        <ListOfOrders />
+        <ul>
+          <ListOfOrders />
+        </ul>
       </div>
 
       <footer className="mt-5">

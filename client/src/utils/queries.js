@@ -31,4 +31,8 @@ query GetItemInfo($itemId: Int) {
 }
 `;
 
-
+export const OrderList_Q = gql`
+  query GetMainMenu {
+  getAllOrders
+}
+`;
