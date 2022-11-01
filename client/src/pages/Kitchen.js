@@ -18,10 +18,8 @@ function Kitchen() {
       <hr></hr>
       <h2 className="text-center mt-3 tableText">Orders Table</h2>
       <hr></hr>
-      <div>
-        <ul>
-          <ListOfOrders />
-        </ul>
+      <div className="mb-5">
+        <ListOfOrders />
       </div>
 
       <footer className="mt-5">

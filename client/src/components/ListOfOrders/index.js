@@ -47,7 +47,7 @@ const ListOfOrders = () => {
     console.log(finalItemsArray)
 
     orderList.push(
-      <li key={item} className="orderRow p-3 m-2 my-4">
+      <li key={item} className="orderRow p-3 mx-2 mb-4">
         <div className="orderStatusBox p-2">
           <h1 className="mt-0">Order Number: {orderArray[0]}</h1>
         </div>
@@ -140,7 +140,7 @@ const ListOfOrders = () => {
 
 
   return (
-    <ul className='m-2 p-2'>
+    <ul className='mx-2 p-2'>
       {/* <h1>test List of orders</h1> */}
       {orderList}
     </ul>
