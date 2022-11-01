@@ -71,18 +71,8 @@ const resolvers = {
       var subMenuTitle = await Category.findOne({
         where: { id: menuID },
       })
-      // console.log("==================== Sub menu Title ==================== ");
-      // console.log(subMenuTitle.category_name)
-
-      // var menuIndex = await FoodItem.findOne({
-      //   where: { top_category: menuID },
-      // })
-
-      // console.log("==================== Menu Index ==================== ");
-      // console.log(indexList)
 
       subMenuTitle = String(subMenuTitle.category_name)
-      // var subMenuTitle = "Test Title"
 
       //* Return List to Client
       return { menuList: finalList, menuTitle: subMenuTitle, menuIndex: indexList }
@@ -117,15 +107,12 @@ const resolvers = {
 
       console.log(" ~~ Order Count = \x1b[31m" + ordersData.length + "  \x1b[0m~~")
 
-      // console.log(ordersData)
-
       //* Parse response data to create array of Menu Items
       var orderList = []
       for (i = 0; i < ordersData.length; i++) {
 
-        // console.log("Order(" + i + ") " + ordersData[i])
-
-        orderList[i] = ordersData[i]._id + "|" + JSON.parse(ordersData[i].items) + "|" + JSON.parse(ordersData[i].qty) + "|" + ordersData[i].status
+        orderList[i] = ordersData[i]._id + "|" + JSON.parse(ordersData[i].items) + "|" + JSON.parse(ordersData[i].qty) + "|" + ordersData[i].status + "|" + ordersData[i].payment + "|" + ordersData[i].customerName
+     
       }
 
       //* Return List to Client
@@ -169,7 +156,7 @@ const resolvers = {
       //* Validate Password via "isCorrectPassword" method
       const correctPw = await user.isCorrectPassword(password);
 
-      console.log("Correct Password = " + correctPw)
+      // console.log("Correct Password = " + correctPw)
 
       //* Error for incorrect password
       if (!correctPw) {
@@ -188,6 +175,7 @@ const resolvers = {
       //TODO: Confirm new email does not already exists in DB
       //TODO: Add Try/Catch logic to print failed update to console
       console.log("\n\x1b[33mUpdate User Email (MongoDB)\x1b[0m\n\x1b[0m\n   Email: \x1b[35m" + email + "\n\x1b[0m   ID: \x1b[35m" + _id);
+      
       await UserMongo.updateOne({ _id: _id }, { $set: { email: email } })
 
       console.log("\x1b[32m   Email Update Successful\x1b[0m\n")
@@ -220,6 +208,9 @@ const resolvers = {
       let prices = JSON.stringify(CART.prices)
       let bill = 0
       let status = "Submitted"
+      let payment = true
+
+      let customerName = "Zara Cottontail"
 
       for (let i = 0; i < CART.items.length; i++) {
         // console.log("CART Price (" + i + ")")
@@ -227,21 +218,21 @@ const resolvers = {
         bill = bill + CART.prices[i] * CART.qty[i]
       }
 
-      console.log(items)
-      console.log(qty)
-      console.log(prices)
-      console.log(bill)
+      // console.log(items)
+      // console.log(qty)
+      // console.log(prices)
+      // console.log(bill)
 
       //TODO: Add payment status in Create. When Stripe respond 200 (Unpaid -> Paid)
 
-      const orderRes = await Orders.create({ items, qty, prices, bill, status })
+      const orderRes = await Orders.create({ items, qty, prices, bill, status, payment, customerName })
 
-      console.log("======= orderRes ======")
-      console.log(orderRes)
+      // console.log("======= orderRes ======")
+      // console.log(orderRes)
 
       orderID = String(orderRes._id)
 
-      console.log(orderID)
+      // console.log(orderID)
 
       // finalRes = "Order Received! Order ID:" + 
 

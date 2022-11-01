@@ -22,6 +22,9 @@ const ListOfOrders = () => {
 
     var finalItemsArray = []
 
+    // console.log("==== Order Array ====")
+    // console.log(orderArray)
+
     itemArray.forEach(finalItemGroom);
 
     function finalItemGroom(item, index) {
@@ -30,8 +33,8 @@ const ListOfOrders = () => {
         <div>
         </div>({qtyArray[index]}x) - {item}</li>)
 
-      console.log("Item At " + index)
-      console.log(item)
+      // console.log("Item At " + index)
+      // console.log(item)
 
     }
 
@@ -43,14 +46,19 @@ const ListOfOrders = () => {
 
     }
 
-    console.log("finalItemsArray")
-    console.log(finalItemsArray)
+    // console.log("finalItemsArray")
+    // console.log(finalItemsArray)
 
     orderList.push(
       <li key={item} className="orderRow p-3 mx-2 mb-4">
         <div className="orderStatusBox p-2">
           <h1 className="mt-0">Order Number: {orderArray[0]}</h1>
         </div>
+        <div className="customerNameBox p-2 m-2 d-flex">
+          <h1 className="mt-0 col">Customer: {orderArray[5]}</h1>
+          <h1 className="mt-0">Paid: {orderArray[4]}</h1>
+        </div>
+        <hr></hr>
 
         <h1 className="mt-3 itemsTitle text-center">Items:
           <div className='text-left m-0'>
@@ -88,26 +96,29 @@ const ListOfOrders = () => {
 
       </li >)
 
-    console.log(" ====== Order Array ======")
-    console.log(orderArray)
-    console.log(" ====== ITEM Array ======")
-    console.log(itemArray)
-    console.log(" ====== QTY Array ======")
-    console.log(qtyArray)
+    // console.log(" ====== Order Array ======")
+    // console.log(orderArray)
+    // console.log(" ====== ITEM Array ======")
+    // console.log(itemArray)
+    // console.log(" ====== QTY Array ======")
+    // console.log(qtyArray)
 
-    console.log(item)
-    console.log(index)
+    // console.log(item)
+    // console.log(index)
   }
 
 
   //TODO: Get Each Order From Database
   var { loading, data } = useQuery(OrderList_Q)
 
-  // console.log(data.getAllOrders)
+
 
   if (!loading) {
 
-    console.log(data.getAllOrders[1])
+    // console.log("GET ALL ORDERS!")
+    // console.log(data.getAllOrders)
+
+    // console.log(data.getAllOrders[1])
 
     data.getAllOrders.forEach(newOrderRow);
 

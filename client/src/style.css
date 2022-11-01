@@ -22,6 +22,11 @@
   font-family: 'Lakki Reddy', cursive;
 }
 
+.mainMenuNotLogged {
+  font-size: 20px;
+  margin-top: 90%;
+}
+
 .cartTitle {
   font-size: 45px;
   font-family: 'Lakki Reddy', cursive;
@@ -118,6 +123,23 @@
   opacity: 90%;
 }
 
+.NotAuthHeader {
+  margin-top: 90%;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.customerNameBox {
+  border-style: solid;
+  border-width: 3px;
+  border-color: #a0a0a0;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
 .submittedReady {
   background-color: #00ff00;
   font-weight: 700;
@@ -171,6 +193,7 @@
 
 .kitchenPageTitle {
   font-size: 50px;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .orderStatusBox {
@@ -286,6 +309,11 @@
 
 .navFooterHomeIcon {
   width: auto;
+  max-height: 45px;
+}
+
+.navFooterHomeIconAdmin {
+  width: 35px;
 }
 
 .NavBarClass {
@@ -309,7 +337,7 @@
 
 .subMenuTitle {
   font-family: 'Lakki Reddy', cursive;
-  font-size: 40px;
+  font-size: 30px;
 
 }
 
