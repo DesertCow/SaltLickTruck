@@ -22,6 +22,11 @@
   font-family: 'Lakki Reddy', cursive;
 }
 
+.mainMenuNotLogged {
+  font-size: 20px;
+  margin-top: 90%;
+}
+
 .cartTitle {
   font-size: 45px;
   font-family: 'Lakki Reddy', cursive;
@@ -188,6 +193,7 @@
 
 .kitchenPageTitle {
   font-size: 50px;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .orderStatusBox {
@@ -331,7 +337,7 @@
 
 .subMenuTitle {
   font-family: 'Lakki Reddy', cursive;
-  font-size: 40px;
+  font-size: 30px;
 
 }
 

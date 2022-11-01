@@ -52,26 +52,16 @@ import MainFooter from './components/Footer';
 //   };
 // });
 
-// const client = new ApolloClient({
-//   // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
-//   // link: authLink.concat(httpLink),
-//   cache: new InMemoryCache(),
-// });
-
 function SubMenuPage() {
-  // Get the userId param from the URL.
+
+  //* Get the userId param from the URL.
   let { menuID } = useParams();
 
-  // return (
-  //   <Route path="/sub_Menu/:menuID" element={<SubMenu menuID={menuID} />} />
-  // );
-  // ...
 }
 
 const client = new ApolloClient({
   uri: 'http://192.168.25.22:4001/graphql',
   // uri: 'https://saltlicktruck.herokuapp.com/graphql',
-  //uri: '/graphql',
   cache: new InMemoryCache(),
 });
 

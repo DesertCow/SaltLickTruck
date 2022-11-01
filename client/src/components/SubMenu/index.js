@@ -94,7 +94,8 @@ const SubMenu = ({ menuNumber }) => {
 
         <h1 className="homeTitle text-center pt-4"> Salt Lick BBQ</h1>
         <hr className="mt-0 mb-3" />
-        <h1 className="text-center mt-3 pt-4 subMenuTitle"> ~ {finalTitle} ~</h1>
+        <h1 className="text-center mt-1 subMenuTitle"> ~  	&nbsp;{finalTitle} 	&nbsp; ~</h1>
+        <hr className="text-center mt-1 pb-2"></hr>
         {/* <h1 className="text-center pt-4 menuTitle">Menu</h1> */}
         {/* <hr className="mt-2 mb-3" /> */}
         <ul className="text-center mb-4">

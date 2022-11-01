@@ -36,7 +36,8 @@ const MainMenu = ({ finalArray }) => {
       <div className="d-flex flex-column min-vh-100">
 
         <h1 className="homeTitle text-center pt-4"> Salt Lick BBQ</h1>
-        <h1 className="text-center pt-4 menuTitle"> Main Menu</h1>
+        <hr className="text-center pt-0 mt-0 pb-2"></hr>
+        <h1 className="text-center menuTitle"> Main Menu</h1>
         <hr className="mt-2 mb-3" />
         <ul className="text-center mb-5">
           <div className="mb-4">

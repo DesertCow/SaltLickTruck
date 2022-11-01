@@ -22,8 +22,8 @@ const ListOfOrders = () => {
 
     var finalItemsArray = []
 
-    console.log("==== Order Array ====")
-    console.log(orderArray)
+    // console.log("==== Order Array ====")
+    // console.log(orderArray)
 
     itemArray.forEach(finalItemGroom);
 
@@ -33,8 +33,8 @@ const ListOfOrders = () => {
         <div>
         </div>({qtyArray[index]}x) - {item}</li>)
 
-      console.log("Item At " + index)
-      console.log(item)
+      // console.log("Item At " + index)
+      // console.log(item)
 
     }
 
@@ -46,8 +46,8 @@ const ListOfOrders = () => {
 
     }
 
-    console.log("finalItemsArray")
-    console.log(finalItemsArray)
+    // console.log("finalItemsArray")
+    // console.log(finalItemsArray)
 
     orderList.push(
       <li key={item} className="orderRow p-3 mx-2 mb-4">
@@ -96,15 +96,15 @@ const ListOfOrders = () => {
 
       </li >)
 
-    console.log(" ====== Order Array ======")
-    console.log(orderArray)
-    console.log(" ====== ITEM Array ======")
-    console.log(itemArray)
-    console.log(" ====== QTY Array ======")
-    console.log(qtyArray)
+    // console.log(" ====== Order Array ======")
+    // console.log(orderArray)
+    // console.log(" ====== ITEM Array ======")
+    // console.log(itemArray)
+    // console.log(" ====== QTY Array ======")
+    // console.log(qtyArray)
 
-    console.log(item)
-    console.log(index)
+    // console.log(item)
+    // console.log(index)
   }
 
 
@@ -115,10 +115,10 @@ const ListOfOrders = () => {
 
   if (!loading) {
 
-    console.log("GET ALL ORDERS!")
-    console.log(data.getAllOrders)
+    // console.log("GET ALL ORDERS!")
+    // console.log(data.getAllOrders)
 
-    console.log(data.getAllOrders[1])
+    // console.log(data.getAllOrders[1])
 
     data.getAllOrders.forEach(newOrderRow);
 

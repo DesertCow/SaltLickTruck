@@ -1,6 +1,7 @@
 
 import { useQuery } from '@apollo/client';
 import { MainMenu_Q } from '../utils/queries';
+import { useNavigate } from "react-router-dom";
 // import React, { useState } from "react";
 // import { Button } from 'react-bootstrap';
 
@@ -12,9 +13,11 @@ import MainMenu from '../components/MainMenu';
 import NavFooter from '../components/NavFooter';
 import LoadingSplash from '../components/LoadingSplash';
 
+import Auth from '../utils/auth';
+
 function Main_Menu() {
 
-
+  const navigate = useNavigate();
 
   //* Get Menu from Database
   var { loading, data } = useQuery(MainMenu_Q)
@@ -46,13 +49,22 @@ function Main_Menu() {
   //   console.log(finalArray)
   // }
 
+  let login = Auth.getToken()
+
   // if (!user?.username) {
-  if (false) {
+  // if (true) {
+  if (login == null) {
     return (
-      <h4 className="m-4 p-2">
-        You need to be logged in to see this. Use the navigation links above to
-        sign up or log in!
-      </h4>
+
+      <div>
+        <h1 className='mainMenuNotLogged text-center p-3'>You need to be logged in to see the live menu, please register or login.</h1>
+        <div className="row px-5 py-3">
+          <div className="homeMenuBtn mt-5 p-2 text-center" onClick={(event) => navigate("/login")}>Login</div>
+        </div>
+        <div className="row px-5 py-3">
+          <div className="homeMenuBtn mt-5 p-2 text-center" onClick={(event) => navigate("/register")}>Register</div>
+        </div>
+      </div>
     );
   }
 
