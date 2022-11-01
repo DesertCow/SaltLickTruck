@@ -32,6 +32,18 @@ const orderSchema = new Schema({
     // trim: true,
     unique: false,
   },
+  payment: {
+    type: Boolean,
+    // required: true,
+    // trim: true,
+    unique: false,
+  },
+  customerName: {
+    type: String,
+    // required: true,
+    // trim: true,
+    unique: false,
+  },
 });
 
 const Orders = model('Order', orderSchema);

@@ -22,6 +22,9 @@ const ListOfOrders = () => {
 
     var finalItemsArray = []
 
+    console.log("==== Order Array ====")
+    console.log(orderArray)
+
     itemArray.forEach(finalItemGroom);
 
     function finalItemGroom(item, index) {
@@ -51,6 +54,11 @@ const ListOfOrders = () => {
         <div className="orderStatusBox p-2">
           <h1 className="mt-0">Order Number: {orderArray[0]}</h1>
         </div>
+        <div className="customerNameBox p-2 m-2 d-flex">
+          <h1 className="mt-0 col">Customer: {orderArray[5]}</h1>
+          <h1 className="mt-0">Paid: {orderArray[4]}</h1>
+        </div>
+        <hr></hr>
 
         <h1 className="mt-3 itemsTitle text-center">Items:
           <div className='text-left m-0'>
@@ -103,9 +111,12 @@ const ListOfOrders = () => {
   //TODO: Get Each Order From Database
   var { loading, data } = useQuery(OrderList_Q)
 
-  // console.log(data.getAllOrders)
+
 
   if (!loading) {
+
+    console.log("GET ALL ORDERS!")
+    console.log(data.getAllOrders)
 
     console.log(data.getAllOrders[1])
 

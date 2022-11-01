@@ -118,6 +118,23 @@
   opacity: 90%;
 }
 
+.NotAuthHeader {
+  margin-top: 90%;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.customerNameBox {
+  border-style: solid;
+  border-width: 3px;
+  border-color: #a0a0a0;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
 .submittedReady {
   background-color: #00ff00;
   font-weight: 700;
@@ -286,6 +303,11 @@
 
 .navFooterHomeIcon {
   width: auto;
+  max-height: 45px;
+}
+
+.navFooterHomeIconAdmin {
+  width: 35px;
 }
 
 .NavBarClass {

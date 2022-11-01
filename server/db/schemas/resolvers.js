@@ -125,7 +125,7 @@ const resolvers = {
 
         // console.log("Order(" + i + ") " + ordersData[i])
 
-        orderList[i] = ordersData[i]._id + "|" + JSON.parse(ordersData[i].items) + "|" + JSON.parse(ordersData[i].qty) + "|" + ordersData[i].status
+        orderList[i] = ordersData[i]._id + "|" + JSON.parse(ordersData[i].items) + "|" + JSON.parse(ordersData[i].qty) + "|" + ordersData[i].status + "|" + ordersData[i].payment + "|" + ordersData[i].customerName
       }
 
       //* Return List to Client
@@ -220,6 +220,9 @@ const resolvers = {
       let prices = JSON.stringify(CART.prices)
       let bill = 0
       let status = "Submitted"
+      let payment = true
+
+      let customerName = "Zara Cottontail"
 
       for (let i = 0; i < CART.items.length; i++) {
         // console.log("CART Price (" + i + ")")
@@ -234,7 +237,7 @@ const resolvers = {
 
       //TODO: Add payment status in Create. When Stripe respond 200 (Unpaid -> Paid)
 
-      const orderRes = await Orders.create({ items, qty, prices, bill, status })
+      const orderRes = await Orders.create({ items, qty, prices, bill, status, payment, customerName })
 
       console.log("======= orderRes ======")
       console.log(orderRes)
