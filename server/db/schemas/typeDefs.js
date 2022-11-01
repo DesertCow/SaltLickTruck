@@ -11,6 +11,7 @@ const typeDefs = gql`
     getMainMenu: [String]
     getSubMenu(menuID: Int): subMenu
     getItemInfo(itemID: Int): Item
+    getAllOrders: [String]
   }
 
   type Mutation {
