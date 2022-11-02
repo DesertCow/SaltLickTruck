@@ -200,7 +200,7 @@ const resolvers = {
       //* ------------------------------------------------------------------------------------------------
       //*                                         LOCAL CHECKOUT ZONE
       //* ------------------------------------------------------------------------------------------------
-      console.log("======= Local Checkout Start ======")
+      // console.log("======= Local Checkout Start ======")
 
 
       let items = JSON.stringify(CART.items)
@@ -210,7 +210,8 @@ const resolvers = {
       let status = "Submitted"
       let payment = true
 
-      let customerName = "Zara Cottontail"
+      // let customerName = "Zara Cottontail"
+      let customerName = CART.customerName
 
       for (let i = 0; i < CART.items.length; i++) {
         // console.log("CART Price (" + i + ")")
