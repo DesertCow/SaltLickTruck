@@ -52,6 +52,14 @@ import MainFooter from './components/Footer';
 //   };
 // });
 
+import socketIO from 'socket.io-client';
+// const socket = socketIO.connect('http://192.168.25.2:3002');
+const socket = socketIO.connect('http://localhost:3000');
+
+socket.on("hello", (arg) => {
+  console.log(arg); // world
+});
+
 function SubMenuPage() {
 
   //* Get the userId param from the URL.
@@ -60,8 +68,8 @@ function SubMenuPage() {
 }
 
 const client = new ApolloClient({
-  // uri: 'http://192.168.25.22:4001/graphql',
-  uri: 'https://saltlicktruck.herokuapp.com/graphql',
+  uri: 'http://192.168.25.22:4001/graphql',
+  // uri: 'https://saltlicktruck.herokuapp.com/graphql',
   cache: new InMemoryCache(),
 });
 
