@@ -112,7 +112,7 @@ const resolvers = {
       for (i = 0; i < ordersData.length; i++) {
 
         orderList[i] = ordersData[i]._id + "|" + JSON.parse(ordersData[i].items) + "|" + JSON.parse(ordersData[i].qty) + "|" + ordersData[i].status + "|" + ordersData[i].payment + "|" + ordersData[i].customerName
-     
+
       }
 
       //* Return List to Client
@@ -121,12 +121,12 @@ const resolvers = {
   },
 
   Mutation: {
-    createUser: async (parent, { email, password }) => {
+    createUser: async (parent, { email, password, customerName }) => {
 
-      console.log("\n\x1b[33mCreate New User (MongoDB)\x1b[0m\n\x1b[0m\n   Password: \x1b[35m" + password + "\x1b[0m\n   Email: " + email);
+      console.log("\n\x1b[33mCreate New User (MongoDB)\x1b[0m\n\x1b[0m\n   Password: \x1b[35m" + password + "\x1b[0m\n   Email: " + email + "\x1b[0m\n   Email: " + customerName);
 
       //* Request Database create a new "User"
-      const user = await UserMongo.create({ email, password });
+      const user = await UserMongo.create({ email, password, customerName });
 
       //TODO: Enable way to print this when it fails...
       //console.log("\x1b[35mAccount Creation Failed: Email already associated with an account \x1b[0m");
@@ -175,7 +175,7 @@ const resolvers = {
       //TODO: Confirm new email does not already exists in DB
       //TODO: Add Try/Catch logic to print failed update to console
       console.log("\n\x1b[33mUpdate User Email (MongoDB)\x1b[0m\n\x1b[0m\n   Email: \x1b[35m" + email + "\n\x1b[0m   ID: \x1b[35m" + _id);
-      
+
       await UserMongo.updateOne({ _id: _id }, { $set: { email: email } })
 
       console.log("\x1b[32m   Email Update Successful\x1b[0m\n")
@@ -200,7 +200,7 @@ const resolvers = {
       //* ------------------------------------------------------------------------------------------------
       //*                                         LOCAL CHECKOUT ZONE
       //* ------------------------------------------------------------------------------------------------
-      console.log("======= Local Checkout Start ======")
+      // console.log("======= Local Checkout Start ======")
 
 
       let items = JSON.stringify(CART.items)
@@ -210,7 +210,8 @@ const resolvers = {
       let status = "Submitted"
       let payment = true
 
-      let customerName = "Zara Cottontail"
+      // let customerName = "Zara Cottontail"
+      let customerName = CART.customerName
 
       for (let i = 0; i < CART.items.length; i++) {
         // console.log("CART Price (" + i + ")")

@@ -181,9 +181,9 @@ function Profile() {
   return (
     <div>
 
-      <h1 className="px-4 pt-4 text-center cartTitle">Welcome</h1>
-      {/* <h1 className="px-4 pt-4 text-center cartTitle">{userName}</h1> */}
-      <hr></hr>
+      <h1 className="px-4 pt-4 text-center cartTitle">~ Welcome ~</h1>
+      <h1 className="px-4 px-2 text-center customerNameCart">{login.user.customerName}.</h1>
+      <hr className="mb-3 mt-0"></hr>
       <div className="text-center">
         <img src={require("../img/TempUserPic.jpg")}
           className="userProfilePicture"

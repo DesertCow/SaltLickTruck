@@ -7,6 +7,7 @@ import { useCart } from "react-use-cart";
 
 import { CHECKOUT } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
+import Auth from '../utils/auth';
 
 //* Component Import
 // import Header from '../components/Header';
@@ -25,6 +26,11 @@ function Cart() {
     event.preventDefault();
 
 
+    let login = Auth.getToken()
+
+    login = JSON.parse(login)
+
+
     // console.log(JSON.stringify(items))
     // let FinalCart = items
     // let FinalCart = JSON.stringify(items)
@@ -37,14 +43,20 @@ function Cart() {
     let qlItems = []
     let qlPrices = []
     let qlQty = []
+    // let qlCustomerName = []
 
     let itemCount = items.length
+    // console.log("LOGIN@@@@@@@@@@@@@")
+    // console.log(login.user.customerName)
+    // let qlCustomerName = "HARD CODE NAME"
 
     for (let i = 0; i < itemCount; i++) {
 
       qlItems[i] = items[i].name
       qlPrices[i] = items[i].price
       qlQty[i] = items[i].quantity
+      // qlCustomerName[i] = login.customerName
+
 
     }
 
@@ -55,7 +67,7 @@ function Cart() {
     // let qlQty = [1, 1, 2, 1]
 
     const { data } = await userCheckout({
-      variables: { items: qlItems, prices: qlPrices, qty: qlQty },
+      variables: { items: qlItems, prices: qlPrices, qty: qlQty, customerName: login.user.customerName },
     });
 
     console.log("========= Order Recived! =========")
