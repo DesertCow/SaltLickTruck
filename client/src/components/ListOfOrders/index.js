@@ -1,15 +1,21 @@
 import { Button } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
+// import { useMutation } from '@apollo/client';
 
 import { OrderList_Q } from '../../utils/queries';
-import { useQuery } from '@apollo/client';
+import { ORDER_UPDATE_Q } from '../../utils/mutations';
+import { useQuery, useMutation } from '@apollo/client';
 
 import LoadingSplash from '../../components/LoadingSplash';
+
+
+
 
 // const MainMenu = ({ finalArray }) => {
 const ListOfOrders = () => {
 
   var orderList = []
+  const [orderUpdate, { orderData }] = useMutation(ORDER_UPDATE_Q);
 
   function newOrderRow(item, index) {
 
@@ -38,11 +44,20 @@ const ListOfOrders = () => {
 
     }
 
-    function updateOrderStatus(index, event) {
+    // function updateOrderStatus(index, event, status) {
+    const updateOrderStatus = async (index, event, status, orderNumber) => {
 
       console.log("Update Order Status!")
       console.log(event)
       console.log(index)
+      console.log(status)
+      console.log(orderNumber)
+
+      const { data } = await orderUpdate({
+        variables: { orderNumber: orderNumber, newOrderStatus: status },
+      });
+
+
 
     }
 
@@ -86,13 +101,13 @@ const ListOfOrders = () => {
               Update Status
             </button>
             <ul className="dropdown-menu p-2 dropMenuKitchen">
-              <li><p className="dropdown-item submittedDrop text-center mt-2" onClick={(event) => updateOrderStatus(index, event)}>Submitted</p></li>
-              <li><p className="dropdown-item submittedWIP text-center mt-2" onClick={(event) => updateOrderStatus(index, event)}>WIP</p></li>
-              <li><p className="dropdown-item submittedReady text-center mt-2" onClick={(event) => updateOrderStatus(index, event)}>Ready</p></li>
-              <li><p className="dropdown-item submittedPickedUp text-center mt-2" onClick={(event) => updateOrderStatus(index, event)}>Picked Up</p></li>
-            </ul>
-          </div>
-        </div>
+              <li><p className="dropdown-item submittedDrop text-center mt-2" onClick={(event) => updateOrderStatus(index, event, "Submitted", String(orderArray[0]))}>Submitted</p></li>
+            <li><p className="dropdown-item submittedWIP text-center mt-2" onClick={(event) => updateOrderStatus(index, event, "WIP", String(orderArray[0]))}>WIP</p></li>
+            <li><p className="dropdown-item submittedReady text-center mt-2" onClick={(event) => updateOrderStatus(index, event, "Ready", String(orderArray[0]))}>Ready</p></li>
+            <li><p className="dropdown-item submittedPickedUp text-center mt-2" onClick={(event) => updateOrderStatus(index, event, "Picked Up", String(orderArray[0]))}>Picked Up</p></li >
+          </ul >
+        </div >
+      </div >
 
       </li >)
 
@@ -108,54 +123,54 @@ const ListOfOrders = () => {
   }
 
 
-  //TODO: Get Each Order From Database
-  var { loading, data } = useQuery(OrderList_Q)
+//TODO: Get Each Order From Database
+var { loading, data } = useQuery(OrderList_Q)
 
 
 
-  if (!loading) {
+if (!loading) {
 
-    // console.log("GET ALL ORDERS!")
-    // console.log(data.getAllOrders)
+  // console.log("GET ALL ORDERS!")
+  // console.log(data.getAllOrders)
 
-    // console.log(data.getAllOrders[1])
+  // console.log(data.getAllOrders[1])
 
-    data.getAllOrders.forEach(newOrderRow);
+  data.getAllOrders.forEach(newOrderRow);
 
-  }
+}
 
-  // console.log(data[0])
-
-
-  //TODO: Create a row for each order and fill with order data
-  // data.forEach(newOrderRow);
+// console.log(data[0])
 
 
-  //TODO: Add DropDown/Button to update order status
+//TODO: Create a row for each order and fill with order data
+// data.forEach(newOrderRow);
 
-  if (loading) {
 
-    return (
-      <div>
-        <LoadingSplash />
+//TODO: Add DropDown/Button to update order status
 
-        <footer className="mt-5">
-          {/* <MainFooter /> */}
-          {/* <NavFooter /> */}
-        </footer>
-      </div>
-
-    )
-
-  }
-
+if (loading) {
 
   return (
-    <ul className='mx-2 p-2'>
-      {/* <h1>test List of orders</h1> */}
-      {orderList}
-    </ul>
+    <div>
+      <LoadingSplash />
+
+      <footer className="mt-5">
+        {/* <MainFooter /> */}
+        {/* <NavFooter /> */}
+      </footer>
+    </div>
+
   )
+
+}
+
+
+return (
+  <ul className='mx-2 p-2'>
+    {/* <h1>test List of orders</h1> */}
+    {orderList}
+  </ul>
+)
 };
 
 export default ListOfOrders;

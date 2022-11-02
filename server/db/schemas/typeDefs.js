@@ -20,6 +20,7 @@ const typeDefs = gql`
     updateEmail(_id: String!, email: String!): Auth
     updatePassword(_id: String!, password: String!): Auth
     checkout(items: [String],prices: [Float],qty: [Float], customerName: String): String
+    updateOrderStatus(orderNumber: String, newOrderStatus: String): Order
   }
 
   type Item {
@@ -35,6 +36,17 @@ const typeDefs = gql`
   type UserCreated {
     password: String
     user: User
+  }
+
+  type Order {
+    _id: String
+    items: String
+    qty: String
+    prices: String
+    bill: String
+    status: String
+    payment: String
+    customerName: String
   }
 
   type subMenu {

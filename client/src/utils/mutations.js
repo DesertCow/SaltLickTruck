@@ -59,3 +59,18 @@ export const CHECKOUT = gql`
     checkout(items: $items, prices: $prices, qty: $qty, customerName: $customerName)
   }
 `;
+
+export const ORDER_UPDATE_Q = gql`
+  mutation UpdateOrderStatus($orderNumber: String, $newOrderStatus: String) {
+    updateOrderStatus(orderNumber: $orderNumber, newOrderStatus: $newOrderStatus) {
+      _id
+      items
+      qty
+      prices
+      bill
+      status
+      payment
+      customerName
+    }
+  }
+`;
