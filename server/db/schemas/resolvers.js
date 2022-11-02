@@ -10,8 +10,6 @@ const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const { signToken } = require('../../utils/auth');
 
-const { config } = require('dotenv');
-
 const stripe = require('stripe')(process.env.STRIPE_KEY);
 
 // stripe.products.create({
@@ -166,9 +164,27 @@ const resolvers = {
 
       console.log("\x1b[32m   Login Successful\x1b[0m\n")
 
+      //* Logic to check for admin status
+
+      // console.log("ADMIN ENV EMAIL")
+      // console.log(process.env.ADMIN_ACCOUNT)
+
+      let admin = false
+
+      if (process.env.ADMIN_ACCOUNT == email) {
+        console.log("\n========================================")
+        console.log("=\x1b[31m    WARNING ADMIN LOG IN DETECTED!\x1b[0m    =")
+        console.log("========================================")
+        admin = true
+      }
+      else {
+        admin = false
+      }
+
+
       //* Return Token to User
       const token = signToken(user);
-      return { token, user };
+      return { token, user, admin };
     },
     updateEmail: async (parent, { email, _id }) => {
 

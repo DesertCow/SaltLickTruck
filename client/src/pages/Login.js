@@ -12,11 +12,14 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
+
 const Login = (props) => {
 
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { data }] = useMutation(LOGIN_Q);
   const navigate = useNavigate();
+
+  const [adminStatus, setAdminStatus] = useState(false);
 
   //* Toastify Config
   const toastOptions = {
@@ -58,13 +61,29 @@ const Login = (props) => {
 
       Auth.login(JSON.stringify(data.login));
 
+      console.log("Admin Status: " + data.login.admin)
+
       navigate("/main_Menu")
       toast.success("Login Successful!", toastOptions);
+
+      if (data.login.admin) {
+        toast.warn("Admin Access!", toastOptions);
+        // setAdminStatus({ adminAccess: true })
+        // setAdminStatus(true)
+        setAdminStatus(true)
+
+
+        console.log("============== Admin Hook =====================")
+        console.log(adminStatus)
+        // console.log(this.state.adminState)
+      }
 
     } catch (e) {
       toast.error("Login Failed!", toastOptions);
       // console.error(e);
     }
+
+
 
     // clear form values
     setFormState({
