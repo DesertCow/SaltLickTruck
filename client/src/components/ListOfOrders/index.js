@@ -1,15 +1,21 @@
 import { Button } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
+// import { useMutation } from '@apollo/client';
 
 import { OrderList_Q } from '../../utils/queries';
-import { useQuery } from '@apollo/client';
+import { ORDER_UPDATE_Q } from '../../utils/mutations';
+import { useQuery, useMutation } from '@apollo/client';
 
 import LoadingSplash from '../../components/LoadingSplash';
+
+
+
 
 // const MainMenu = ({ finalArray }) => {
 const ListOfOrders = () => {
 
   var orderList = []
+  const [orderUpdate, { orderData }] = useMutation(ORDER_UPDATE_Q);
 
   function newOrderRow(item, index) {
 
@@ -38,11 +44,21 @@ const ListOfOrders = () => {
 
     }
 
-    function updateOrderStatus(index, event) {
+    // function updateOrderStatus(index, event, status) {
+    const updateOrderStatus = async (index, event, status) => {
 
       console.log("Update Order Status!")
       console.log(event)
       console.log(index)
+      console.log(status)
+
+      let hardCodeID = "6361f6e600d73d6598fb59c4"
+
+      const { data } = await orderUpdate({
+        variables: { orderNumber: hardCodeID, newOrderStatus: status },
+      });
+
+
 
     }
 
@@ -86,10 +102,10 @@ const ListOfOrders = () => {
               Update Status
             </button>
             <ul className="dropdown-menu p-2 dropMenuKitchen">
-              <li><p className="dropdown-item submittedDrop text-center mt-2" onClick={(event) => updateOrderStatus(index, event)}>Submitted</p></li>
-              <li><p className="dropdown-item submittedWIP text-center mt-2" onClick={(event) => updateOrderStatus(index, event)}>WIP</p></li>
-              <li><p className="dropdown-item submittedReady text-center mt-2" onClick={(event) => updateOrderStatus(index, event)}>Ready</p></li>
-              <li><p className="dropdown-item submittedPickedUp text-center mt-2" onClick={(event) => updateOrderStatus(index, event)}>Picked Up</p></li>
+              <li><p className="dropdown-item submittedDrop text-center mt-2" onClick={(event) => updateOrderStatus(index, event, "Submitted")}>Submitted</p></li>
+              <li><p className="dropdown-item submittedWIP text-center mt-2" onClick={(event) => updateOrderStatus(index, event, "WIP")}>WIP</p></li>
+              <li><p className="dropdown-item submittedReady text-center mt-2" onClick={(event) => updateOrderStatus(index, event, "Ready")}>Ready</p></li>
+              <li><p className="dropdown-item submittedPickedUp text-center mt-2" onClick={(event) => updateOrderStatus(index, event, "Picked Up")}>Picked Up</p></li>
             </ul>
           </div>
         </div>
