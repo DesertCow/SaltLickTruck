@@ -47,6 +47,7 @@ const typeDefs = gql`
   type Auth {
     token: ID!
     user: User
+    admin: Boolean
   }
 
   type MainMenu {
