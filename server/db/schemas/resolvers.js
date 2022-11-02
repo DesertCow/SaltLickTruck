@@ -337,6 +337,31 @@ const resolvers = {
       // return orderRes
 
 
+    },
+    updateOrderStatus: async (parent, { orderNumber, newOrderStatus }) => {
+
+      console.log("\n\x1b[33mOrder Status Update (MongoDB)\x1b[0m\n\x1b[0m   Order Number: \x1b[35m" + orderNumber + "\n\x1b[0m   Updated Status: \x1b[35m" + newOrderStatus + "\x1b[0m\n");
+
+
+      // console.log("Order Number: " + orderNumber)
+      // console.log("Order Status Update: " + newOrderStatus)
+
+
+      // const orderRes = await Orders.findOne({ items, qty, prices, bill, status, payment, customerName })
+      // const orderRes = await Orders.findOne({ _id: orderNumber })
+      let orderRes = await Orders.findOneAndUpdate({ _id: orderNumber }, { $set: { status: newOrderStatus } })
+
+      // console.log("Order Info")
+      // console.log(orderRes)
+
+      // let finalItems = orderRes.items
+
+      // orderRes = JSON.stringify(orderRes)
+      // return orderRes
+
+      // return { _id: orderRes._id, email: orderRes.email, password, loginValid, loginToken, customerName };
+      return { _id: orderNumber, items: orderRes.items, qty: orderRes.qty, prices: orderRes.prices, bill: orderRes.prices, status: orderRes.status, payment: orderRes.payment, customerName: orderRes.customerName };
+      // return ({})
     }
 
   },
