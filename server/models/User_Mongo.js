@@ -14,6 +14,11 @@ const userSchema = new Schema({
     required: true,
     trim: true,
   },
+  customerName: {
+    type: String,
+    required: true,
+    trim: true,
+  },
 });
 
 //* set up pre-save middleware to create password
