@@ -85,7 +85,7 @@ function Register() {
 
     // if (validateSignUp()) {
     if (true) {
-      const { email, password } = values;
+      const { email, password, customerName } = values;
 
       // console.log("User Data: " + email + "||" + username + "||" + password + "||" + passwordconfirm);
       // console.log("User Data: " + email + "||" + password);
@@ -141,6 +141,20 @@ function Register() {
           <form className="signup">
             {/* <h1 className="homeTitle text-center mt-4"> Salt Lick BBQ</h1> */}
             <h1 className="text-center welcometo mt-4 mb-5">Create Account</h1>
+
+            <div className="text-center registerdiv">
+              <p className="inputlabel">First Name + Last Initial</p>
+              <div className="">
+                <input
+                  className="startinputs"
+                  type="text"
+                  id="customerName"
+                  name="customerName"
+                  placeholder=""
+                  onChange={(e) => inputUpdated(e)}
+                />
+              </div>
+            </div>
 
             <div className="text-center">
               <div className="registerdiv">
@@ -201,7 +215,7 @@ function Register() {
 
               </div>
               <div>
-                <h1 className="tosText pb-2 px-2" for="tosBoxID">By signing up you are accepting the <a href="/TermsOfService">Terms Of Service</a> and <a href="/PrivacyPolicy">Privacy Policy.</a></h1>
+                <h1 className="tosText pb-2 px-2" htmlFor="tosBoxID">By signing up you are accepting the <a href="/TermsOfService">Terms Of Service</a> and <a href="/PrivacyPolicy">Privacy Policy.</a></h1>
               </div>
             </div>
           </div>

@@ -27,8 +27,12 @@
   margin-top: 90%;
 }
 
+.customerNameCart {
+  font-size: 50px;
+  font-family: 'Lakki Reddy', cursive;
+}
 .cartTitle {
-  font-size: 45px;
+  font-size: 33px;
   font-family: 'Lakki Reddy', cursive;
 }
 
