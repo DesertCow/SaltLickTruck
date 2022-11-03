@@ -79,7 +79,7 @@ const server_IO = app.listen(PORT, function () {
 
 const io = require("socket.io")(server_IO, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "http://192.168.25.22:3000",
     methods: ["GET", "POST"]
   }
 });
