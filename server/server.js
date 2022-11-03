@@ -65,11 +65,11 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-let PORT = 3000
+let PORT = 3002
 
 const server_IO = app.listen(PORT, function () {
-  console.log(`Listening on port ${PORT}`);
-  console.log(`http://localhost:${PORT}`);
+  // console.log(`\nSocketIO Server on port ${PORT}\n`);
+  // console.log(`http://localhost:${PORT}`);
 });
 
 
@@ -79,10 +79,12 @@ const server_IO = app.listen(PORT, function () {
 
 const io = require("socket.io")(server_IO, {
   cors: {
-    origin: "http://localhost:3002",
+    origin: "http://localhost:3000",
     methods: ["GET", "POST"]
   }
 });
+
+let socketIOboot = true
 
 
 // const socketIO = require('socket.io')(http, {
@@ -95,6 +97,10 @@ const io = require("socket.io")(server_IO, {
 
 io.on('connection', (socket) => {
   console.log(`⚡: ${socket.id} user just connected!`);
+
+  socket.emit("Connection Valid", "Welcome!");
+  socket.emit("Who Am I?", "Dude... Whats mine say?");
+
   socket.on('disconnect', () => {
     console.log('🔥: A user disconnected');
     socket.broadcast.emit('hi');
@@ -161,7 +167,7 @@ app.get('/', (req, res) => {
 
 // });
 
-console.log("Socket IO started!")
+// console.log("Socket IO started!")
 
 // app.use(express.static(path.join(__dirname, '../client/src/img')));
 
@@ -188,12 +194,17 @@ async function serverStart() {
         console.log("\n~~~       Server Status       ~~~")
         console.log('~~~ MongoDB Database [' + "\x1b[32mOnline\x1b[0m" + '] ~~~')
         console.log('~~~ SQL Database     [' + "\x1b[32mOnline\x1b[0m" + '] ~~~')
+
+        if (socketIOboot) {
+          console.log('~~~ SocketIO Server  [' + "\x1b[32mOnline\x1b[0m" + '] ~~~')
+        }
         // console.log('\x1b[30m~~~ SQL Connection Valid [' + mySQLport + '] ~~~\x1b[0m\n')
 
         //* Start GraphQL Server
         app.listen(graphQLport, () => {
-          console.log(`~~~ GraphQL API      [` + "\x1b[32mOnline\x1b[0m" + `] ~~~ \n\n\x1b[33mAPI Live:\x1b[0m http://localhost:${graphQLport}${server.graphqlPath}\n\n`);
+          console.log(`~~~ GraphQL API      [` + "\x1b[32mOnline\x1b[0m" + `] ~~~ \n\n\x1b[33m|    API   |\x1b[0m http://localhost:${graphQLport}${server.graphqlPath}`);
 
+          console.log(`\x1b[33m| SocketIO |\x1b[0m http://localhost:${PORT}\n\n`);
           //! Seed SWITCH
           // seedServer();
 

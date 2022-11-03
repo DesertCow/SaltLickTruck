@@ -11,6 +11,8 @@ const jwt = require("jsonwebtoken")
 const { signToken } = require('../../utils/auth');
 
 const stripe = require('stripe')(process.env.STRIPE_KEY);
+const socket = require("socket.io");
+
 
 // stripe.products.create({
 //   name: 'Starter Subscription',
@@ -30,6 +32,7 @@ const stripe = require('stripe')(process.env.STRIPE_KEY);
 // });
 
 const resolvers = {
+
 
   Query: {
     getMainMenu: async () => {
@@ -340,6 +343,8 @@ const resolvers = {
     },
     updateOrderStatus: async (parent, { orderNumber, newOrderStatus }) => {
 
+
+
       console.log("\n\x1b[33mOrder Status Update (MongoDB)\x1b[0m\n\x1b[0m   Order Number: \x1b[35m" + orderNumber + "\n\x1b[0m   Updated Status: \x1b[35m" + newOrderStatus + "\x1b[0m\n");
 
 
@@ -358,6 +363,10 @@ const resolvers = {
 
       // orderRes = JSON.stringify(orderRes)
       // return orderRes
+
+      socket.emit("OrderReady", "Order Number: " + orderNumber);
+      // socket.broadcast.emit("OrderReady");
+      // socket.emit("OrderReady");
 
       // return { _id: orderRes._id, email: orderRes.email, password, loginValid, loginToken, customerName };
       return { _id: orderNumber, items: orderRes.items, qty: orderRes.qty, prices: orderRes.prices, bill: orderRes.prices, status: orderRes.status, payment: orderRes.payment, customerName: orderRes.customerName };

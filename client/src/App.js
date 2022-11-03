@@ -54,10 +54,14 @@ import MainFooter from './components/Footer';
 
 import socketIO from 'socket.io-client';
 // const socket = socketIO.connect('http://192.168.25.2:3002');
-const socket = socketIO.connect('http://localhost:3000');
+const socket = socketIO.connect('http://localhost:3002');
 
-socket.on("hello", (arg) => {
-  console.log(arg); // world
+socket.on("Connection Valid", (arg) => {
+  console.log(arg);
+});
+
+socket.on("OrderReady", (arg) => {
+  console.log(arg);
 });
 
 function SubMenuPage() {
