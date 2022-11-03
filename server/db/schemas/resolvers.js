@@ -364,7 +364,27 @@ const resolvers = {
       // orderRes = JSON.stringify(orderRes)
       // return orderRes
 
-      socket.emit("OrderReady", "Order Number: " + orderNumber);
+      // const io = require("socket.io")(server_IO, {
+      //   cors: {
+      //     origin: "http://localhost:3000",
+      //     methods: ["GET", "POST"]
+      //   }
+      // });
+
+
+      // io.on('connection', (socket) => {
+      //   console.log(`⚡: ${socket.id} user just connected!`);
+
+      //   socket.emit("Order Status Updated");
+      //   // socket.emit("Who Am I?", "Dude... Whats mine say?");
+
+      //   socket.on('disconnect', () => {
+      //     console.log('🔥: A user disconnected');
+      //     socket.broadcast.emit('hi');
+      //   });
+      // });
+
+
       // socket.broadcast.emit("OrderReady");
       // socket.emit("OrderReady");
 
