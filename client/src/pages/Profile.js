@@ -182,14 +182,14 @@ function Profile() {
     <div>
 
       <h1 className="px-4 pt-4 text-center cartTitle">~ Welcome ~</h1>
-      <h1 className="px-4 px-2 text-center customerNameCart">{login.user.customerName}.</h1>
       <hr className="mb-3 mt-0"></hr>
       <div className="text-center">
         <img src={require("../img/TempUserPic.jpg")}
           className="userProfilePicture"
           alt="User Profile Pictur3" />
       </div>
-      <hr></hr>
+      <h1 className="mt-4 text-center customerNameCart">{login.user.customerName}.</h1>
+      <hr lassName="m-0" ></hr>
       <div className="mt-3 text-center profileUserInfo">
         {/* <h3 className="mb-4">Name: {userName}</h3> */}
         <h1 className="mb-3 text-center profileUserInfo">Update Email</h1>
