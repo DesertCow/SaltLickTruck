@@ -10,6 +10,7 @@ export const LOGIN_Q = gql`
         _id
         email
         password
+        customerName
       }
     }
   }

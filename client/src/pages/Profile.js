@@ -178,6 +178,10 @@ function Profile() {
     Auth.logout()
   }
 
+  // console.log()
+  console.log("Customer Name: " + login.user.customerName)
+  console.log(login.user)
+
   return (
     <div>
 
@@ -189,7 +193,7 @@ function Profile() {
           alt="User Profile Pictur3" />
       </div>
       <h1 className="mt-4 text-center customerNameCart">{login.user.customerName}.</h1>
-      <hr lassName="m-0" ></hr>
+      <hr className="m-0" ></hr>
       <div className="mt-3 text-center profileUserInfo">
         {/* <h3 className="mb-4">Name: {userName}</h3> */}
         <h1 className="mb-3 text-center profileUserInfo">Update Email</h1>

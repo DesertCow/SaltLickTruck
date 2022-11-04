@@ -211,6 +211,15 @@ const resolvers = {
       console.log("\x1b[32m   Password Update Successful\x1b[0m\n")
 
     },
+    updateName: async (parent, { name, _id }) => {
+
+      console.log("\n\x1b[33mUpdate User Name (MongoDB)\x1b[0m\n\x1b[0m\n   Name: \x1b[35m" + name + "\n\x1b[0m   ID: \x1b[35m" + _id);
+
+      await UserMongo.updateOne({ _id: _id }, { $set: { customerName: name } })
+
+      console.log("\x1b[32m   Name Update Successful\x1b[0m\n")
+
+    },
     checkout: async (parent, CART) => {
 
       //* ------------------------------------------------------------------------------------------------
