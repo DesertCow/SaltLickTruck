@@ -19,8 +19,6 @@ const Login = (props) => {
   const [login, { data }] = useMutation(LOGIN_Q);
   const navigate = useNavigate();
 
-  const [adminStatus, setAdminStatus] = useState(false);
-
   //* Toastify Config
   const toastOptions = {
     position: "top-center",
@@ -68,22 +66,13 @@ const Login = (props) => {
 
       if (data.login.admin) {
         toast.warn("Admin Access!", toastOptions);
-        // setAdminStatus({ adminAccess: true })
-        // setAdminStatus(true)
-        setAdminStatus(true)
         Auth.adminSet(true)
-
-        console.log("============== Admin Hook =====================")
-        console.log(adminStatus)
-        // console.log(this.state.adminState)
       }
 
     } catch (e) {
       toast.error("Login Failed!", toastOptions);
       // console.error(e);
     }
-
-
 
     // clear form values
     setFormState({
