@@ -10,6 +10,7 @@ export const LOGIN_Q = gql`
         _id
         email
         password
+        customerName
       }
     }
   }
@@ -44,6 +45,17 @@ export const EMAIL_UPDATE = gql`
   mutation Mutation($id: String!, $email: String!) {
     updateEmail(_id: $id, email: $email) {
       token
+    }
+  }
+`;
+
+export const NAME_UPDATE = gql`
+  mutation Mutation($id: String!, $name: String!) {
+    updateName(_id: $id, name: $name) {
+      token
+      user {
+        customerName
+      }
     }
   }
 `;

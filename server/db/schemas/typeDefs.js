@@ -19,6 +19,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     updateEmail(_id: String!, email: String!): Auth
     updatePassword(_id: String!, password: String!): Auth
+    updateName(_id: String!, name: String!): Auth
     checkout(items: [String],prices: [Float],qty: [Float], customerName: String): String
     updateOrderStatus(orderNumber: String, newOrderStatus: String): Order
   }
