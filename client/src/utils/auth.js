@@ -34,8 +34,17 @@ class AuthService {
 
   logout() {
     localStorage.removeItem('id_token');
+    localStorage.removeItem('chuckwagon_flag');
     // window.location.reload();
     // return
+  }
+
+  adminCheck() {
+    return localStorage.getItem('chuckwagon_flag');
+  }
+
+  adminSet(flag) {
+    localStorage.setItem('chuckwagon_flag', flag);
   }
 }
 
