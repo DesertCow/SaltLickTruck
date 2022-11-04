@@ -71,7 +71,7 @@ const Login = (props) => {
         // setAdminStatus({ adminAccess: true })
         // setAdminStatus(true)
         setAdminStatus(true)
-
+        Auth.adminSet(true)
 
         console.log("============== Admin Hook =====================")
         console.log(adminStatus)

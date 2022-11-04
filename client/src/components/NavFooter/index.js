@@ -9,12 +9,8 @@ const NavFooter = () => {
 
   let login = Auth.getToken()
 
-  // TODO: Write Logic to validate with server if Admin is logged in
-  let adminValid = false;
-  // let adminValid = true;
 
-  // if (adminValid === true) {
-  if (login !== null) {
+  if (Auth.adminCheck()) {
 
     return (
       <div className="mb-0 mt-4">
