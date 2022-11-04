@@ -38,7 +38,7 @@ function Cart() {
     // console.log(FinalCart)
     // console.log(JSON.parse(FinalCart))
 
-    console.log(items)
+    // console.log(items)
 
     let qlItems = []
     let qlPrices = []

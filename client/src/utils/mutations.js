@@ -49,6 +49,17 @@ export const EMAIL_UPDATE = gql`
   }
 `;
 
+export const NAME_UPDATE = gql`
+  mutation Mutation($id: String!, $name: String!) {
+    updateName(_id: $id, name: $name) {
+      token
+      user {
+        customerName
+      }
+    }
+  }
+`;
+
 // export const CHECKOUT = gql`
 //   mutation CheckOut($finalCart: [String]) {
 //     checkOut(finalCart: $finalCart)

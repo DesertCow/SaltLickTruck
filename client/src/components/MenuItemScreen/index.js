@@ -78,17 +78,17 @@ const ItemMenu = ({ menuItemNumber }) => {
   const previousMenu = async (event) => {
     event.preventDefault();
     navigate(-1);
-    console.log("Previous Menu!")
+    // console.log("Previous Menu!")
 
   };
 
   const addToCart = async (event) => {
     event.preventDefault();
     // navigate("/main_Menu");
-    console.log(event)
+    // console.log(event)
 
-    console.log("Add to Cart! ID")
-    console.log(data.getItemInfo)
+    // console.log("Add to Cart! ID")
+    // console.log(data.getItemInfo)
     // data.getItemInfo.id = data.getItemInfo.itemID
     // console.log(data.getItemInfo.id)
     // setItems(data.getItemInfo)
@@ -96,11 +96,11 @@ const ItemMenu = ({ menuItemNumber }) => {
     //* Add Item To Cart
     addItem(data.getItemInfo)
 
-    console.log("======== Cart Array ======= ")
-    console.log(items)
-    console.log("======== Total ======= ")
+    // console.log("======== Cart Array ======= ")
+    // console.log(items)
+    // console.log("======== Total ======= ")
     // emptyCart()
-    console.log(totalItems)
+    // console.log(totalItems)
 
     // console.log()
 

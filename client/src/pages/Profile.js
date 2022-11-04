@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { PASS_UPDATE, EMAIL_UPDATE, LOGIN_Q } from '../utils/mutations';
+import { PASS_UPDATE, EMAIL_UPDATE, LOGIN_Q, NAME_UPDATE } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { useNavigate } from "react-router-dom";
@@ -19,9 +19,11 @@ function Profile() {
 
   const [emailState, setEmailState] = useState({ email: '', id: '' });
   const [passwordState, setPasswordState] = useState({ password: '', confirm: '', id: '' });
+  const [nameState, setNameState] = useState({ name: '', id: '' });
 
   const [updatePass, { passData }] = useMutation(PASS_UPDATE);
   const [updateEmail, { emailData }] = useMutation(EMAIL_UPDATE);
+  const [updateName, { nameData }] = useMutation(NAME_UPDATE);
   const [loginTwo, { loginData }] = useMutation(LOGIN_Q);
 
   const navigate = useNavigate();
@@ -101,6 +103,23 @@ function Profile() {
 
   }
 
+  //* update state based on form input changes
+  const handleNameChange = (event) => {
+    const { name, value } = event.target;
+
+    // console.log("New Password = " + value)
+
+    setNameState({
+      ...nameState,
+      [name]: value,
+      id: login.user._id,
+    });
+
+    // console.log("Name State = ")
+    // console.log(nameState)
+
+  }
+
 
   //* ########################### Button Handle ###########################
   const HandleEmailSubmit = async (event) => {
@@ -122,16 +141,7 @@ function Profile() {
       variables: { email: emailState.email, password: login.user.password },
     });
 
-    // console.log("Email Data")
-    // console.log(emailData)
-
-    console.log("Login Data")
-    console.log(data)
     Auth.login(JSON.stringify(data.login))
-
-    // login.user.email = emailData;
-
-    console.log(login.user.password)
 
     toast.success("Email Address Has Been Updated!", toastOptions);
 
@@ -150,28 +160,34 @@ function Profile() {
       variables: { ...passwordState },
     });
 
-    console.log(passData)
+    // console.log(passData)
 
     toast.success("Password Has Been Updated!", toastOptions);
+
+  }
+
+  const HandleNameSubmit = async (event) => {
+    event.preventDefault();
+
+    const { name, value } = event.target;
+
+    console.log("New Name Submitted!")
+    console.log("   Name: " + nameState.name)
+
+    const { nameData } = await updateName({
+      variables: { ...nameState },
+    });
+
+    // console.log(nameData)
+
+    toast.success("Name Has Been Updated!", toastOptions);
 
   }
 
   const HandleLogoutSubmit = async (event) => {
     event.preventDefault();
 
-    // const { name, value } = event.target;
-
     console.log("Logout Requested!")
-    // console.log(JSON.stringify(emailState))
-    // console.log("   " + emailState.email)
-    // console.log(name)
-    // console.log(value)
-
-    // const { emailData } = await updateEmail({
-    //   variables: { ...emailState },
-    // });
-
-    // console.log(emailData)
 
     toast.success("Logout Has Been Successful", toastOptions);
     navigate("/")
@@ -179,8 +195,8 @@ function Profile() {
   }
 
   // console.log()
-  console.log("Customer Name: " + login.user.customerName)
-  console.log(login.user)
+  // console.log("Customer Name: " + login.user.customerName)
+  // console.log(login.user)
 
   return (
     <div>
@@ -194,6 +210,23 @@ function Profile() {
       </div>
       <h1 className="mt-4 text-center customerNameCart">{login.user.customerName}.</h1>
       <hr className="m-0" ></hr>
+      <div className="mt-3 text-center profileUserInfo">
+        {/* <h3 className="mb-4">Name: {userName}</h3> */}
+        <h1 className="mb-3 text-center profileUserInfo">Update Name</h1>
+      </div>
+      {/* <hr></hr> */}
+      <div className="mx-4 text-center">
+        {/* <h3 className="emailUserInfo my-3">Email</h3> */}
+
+        {/* <h3 className="mt-0 p-2 mb-3">
+          <div className="emailUserInfo text-center pt-3 pb-3">{login.user.customerName}</div>
+        </h3> */}
+
+        <input type="email" className="form-control profileInputBox" id="updatedName"
+          aria-describedby="emailHelp" placeholder="First Name" name="name" onChange={(e) => handleNameChange(e)}></input>
+        <button type="button" className="btn btn-success mt-3 text-center" onClick={(event) => HandleNameSubmit(event)}>Update Email</button>
+      </div>
+      <hr></hr>
       <div className="mt-3 text-center profileUserInfo">
         {/* <h3 className="mb-4">Name: {userName}</h3> */}
         <h1 className="mb-3 text-center profileUserInfo">Update Email</h1>
