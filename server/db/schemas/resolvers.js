@@ -116,6 +116,29 @@ const resolvers = {
       //* Return List to Client
       return orderList
     },
+    getAllUserOrders: async (parent, { userName }) => {
+      // getAllUserOrders(parent, { userName }): async () => {
+
+      console.log("\n\x1b[33m[API-GET] - Get All User (" + userName + ") Orders\x1b[0m");
+
+      //* Query Database for Main Menu
+      // const ordersData = await Orders.find();
+      const ordersData = await Orders.find({ customerName: userName })
+
+
+      console.log(" ~~ Order Count = \x1b[31m" + ordersData.length + "  \x1b[0m~~")
+
+      //* Parse response data to create array of Menu Items
+      var orderList = []
+      for (i = 0; i < ordersData.length; i++) {
+
+        orderList[i] = ordersData[i]._id + "|" + JSON.parse(ordersData[i].items) + "|" + JSON.parse(ordersData[i].qty) + "|" + ordersData[i].status + "|" + ordersData[i].payment + "|" + ordersData[i].customerName
+
+      }
+
+      //* Return List to Client
+      return orderList
+    },
   },
 
   Mutation: {
