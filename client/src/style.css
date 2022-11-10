@@ -304,6 +304,26 @@
   /* margin-top: 30%; */
 }
 
+.orderStatusBtn {
+    font-weight: 600;
+  font-size: 25px;
+  background-color: #f8fc7a;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  opacity: 90%;
+  /* margin-top: 30%; */
+
+}
+
+.orderButtons {
+  margin-top: 10%;
+  /* margin-top: auto; */
+  margin-bottom: 30%;
+}
+
 .LoadingText {
   margin-top: 35%;
   font-size: 50px;

@@ -110,7 +110,7 @@ function OrderSubmit() {
 
 
   // console.log("Current User =" + JSON.stringify(currentUser))
-  console.log("Current User = " + currentUser.user.customerName)
+  // console.log("Current User = " + currentUser.user.customerName)
 
 
   // var { loading, data } = useQuery(UserOrderList_Q({ userName: currentUser.user.customerName }))
@@ -122,10 +122,10 @@ function OrderSubmit() {
   if (!loading) {
 
 
-    console.log("Raw Order Data: " + JSON.stringify(data))
+    // console.log("Raw Order Data: " + JSON.stringify(data))
 
-    console.log("Number of User Orders: " + data.getAllUserOrders.length)
-    console.log("User Order Data: " + data.getAllUserOrders[0])
+    // console.log("Number of User Orders: " + data.getAllUserOrders.length)
+    // console.log("User Order Data: " + data.getAllUserOrders[0])
 
     // Create New Order Item for each users Order 
     data.getAllUserOrders.forEach(newUserOrderRow);
