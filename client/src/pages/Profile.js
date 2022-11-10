@@ -224,7 +224,7 @@ function Profile() {
 
         <input type="email" className="form-control profileInputBox" id="updatedName"
           aria-describedby="emailHelp" placeholder="First Name" name="name" onChange={(e) => handleNameChange(e)}></input>
-        <button type="button" className="btn btn-success mt-3 text-center" onClick={(event) => HandleNameSubmit(event)}>Update Email</button>
+        <button type="button" className="btn btn-success mt-3 text-center" onClick={(event) => HandleNameSubmit(event)}>Update Name</button>
       </div>
       <hr></hr>
       <div className="mt-3 text-center profileUserInfo">

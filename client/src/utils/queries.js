@@ -36,3 +36,9 @@ export const OrderList_Q = gql`
   getAllOrders
 }
 `;
+
+export const UserOrderList_Q = gql`
+  query Query($userName: String) {
+    getAllUserOrders(userName: $userName)
+  }
+`;
