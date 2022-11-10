@@ -12,6 +12,7 @@ const typeDefs = gql`
     getSubMenu(menuID: Int): subMenu
     getItemInfo(itemID: Int): Item
     getAllOrders: [String]
+    getAllUserOrders(userName: String): [String]
   }
 
   type Mutation {

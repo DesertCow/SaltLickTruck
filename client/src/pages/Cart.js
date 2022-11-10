@@ -76,7 +76,7 @@ function Cart() {
 
     if (data.checkout) {
       emptyCart();
-      navigate("/user/orderSubmit");
+      navigate("/user/orderStatus");
     }
     // navigate("/user/orderSubmit");
     // navigate("/user/checkout");
@@ -161,10 +161,11 @@ function Cart() {
           </div>
 
           <hr></hr>
-          <div className="mt-5">
+          <div className="orderButtons">
             <div className="mx-4 p-3 text-center orderBtn" onClick={(event) => handleCheckout(event)}>Checkout</div>
-            <div className="mx-4 mt-4 p-3 text-center menuBtn" onClick={(event) => handleMenuReturn(event)}>Menu</div>
-            <div className="mx-4 mt-4 p-3 text-center clearBtn" onClick={(event) => handleCartClear(event)}>Clear Cart</div>
+            <div className="mx-4 mt-5 p-3 text-center menuBtn" onClick={(event) => handleMenuReturn(event)}>Menu</div>
+            <div className="mx-4 mt-5 p-3 text-center clearBtn" onClick={(event) => handleCartClear(event)}>Clear Cart</div>
+            <div className="mx-4 mt-5 p-3 text-center orderStatusBtn" onClick={(event) => navigate("/user/orderStatus")}>Order Status</div>
           </div>
         </div>
       </div>
@@ -178,7 +179,7 @@ function Cart() {
 
       </div>
 
-    </div>
+    </div >
 
 
 

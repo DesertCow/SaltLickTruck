@@ -12,7 +12,8 @@ function Kitchen() {
 
   const navigate = useNavigate();
 
-  if (Auth.adminCheck()) {
+  // if (Auth.adminCheck()) {
+  if (Auth.loggedIn()) {
 
     return (
 

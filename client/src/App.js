@@ -81,7 +81,7 @@ export default function App() {
           <Route path="/item/:menuItem" element={<ItemMenu />} />
           <Route path="/user/cart" element={<Cart />} />
           <Route path="/user/profile" element={<Profile />} />
-          <Route path="/user/orderSubmit" element={<OrderSubmit />} />
+          <Route path="/user/orderStatus" element={<OrderSubmit />} />
           <Route path="/kitchen" element={<Kitchen />} />
         </Routes>
       </Router>
