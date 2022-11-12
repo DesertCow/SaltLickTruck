@@ -449,6 +449,28 @@
   opacity: 94%;
 }
 
+.pdfDownload {
+  /* font-family:sans-serif; */
+  text-decoration: none;
+  font-size: 25px;
+
+  
+  font-size: 25px;
+  background-color: #ffffffe2;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  opacity: 94%;
+}
+
+.pdfDownloadText {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+}
+
 .clearBtn {
   font-weight: 600;
   font-size: 25px;

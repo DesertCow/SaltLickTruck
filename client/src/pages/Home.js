@@ -8,11 +8,14 @@ import MainFooter from '../components/Footer';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-var fileDownload = require('js-file-download');
+// var fileDownload = require('js-file-download');
 
 function Home() {
 
   const navigate = useNavigate();
+
+  // require(menuPDF);
+  // var menuPDF = require('../img/Salt_Lick_Menu_DWood-PDF.pdf');
 
   //* Toastify Config
   const toastOptions = {
@@ -47,13 +50,15 @@ function Home() {
 
   };
 
-  const pdfDownload = async (event) => {
-    event.preventDefault();
-    toast.info("Menu Download Started!", toastOptions);
-    fileDownload(require(menuPDF), "Salt_Lick_Menu_DWood-PDF.pdf");
-    // navigate("/main_Menu");
+  // const pdfDownload = async (event) => {
+  //   event.preventDefault();
+  //   toast.info("Menu Download Started!", toastOptions);
+  //   // fileDownload(menuPDF, "Salt_Lick_Menu_DWood-PDF.pdf");
+  //   fileDownload(menuPDF, "Salt_Lick_Menu_DWood-PDF.pdf");
 
-  };
+  //   // navigate("/main_Menu");
+
+  // };
 
   return (
     <div className="d-flex flex-column min-vh-100">
@@ -70,8 +75,9 @@ function Home() {
           <div className="homeMenuBtn p-2" onClick={(event) => handleMainMenu(event)}>Order</div>
         </div>
         <div className="row px-5 py-3">
-          <a href={menuPDF} className="homeMenuBtn p-2 text-decoration-none text-reset" download="Salt_Lick_Menu_DWood-PDF.pdf" target='_blank'>
-            <div type="submit" className="" onClick={(event) => pdfDownload(event)}>PDF Menu</div>
+          {/* <div className="homeMenuBtn p-2" onClick={(event) => pdfDownload(event)}>PDF Menu</div> */}
+          <a href={menuPDF} className="pdfDownload" download="Salt_Lick_Menu_DWood-PDF.pdf" target='_blank' rel="noreferrer">
+            <h1 type="submit" className="pdfDownloadText m-2">Menu Download (PDF)</h1>
           </a>
         </div>
         <div className="row px-5 py-3">
