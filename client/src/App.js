@@ -34,6 +34,8 @@ import Header from './components/Header';
 import MainFooter from './components/Footer';
 
 
+// require('./style.css')
+
 // Construct our main GraphQL API endpoint
 // const httpLink = createHttpLink({
 //   uri: '/graphql',
@@ -66,6 +68,12 @@ const client = new ApolloClient({
 });
 
 export default function App() {
+
+  require('./style.css')
+  require('./reset.css')
+  require('./img/Salt_Lick_Menu_DWood-PDF.pdf')
+
+
   return (
     <ApolloProvider client={client}>
       <Router>

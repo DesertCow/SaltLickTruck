@@ -4,12 +4,6 @@ module.exports = {
   mode: 'production',
   entry: path.resolve(__dirname, 'src', 'App.js'),
   // entry: './src/js/index.js',
-  output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
-    // path: path.resolve(__dirname, 'dist'),
-    // filename: 'bundle.js'
-  },
   module: {
     rules: [
       {
@@ -27,17 +21,19 @@ module.exports = {
         }
       },
       {
-        test: /\.(png|svg|jpg|gif|pdf)$/,
-        // test: /\.(png|svg|jpg|gif)$/,
+        // test: /\.(png|svg|jpg|gif|pdf)$/,
+        test: /\.(png|svg|jpg|gif)$/,
         use: [
           {
-            // loader: 'file-loader',
-            loader: 'raw-loader',
-            options: {
-              name: '[name].[ext]'
-            }
+            loader: 'file-loader',
+            // loader: 'raw-loader',
+            // options: {
+            //   name: '[name].[ext]'
+            // }
           }
         ]
+        test: /\.pdf$/i,
+        type: 'asset/resource',
       },
       // {
       //   test: /\.pdf$/i,
@@ -47,5 +43,11 @@ module.exports = {
       //   }
       // },
     ],
+  },
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist'),
+    // path: path.resolve(__dirname, 'dist'),
+    // filename: 'bundle.js'
   },
 };

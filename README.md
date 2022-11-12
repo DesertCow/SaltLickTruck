@@ -34,7 +34,7 @@
 
 ---
 
-  A comprehensive Food Truck management application with a customer ordering App and a separate "In Kitchen" App (React) for order execution and application administration built using MongoDB, Express, React, and NodeJS (MERN Stack).
+  Chuckwagon is A comprehensive Food Truck management application with a customer ordering App and a separate "In Kitchen" App (React) for order execution and application administration built using MongoDB, Express, React, and NodeJS (MERN Stack).
 <br>
 <br>
 
@@ -45,36 +45,39 @@
 
 <br>
 
-* User (Auth0)
+* User Accounts
   * Sign Up
   * Sign-In
-  * Password Recovery
+  * ~~Password Recovery~~
+  * Update
+    * Name
+    * Email
+    * Password
 
 <br>
 
 * Database
-  * Login (Auth0)
+  * Login
   * User Profile
-  * Order Data
-  * Analytics
+  * ~~Order Data~~
+  * ~~Analytics~~
 
 <br>
 
 * Kitchen View
   * Display Orders
-  * Est Wait Times
-  * Real Time Order Change
-  * Order Close Out Tool
+  * ~~Est Wait Times~~
+  * ~~Order Change/Update~~
 
 <br>
 
-* Payment System (Stripe)
-  * Store payment to user profile
+* ~~Payment System (Stripe)~~
+  * ~~Store payment to user profile~~
 
 <br>
 
 * Admin
-  * TBD
+  * ~~Create/Delete/Update Accounts~~
 
 <br>
 <br>
@@ -126,16 +129,41 @@ npm init
  
 npm install
 
-## Configure Database Connection via Babble-Exchange/.env
-## Expected Database Name = babble_DB
-## CLEARDB_DATABASE_URL = "mysql://root:password@localhost/babble_DB"
+## Define .env File ##
 
-npm run deploy
-
-npm start
+npm run start
 
 
 ````
+
+<br>
+<br>
+
+## [ENV File](#table-of-contents)
+  ----
+```
+
+
+### SQL Database Config ###
+DB_HOST="containers-us-west-69.railway.app"
+DB_HOSTPORT="7979"
+DB_PASSWORD="FnaicIT3mvafdsKjvsjJ2jL"
+DB_USER="root"
+DB_NAME="railway"
+
+### MongoDB Database Config ###
+MONGDB_URI="mongodb://mongo:6yzerXr8909CV6XpgA@containers-us-west-69.railway.app:6743/"
+
+### Secret Access Token ###
+*** Add Links on how to generaete valid access Tokens
+ACCESS_TOKEN_SECRET=""
+REFRESH_TOKEN_SECRET=""
+
+### Define Admin Email ###
+ADMIN_ACCOUNT="test2@gmail.com"
+
+
+```
 
 <br>
 <br>
@@ -144,6 +172,25 @@ npm start
 
   ----
 
+* Software Stack
+  * Databases
+    * SQL
+    * MongoDB
+  * Server (Node)
+      * Packages
+        * Package 1
+        * Package 2
+        * Package 3
+        * Package 4
+  * Client (React)
+    * Packages
+      * Package 1
+      * Package 2
+      * Package 3
+      * Package 4
+
+<br>
+
 * Hardware Stack
   * TBD
   * TBD
@@ -151,17 +198,7 @@ npm start
   * TBD
   * TBD
 
-<br>
 
-* Software Stack
-  * TBD
-  * TBD
-  * TBD
-  * Packages
-    * Package 1
-    * Package 2
-    * Package 3
-    * Package 4
 
 <br>
 <br>
