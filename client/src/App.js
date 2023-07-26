@@ -63,7 +63,7 @@ function SubMenuPage() {
 
 const client = new ApolloClient({
   // uri: 'http://192.168.25.22:4001/graphql',
-  uri: 'https://saltlicktruck.herokuapp.com/graphql',
+  uri: 'https://saltlicktruck-api-production.up.railway.app',
   cache: new InMemoryCache(),
 });
 
