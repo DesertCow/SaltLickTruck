@@ -14,6 +14,7 @@ const db = require('./db/mongoConnection');
 
 const path = require('path');
 
+const cors = require("cors");
 
 const { typeDefs, resolvers } = require('./db/schemas');
 const seedAll = require('./db/seeds/index');
@@ -28,6 +29,8 @@ const app = express();
 //* Apply Configuration to App
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+app.use(cors())
 
 const server = new ApolloServer({ typeDefs, resolvers });
 
