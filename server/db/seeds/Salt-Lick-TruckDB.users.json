@@ -1,0 +1,135 @@
+[{
+  "_id": {
+    "$oid": "6361ea770d6697847f682789"
+  },
+  "email": "test22@gmail.com",
+  "password": "$2b$10$OwDccWUUTd4yyKQ1TbBcGODaF2V8so.6pjTPMqpEFNUVcGhyriRTy",
+  "customerName": "Zara C",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6361ec7f0d6697847f68278d"
+  },
+  "email": "test55@gmail.com",
+  "password": "$2b$10$/oRk8zjw5.SSWgVRZfWi5.th372nEGz5NGi2wA3nYok7bnvOyMmgW",
+  "customerName": "Clayton S",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6361f225a5a919d1e847dd2d"
+  },
+  "email": "test30@gmail.com",
+  "password": "$2b$10$mjDcAQbQ8YLfQmd9B/LT8uGDSqIgJTydwqPObiGh.LFeEqQbT8Co.",
+  "customerName": "David S",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6361f2d7a5a919d1e847dd38"
+  },
+  "email": "test7@gmail.com",
+  "password": "$2b$10$aFEliOChlpdkUw/xb0U0ruMX2DFlD/w89ZWeymoJ8BKfGvIfq8usy",
+  "customerName": "Greg G",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6361f60f00d73d6598fb59bd"
+  },
+  "email": "test32@gmail.com",
+  "password": "$2b$10$fc00mbrCRywFYCyyb77oE.6WJ8h3TEbJwyHvgUA5lc.AfE4h7mtTa",
+  "customerName": "Terry L.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6361f6c100d73d6598fb59c2"
+  },
+  "email": "test221@gmail.com",
+  "password": "$2b$10$z4O4RCnxqJgvO3CZJq5/zevqtvluzSPyz3QoH98CmSTpEi/lByT8S",
+  "customerName": "Mobile A",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "63626b11b5265ba1e73cd4de"
+  },
+  "email": "test42@gmail.com",
+  "password": "$2b$10$53Z8693v5rBMT6v67OzBt..qnbzVBikbrzHfYpnXWocMQSymr3yem",
+  "customerName": "Tommy C",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6362a46d37c1293981772966"
+  },
+  "email": "test67@gmail.com",
+  "password": "$2b$10$PuabF9XLGTW8pP2fqJziLOHawhPKLEvONbwdrWRgBCm27WEx5TFhO",
+  "customerName": "David R",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "63631f16fd2c583fccf2caa8"
+  },
+  "email": "garage2@gmail.com",
+  "password": "$2b$10$PyRu9FgpfzlJRmwkwsUuXu/drVRDgoYyL3khQ/DtDMrjI2DF8F82C",
+  "customerName": "Garage M.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "63631fcefd2c583fccf2caaf"
+  },
+  "email": "garage3@gmail.com",
+  "password": "$2b$10$/nu09TTv9IDCwH8lKwO00ugr7xP.ppR53ioCYeDbxrXtGcN1PH8Jy",
+  "customerName": "Garage M",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "636330c54280853625d364ea"
+  },
+  "email": "test45@gmail.com",
+  "password": "$2b$10$pU7D3B3cvsz9VPwfwduYS.0Yfcmo135O3gQvCDyUg5xH2FtmBaaa6",
+  "customerName": "Clayton S",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "636334584280853625d364ed"
+  },
+  "email": "Test57@gmail.com",
+  "password": "$2b$10$NPnMdcAj8zzXrmLSW5BrTOlm91rbM8peghgy5gaJZW15wFDzL4hd.",
+  "customerName": "Katy M",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "63648bd37a371895ee16fa48"
+  },
+  "email": "test2@gmail.com",
+  "password": "$2b$10$5RScFY5MeBSsvGqMEFDJ6eyGhEGvRpV7dFmq56H5uQWt9YAd2r/eS",
+  "customerName": "Admin",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "63648d377a371895ee16fa4d"
+  },
+  "email": "test3@gmail.com",
+  "password": "$2b$10$pvCV1auG8Z/RZbEs.TcsXewkXYN5XjXIgrMiI0DPy.Xg50mbNaAvq",
+  "customerName": "Not Admin",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "636c493b3d75aa6a3f2ec8af"
+  },
+  "email": "test69@gmail.com",
+  "password": "$2b$10$RQ/5Ip2hY3nUWMvqg8boy.hJCbPxCyj.VQmGCfCXWKW8US44LI1bK",
+  "customerName": "Test 69",
+  "__v": 0
+}]

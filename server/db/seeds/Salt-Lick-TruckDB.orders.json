@@ -1,0 +1,286 @@
+[{
+  "_id": {
+    "$oid": "6361eff9a5a919d1e847dd22"
+  },
+  "items": "[\"1/2 LB Pork Ribs\",\"Chopped Beef\",\"Soda\",\"Homemade Pecan Pie\"]",
+  "qty": "[1,1,2,1]",
+  "prices": "[11.95,13.95,2.5,6.45]",
+  "bill": 37.35,
+  "status": "WIP",
+  "payment": true,
+  "customerName": "Mike K",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6361f1f2a5a919d1e847dd2b"
+  },
+  "items": "[\"Bison Ribs\"]",
+  "qty": "[1]",
+  "prices": "[25.95]",
+  "bill": 25.95,
+  "status": "WIP",
+  "payment": true,
+  "customerName": "Clayton S",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6361f22ca5a919d1e847dd2f"
+  },
+  "items": "[\"Cobbler (Blackberry)\"]",
+  "qty": "[1]",
+  "prices": "[6.45]",
+  "bill": 6.45,
+  "status": "Picked Up",
+  "payment": true,
+  "customerName": "David H",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6361f2e4a5a919d1e847dd3a"
+  },
+  "items": "[\"Cobbler (Blackberry)\",\"Pulled Pork\",\"Potato Salad\"]",
+  "qty": "[1,1,1]",
+  "prices": "[6.45,9.95,4.5]",
+  "bill": 20.9,
+  "status": "Picked Up",
+  "payment": true,
+  "customerName": "Carlos G",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6361f61500d73d6598fb59bf"
+  },
+  "items": "[\"Big Red\"]",
+  "qty": "[1]",
+  "prices": "[2.5]",
+  "bill": 2.5,
+  "status": "Picked Up",
+  "payment": true,
+  "customerName": "Terry L.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6361f6e600d73d6598fb59c4"
+  },
+  "items": "[\"Brisket\",\"Pulled Pork\",\"Potato Salad\",\"Big Red\",\"Homemade Pecan Pie\",\"Cobbler (Blackberry)\",\"1/2 LB Turkey\",\"Beef Ribs\"]",
+  "qty": "[2,1,2,1,2,1,1,1]",
+  "prices": "[10.95,9.95,4.5,2.5,6.45,6.45,13.95,25.95]",
+  "bill": 102.6,
+  "status": "Picked Up",
+  "payment": true,
+  "customerName": "Mobile A",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6362e5bae963c935ad359bd2"
+  },
+  "items": "[\"Brisket\",\"Cobbler (Peach)\",\"Big Red\"]",
+  "qty": "[1,1,1]",
+  "prices": "[18.95,6.45,2.5]",
+  "bill": 27.9,
+  "status": "Picked Up",
+  "payment": true,
+  "customerName": "David R",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "63631f24fd2c583fccf2caaa"
+  },
+  "items": "[\"Big Red\",\"Homemade Pecan Pie\"]",
+  "qty": "[1,1]",
+  "prices": "[2.5,6.45]",
+  "bill": 8.95,
+  "status": "Picked Up",
+  "payment": true,
+  "customerName": "Garage M.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "63631ffbfd2c583fccf2cab1"
+  },
+  "items": "[\"Sliced or Chopped Beef\",\"Potato Salad\",\"Homemade Pecan Pie\",\"Soda\"]",
+  "qty": "[1,1,1,1]",
+  "prices": "[13.95,4.5,6.45,2.5]",
+  "bill": 27.4,
+  "status": "Picked Up",
+  "payment": true,
+  "customerName": "Garage M",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "636334894280853625d364ef"
+  },
+  "items": "[\"Sausage\",\"Pork Ribs\"]",
+  "qty": "[1,1]",
+  "prices": "[12.95,9.95]",
+  "bill": 22.9,
+  "status": "Picked Up",
+  "payment": true,
+  "customerName": "Katy M",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "63643b38e7812615e114b0d6"
+  },
+  "items": "[\"1/2 LB Brisket\"]",
+  "qty": "[1]",
+  "prices": "[13.95]",
+  "bill": 13.95,
+  "status": "Picked Up",
+  "payment": true,
+  "customerName": "David R",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "63645bbd48f8850db1b30e94"
+  },
+  "items": "[\"Topo Chico\",\"Bottled Water\",\"Cobbler (Blackberry)\"]",
+  "qty": "[3,1,1]",
+  "prices": "[2.5,2.5,6.45]",
+  "bill": 16.45,
+  "status": "Picked Up",
+  "payment": true,
+  "customerName": "Zara C",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "63645be848f8850db1b30e96"
+  },
+  "items": "[\"Bottled Water\"]",
+  "qty": "[1]",
+  "prices": "[2.5]",
+  "bill": 2.5,
+  "status": "Picked Up",
+  "payment": true,
+  "customerName": "Zara C",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "636491267a371895ee16fa75"
+  },
+  "items": "[\"Jalapeño\"]",
+  "qty": "[1]",
+  "prices": "[0.25]",
+  "bill": 0.25,
+  "status": "Submitted",
+  "payment": true,
+  "customerName": "Admin",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "63649470a7ffff6dacc19379"
+  },
+  "items": "[\"Pecan Pie\"]",
+  "qty": "[1]",
+  "prices": "[34.95]",
+  "bill": 34.95,
+  "status": "Submitted",
+  "payment": true,
+  "customerName": "Garage M",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "636c3f0e3d75aa6a3f2ec886"
+  },
+  "items": "[\"Pulled Pork\",\"Potato Salad\",\"Soda\"]",
+  "qty": "[1,1,1]",
+  "prices": "[11.95,4.5,2.5]",
+  "bill": 18.95,
+  "status": "Submitted",
+  "payment": true,
+  "customerName": "Admin",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "636c48013d75aa6a3f2ec8a0"
+  },
+  "items": "[\"Sausge\",\"Big Red\",\"Bison Ribs\"]",
+  "qty": "[1,1,1]",
+  "prices": "[8.95,2.5,25.95]",
+  "bill": 37.4,
+  "status": "Ready",
+  "payment": true,
+  "customerName": "Clayton S",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "636c48c63d75aa6a3f2ec8ab"
+  },
+  "items": "[\"Brisket\",\"Big Red\",\"Potato Salad\"]",
+  "qty": "[1,1,1]",
+  "prices": "[18.95,2.5,4.5]",
+  "bill": 25.95,
+  "status": "WIP",
+  "payment": true,
+  "customerName": "Clayton S",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "636c49553d75aa6a3f2ec8b1"
+  },
+  "items": "[\"1/2 LB Sausge\",\"Sausge\",\"Cobbler (Peach)\"]",
+  "qty": "[1,1,1]",
+  "prices": "[10.95,8.95,6.45]",
+  "bill": 26.349999999999998,
+  "status": "Ready",
+  "payment": true,
+  "customerName": "Test 69",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "636c4be83d75aa6a3f2ec8c7"
+  },
+  "items": "[\"1/2 LB Turkey\",\"Pulled Pork\",\"Coleslaw\",\"Cobbler (Blackberry)\",\"Big Red\",\"Soda\"]",
+  "qty": "[1,1,1,1,1,1]",
+  "prices": "[13.95,9.95,4.5,6.45,2.5,2.5]",
+  "bill": 39.85,
+  "status": "Ready",
+  "payment": true,
+  "customerName": "Test 69",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "636c4d33fcb143282006e042"
+  },
+  "items": "[\"Big Red\"]",
+  "qty": "[1]",
+  "prices": "[2.5]",
+  "bill": 2.5,
+  "status": "Submitted",
+  "payment": true,
+  "customerName": "Test 69",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64c846e259625992124780f5"
+  },
+  "items": "[\"Brisket\",\"Pulled Pork Combo\",\"Soda\",\"Homemade Pecan Pie\"]",
+  "qty": "[1,1,1,1]",
+  "prices": "[18.95,16.95,2.5,6.45]",
+  "bill": 44.85,
+  "status": "Submitted",
+  "payment": true,
+  "customerName": "Clayton S",
+  "__v": 0
+}]
