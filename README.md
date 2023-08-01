@@ -145,14 +145,14 @@ npm run start
 
 
 ### SQL Database Config ###
-DB_HOST="containers-us-west-69.railway.app"
-DB_HOSTPORT="7979"
-DB_PASSWORD="FnaicIT3mvafdsKjvsjJ2jL"
+DB_HOST=""
+DB_HOSTPORT=""
+DB_PASSWORD=""
 DB_USER="root"
 DB_NAME="railway"
 
 ### MongoDB Database Config ###
-MONGDB_URI="mongodb://mongo:6yzerXr8909CV6XpgA@containers-us-west-69.railway.app:6743/"
+MONGDB_URI=""
 
 ### Secret Access Token ###
 *** Add Links on how to generaete valid access Tokens
@@ -160,7 +160,7 @@ ACCESS_TOKEN_SECRET=""
 REFRESH_TOKEN_SECRET=""
 
 ### Define Admin Email ###
-ADMIN_ACCOUNT="test2@gmail.com"
+ADMIN_ACCOUNT=""
 
 
 ```
