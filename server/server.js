@@ -30,7 +30,12 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.use(cors())
+var corsOptions = {
+  origin: 'https://saltlicktruck-production.up.railway.app',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+app.use(cors(corsOptions))
 
 const server = new ApolloServer({ typeDefs, resolvers });
 
