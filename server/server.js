@@ -31,7 +31,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 var corsOptions = {
-  origin: 'https://saltlicktruck-production.up.railway.app',
+  // origin: 'https://saltlicktruck-production.up.railway.app',
+  // origin: 'http://192.168.25.22:4001/graphql',
+  origin: '*',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
