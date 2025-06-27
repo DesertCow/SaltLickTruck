@@ -1,148 +1,300 @@
-// #####################################################################
-// 
-// Authorization server to support the food truck application
-//
-// Clayton Skaggs Oct 2022
-// 
-// ---------------------------------------------------------------------
+/*
+* =================================================================
+* FOOD TRUCK BACKEND - Node.js, Express, GraphQL
+* =================================================================
+*
+* Description:
+* This file contains the complete backend server for the Salt Lick
+* food truck ordering application.
+*
+* Tech Stack:
+* - Node.js: JavaScript runtime environment
+* - Express: Web application framework for Node.js
+* - Apollo Server: GraphQL server for Express
+* - GraphQL: Query language for your API
+* - jsonwebtoken: For generating and verifying admin auth tokens
+* - bcryptjs: For hashing admin passwords
+* - cors: For enabling Cross-Origin Resource Sharing
+*
+* To Run This (Locally):
+* 1. Make sure you have Node.js and npm installed.
+* 2. Save this file as `server.js`.
+* 3. In the same directory, run `npm init -y`.
+* 4. Run `npm install express @apollo/server graphql jsonwebtoken bcryptjs cors`.
+* 5. Run `node server.js`.
+* 6. The server will start on http://localhost:4000/graphql.
+* You can access the GraphQL Playground in your browser to test queries.
+*
+* ---
+*
+* Note on Database:
+* For simplicity, this backend uses in-memory arrays as a mock database.
+* In a production environment, you would replace this with a connection
+* to a real database like MongoDB, PostgreSQL, or Firebase Firestore.
+* The GraphQL resolvers are designed to be easily adaptable to any
+* database by swapping out the data logic.
+*
+*/
 
-const { ApolloServer, gql } = require("apollo-server-express");
-const express = require("express");
+const { ApolloServer } = require('@apollo/server');
+const { expressMiddleware } = require('@apollo/server/express4');
+const express = require('express');
+const http = require('http');
+const cors = require('cors');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
-const sequelize = require('./db/sqlConnection');
-const db = require('./db/mongoConnection');
+// --- Configuration ---
+const JWT_SECRET = 'this-is-a-super-secret-key-for-jwt'; // In production, use environment variables!
+const PORT = process.env.PORT || 4000;
 
-const path = require('path');
+// --- Mock Database ---
+// In a real application, this data would come from a database.
+let menuItems = [
+  { id: '1', name: "BRISKET PLATE", price: 17.95, category: 'Plates', description: "Served w/beans, potato salad & coleslaw." },
+  { id: '2', name: "PORK RIBS PLATE", price: 14.95, category: 'Plates', description: "Served w/beans, potato salad & coleslaw." },
+  { id: '3', name: "SAUSAGE PLATE", price: 11.95, category: 'Plates', description: "Served w/beans, potato salad & coleslaw." },
+  { id: '4', name: "SLICED BEEF SANDWICH", price: 12.95, category: 'Sandwiches', description: "A classic sliced beef sandwich." },
+  { id: '5', name: "PULLED PORK SANDWICH", price: 10.95, category: 'Sandwiches', description: "Topped with coleslaw & spicy bbq sauce." },
+  { id: '6', name: "PECAN PIE", price: 5.95, category: 'Desserts', description: "A slice of homemade pecan pie." },
+  { id: '7', name: "COKE", price: 2.50, category: 'Beverages', description: "A refreshing Coca-Cola." },
+];
 
-const cors = require("cors");
+let orders = [
+    {
+        id: '101',
+        customerName: 'John Doe',
+        items: [
+            { menuItemId: '1', quantity: 1, name: 'BRISKET PLATE', price: 17.95 },
+            { menuItemId: '7', quantity: 2, name: 'COKE', price: 2.50 },
+        ],
+        total: 22.95,
+        status: 'Completed', // Pending -> In Progress -> Completed
+        createdAt: new Date().toISOString(),
+    }
+];
+let nextMenuItemId = 8;
+let nextOrderId = 102;
 
-const { typeDefs, resolvers } = require('./db/schemas');
-const seedAll = require('./db/seeds/index');
+// Hardcoded admin user for demonstration
+const users = [
+    {
+        id: 'admin01',
+        username: 'admin',
+        // In a real app, this hash would be generated and stored securely on user creation.
+        // This hash is for the password "password123"
+        passwordHash: '$2a$10$Y.aV5.xY9.I/8An/5e5hKej11Cr9eFTxGCLwE/yvCSaDUIB9GgQgi'
+    }
+];
 
-//TODO: FIX ENV import issues...
-const mySQLport = process.env.mySQLport || 3001;
-const graphQLport = process.env.PORT || 4001;
-
-//* Create Base "App"
-const app = express();
-
-//* Apply Configuration to App
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-
-var corsOptions = {
-  // origin: 'https://saltlicktruck-production.up.railway.app',
-  // origin: 'http://192.168.25.22:4001/graphql',
-  origin: '*',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
-
-app.use(cors(corsOptions))
-
-const server = new ApolloServer({ typeDefs, resolvers });
-
-async function seedServer() {
-
-  try {
-    await seedAll();
-    console.log('\n\x1b[42m----- SEEDING COMPLETE/VALID -----\x1b[0m\n');
-  } catch (error) {
-    console.log('\n\x1b[41m----- SEEDING FAILED! -----\x1b[0m\n');
-    console.log(error);
+// --- GraphQL Schema (Type Definitions) ---
+const typeDefs = `#graphql
+  type MenuItem {
+    id: ID!
+    name: String!
+    price: Float!
+    category: String!
+    description: String
   }
-}
+
+  type OrderItem {
+    menuItemId: ID!
+    quantity: Int!
+    name: String!
+    price: Float!
+  }
+
+  type Order {
+    id: ID!
+    customerName: String!
+    items: [OrderItem!]!
+    total: Float!
+    status: String! # e.g., "Pending", "In Progress", "Completed"
+    createdAt: String!
+  }
+  
+  input OrderItemInput {
+    menuItemId: ID!
+    quantity: Int!
+  }
+
+  type Query {
+    menu: [MenuItem!]!
+    orders: [Order!]!
+    activeOrders: [Order!]! # Orders that are "Pending" or "In Progress"
+    order(id: ID!): Order
+  }
+
+  type Mutation {
+    # Admin mutations
+    login(username: String!, password: String!): String # Returns auth token
+    addMenuItem(name: String!, price: Float!, category: String!, description: String): MenuItem!
+    updateMenuItem(id: ID!, name: String, price: Float, category: String, description: String): MenuItem
+    removeMenuItem(id: ID!): Boolean
+    updateOrderStatus(id: ID!, status: String!): Order
+
+    # Customer mutation
+    placeOrder(customerName: String!, items: [OrderItemInput!]!): Order!
+  }
+`;
 
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
-}
+// --- GraphQL Resolvers ---
+const resolvers = {
+  Query: {
+    menu: () => menuItems,
+    orders: (parent, args, context) => {
+        if (!context.isAdmin) throw new Error('Not authorized');
+        return orders;
+    },
+    activeOrders: () => orders.filter(o => o.status === 'Pending' || o.status === 'In Progress'),
+    order: (parent, { id }, context) => {
+        if (!context.isAdmin) throw new Error('Not authorized');
+        return orders.find(o => o.id === id);
+    },
+  },
+  Mutation: {
+    // --- Admin Mutations ---
+    login: async (_, { username, password }) => {
+        const user = users.find(u => u.username === username);
+        if (!user) {
+            throw new Error('Invalid credentials');
+        }
+        const isValid = await bcrypt.compare(password, user.passwordHash);
+        if (!isValid) {
+            throw new Error('Invalid credentials');
+        }
+        // Return a JWT token
+        const token = jwt.sign({ userId: user.id, username: user.username }, JWT_SECRET, { expiresIn: '1h' });
+        return token;
+    },
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
+    addMenuItem: (_, { name, price, category, description }, context) => {
+      if (!context.isAdmin) throw new Error('Not authorized');
+      const newItem = {
+        id: String(nextMenuItemId++),
+        name,
+        price,
+        category,
+        description,
+      };
+      menuItems.push(newItem);
+      return newItem;
+    },
 
-// app.use(express.static(path.join(__dirname, '../client/src/img')));
+    updateMenuItem: (_, { id, name, price, category, description }, context) => {
+        if (!context.isAdmin) throw new Error('Not authorized');
+        const itemIndex = menuItems.findIndex(item => item.id === id);
+        if (itemIndex === -1) return null;
+        
+        const item = menuItems[itemIndex];
+        if(name) item.name = name;
+        if(price) item.price = price;
+        if(category) item.category = category;
+        if(description) item.description = description;
 
-app.get('/img/Salt_Lick_Menu_DWood-PDF.pdf', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/src/img/Salt_Lick_Menu_DWood-PDF.pdf'));
-});
+        menuItems[itemIndex] = item;
+        return item;
+    },
 
-//* Starts all backend servers and DB connections
-async function serverStart() {
+    removeMenuItem: (_, { id }, context) => {
+        if (!context.isAdmin) throw new Error('Not authorized');
+        const initialLength = menuItems.length;
+        menuItems = menuItems.filter(item => item.id !== id);
+        return menuItems.length < initialLength;
+    },
 
-  //* Start ApolloServer
-  await server.start()
+    updateOrderStatus: (_, { id, status }, context) => {
+        if (!context.isAdmin) throw new Error('Not authorized');
+        const orderIndex = orders.findIndex(o => o.id === id);
+        if (orderIndex === -1) throw new Error('Order not found');
+        
+        orders[orderIndex].status = status;
+        return orders[orderIndex];
+    },
 
-  //* Apollo Middleware Insert
-  server.applyMiddleware({ app });
+    // --- Customer Mutation ---
+    placeOrder: (_, { customerName, items }) => {
+        if (!items || items.length === 0) {
+            throw new Error('Cannot place an empty order.');
+        }
 
-  //* Start mongoDB Connection
-  db.once('open', () => {
+        let total = 0;
+        const processedItems = items.map(item => {
+            const menuItem = menuItems.find(mi => mi.id === item.menuItemId);
+            if (!menuItem) {
+                throw new Error(`Menu item with ID ${item.menuItemId} not found.`);
+            }
+            total += menuItem.price * item.quantity;
+            return {
+                menuItemId: item.menuItemId,
+                quantity: item.quantity,
+                name: menuItem.name,
+                price: menuItem.price,
+            };
+        });
+
+        const newOrder = {
+            id: String(nextOrderId++),
+            customerName,
+            items: processedItems,
+            total: parseFloat(total.toFixed(2)),
+            status: 'Pending',
+            createdAt: new Date().toISOString(),
+        };
+
+        orders.push(newOrder);
+        // In a real app with subscriptions, you would publish the new order here
+        return newOrder;
+    },
+  },
+};
 
 
-    //* Start SQL Connection
-    sequelize.sync({ force: false }).then(() => {
-      app.listen(mySQLport, () => {
-        console.log("\n~~~       Server Status       ~~~")
-        console.log('~~~ MongoDB Database [' + "\x1b[32mOnline\x1b[0m" + '] ~~~')
-        console.log('~~~ SQL Database     [' + "\x1b[32mOnline\x1b[0m" + '] ~~~')
-        // console.log('\x1b[30m~~~ SQL Connection Valid [' + mySQLport + '] ~~~\x1b[0m\n')
+// --- Server Setup ---
+async function startServer() {
+    const app = express();
+    const httpServer = http.createServer(app);
 
-        //* Start GraphQL Server
-        app.listen(graphQLport, () => {
-          console.log(`~~~ GraphQL API      [` + "\x1b[32mOnline\x1b[0m" + `] ~~~ \n\n\x1b[33mAPI Live:\x1b[0m http://localhost:${graphQLport}${server.graphqlPath}\n\n`);
-
-          //! Seed SWITCH
-          // seedServer();
-
-        })
-      });
+    const server = new ApolloServer({
+        typeDefs,
+        resolvers,
+        introspection: true, // Allows GraphQL Playground in production
     });
-  })
+
+    await server.start();
+
+    app.use(
+        '/graphql',
+        cors(),
+        express.json(),
+        expressMiddleware(server, {
+            context: async ({ req }) => {
+                // This context function is called for every GraphQL request.
+                // It checks for an Authorization header and validates the JWT.
+                const auth = req.headers.authorization || '';
+                if (!auth.startsWith('Bearer ')) {
+                    return { isAdmin: false };
+                }
+                const token = auth.substring(7, auth.length);
+                try {
+                    const decoded = jwt.verify(token, JWT_SECRET);
+                    // If the token is valid, we add isAdmin=true to the context
+                    // This allows our resolvers to check for admin privileges.
+                    if (decoded.userId) {
+                         return { isAdmin: true, user: decoded };
+                    }
+                    return { isAdmin: false };
+                } catch (err) {
+                    // Token is invalid or expired
+                    return { isAdmin: false };
+                }
+            },
+        }),
+    );
+
+    await new Promise((resolve) => httpServer.listen({ port: PORT }, resolve));
+    console.log(`🚀 Server ready at http://localhost:${PORT}/graphql`);
 }
 
-//* ========== Main ===========
-
-// * Main Server Call
-serverStart();
-
-//* ========== EOM ===========
-
-// ================ Old Code ================
-
-//* CORS Config
-// const corsOptions = {
-//   origin: "*",
-//   optionsSuccessStatus: 200
-//   // Access-Control-Allow-Origin: *
-// };
-
-//* Apply CORS Config
-// app.use(cors());
-
-//* Share Build output directory
-// app.use(express.static(path.join(__dirname, '../public/build')))
-// app.get('*', (_, res) => {
-//   res.sendFile(path.join(__dirname, '../public/build/index.html'), (err) => {
-//     if (err) {
-//       res.status(500).send(err)
-//     }
-//   })
-// })
-
-//* ~~~~~~~~~~~~~~~~~ Database Connection ~~~~~~~~~~~~~~~~~
-
-//* Test Mongoose DB Connection
-// mongoose.connect(process.env.MONGO_URL, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// }).then(() => {
-//   // console.log("DB Connection Successful!")
-//   console.log(`| 💡     MongooDB Connection:  \x1b[32mOnline\x1b[0m     💡 |`);
-
-// }).catch((err) => {
-//   console.log(err.message);
-// });
-
-
-//!========================= EOF =========================
+startServer();
