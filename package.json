@@ -22,7 +22,8 @@
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "graphql": "^16.11.0",
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.2",
+    "serve": "^14.2.4"
   },
   "devDependencies": {
     "nodemon": "^3.1.10",
