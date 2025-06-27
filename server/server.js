@@ -1,11 +1,13 @@
 /*
 * =================================================================
-* FOOD TRUCK BACKEND - Node.js, Express, GraphQL
+* FOOD TRUCK BACKEND - Node.js, Express, GraphQL (Updated)
 * =================================================================
 *
 * Description:
 * This file contains the complete backend server for the Salt Lick
-* food truck ordering application.
+* food truck ordering application. The menu data has been updated
+* to match the full menu provided in the frontend application.
+* The server port has also been updated to 4001.
 *
 * Tech Stack:
 * - Node.js: JavaScript runtime environment
@@ -22,17 +24,7 @@
 * 3. In the same directory, run `npm init -y`.
 * 4. Run `npm install express @apollo/server graphql jsonwebtoken bcryptjs cors`.
 * 5. Run `node server.js`.
-* 6. The server will start on http://localhost:4000/graphql.
-* You can access the GraphQL Playground in your browser to test queries.
-*
-* ---
-*
-* Note on Database:
-* For simplicity, this backend uses in-memory arrays as a mock database.
-* In a production environment, you would replace this with a connection
-* to a real database like MongoDB, PostgreSQL, or Firebase Firestore.
-* The GraphQL resolvers are designed to be easily adaptable to any
-* database by swapping out the data logic.
+* 6. The server will start on http://localhost:4001/graphql.
 *
 */
 
@@ -46,18 +38,58 @@ const jwt = require('jsonwebtoken');
 
 // --- Configuration ---
 const JWT_SECRET = 'this-is-a-super-secret-key-for-jwt'; // In production, use environment variables!
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4002; // Updated port to match frontend
 
-// --- Mock Database ---
-// In a real application, this data would come from a database.
+// --- Mock Database (Updated with full menu) ---
 let menuItems = [
-  { id: '1', name: "BRISKET PLATE", price: 17.95, category: 'Plates', description: "Served w/beans, potato salad & coleslaw." },
-  { id: '2', name: "PORK RIBS PLATE", price: 14.95, category: 'Plates', description: "Served w/beans, potato salad & coleslaw." },
-  { id: '3', name: "SAUSAGE PLATE", price: 11.95, category: 'Plates', description: "Served w/beans, potato salad & coleslaw." },
-  { id: '4', name: "SLICED BEEF SANDWICH", price: 12.95, category: 'Sandwiches', description: "A classic sliced beef sandwich." },
-  { id: '5', name: "PULLED PORK SANDWICH", price: 10.95, category: 'Sandwiches', description: "Topped with coleslaw & spicy bbq sauce." },
-  { id: '6', name: "PECAN PIE", price: 5.95, category: 'Desserts', description: "A slice of homemade pecan pie." },
-  { id: '7', name: "COKE", price: 2.50, category: 'Beverages', description: "A refreshing Coca-Cola." },
+    // Salt Lick Plates
+    { id: 'p1', name: "BRISKET", price: 17.95, category: "Salt Lick Plates", description: "Served w/beans, potato salad & coleslaw." },
+    { id: 'p2', name: "PORK RIBS", price: 14.95, category: "Salt Lick Plates", description: "Served w/beans, potato salad & coleslaw." },
+    { id: 'p3', name: "BISON RIBS (2 Ribs)", price: 24.95, category: "Salt Lick Plates", description: "Served w/beans, potato salad & coleslaw." },
+    { id: 'p4', name: "BEEF RIBS (2 Ribs)", price: 24.95, category: "Salt Lick Plates", description: "Served w/beans, potato salad & coleslaw." },
+    { id: 'p5', name: "TURKEY", price: 14.95, category: "Salt Lick Plates", description: "Served w/beans, potato salad & coleslaw." },
+    { id: 'p6', name: "SAUSAGE", price: 11.95, category: "Salt Lick Plates", description: "Served w/beans, potato salad & coleslaw." },
+    { id: 'p7', name: "CHICKEN", price: 13.95, category: "Salt Lick Plates", description: "Whole chicken. Served w/beans, potato salad & coleslaw." },
+    { id: 'p8', name: "PULLED PORK", price: 14.95, category: "Salt Lick Plates", description: "Served w/beans, potato salad & coleslaw." },
+    { id: 'p9', name: "THURMAN'S CHOICE", price: 18.95, category: "Salt Lick Plates", description: "Brisket, Pork Ribs & Sausage. No Substitutions." },
+    // Combo Plates (Categorized under Salt Lick Plates for grouping)
+    { id: 'c1', name: "BRISKET & PORK RIBS", price: 16.95, category: "Salt Lick Plates" },
+    { id: 'c2', name: "BRISKET & SAUSAGE", price: 16.95, category: "Salt Lick Plates" },
+    { id: 'c3', name: "BRISKET & TURKEY", price: 16.95, category: "Salt Lick Plates" },
+    { id: 'c4', name: "PULLED PORK & BRISKET", price: 16.95, category: "Salt Lick Plates" },
+    // Meat by the LB
+    { id: 'm1', name: "½ LB BRISKET", price: 10.95, category: "Meat by the LB." },
+    { id: 'm2', name: "½ LB PORK RIBS", price: 9.00, category: "Meat by the LB." },
+    { id: 'm3', name: "½ LB SAUSAGE", price: 5.95, category: "Meat by the LB." },
+    { id: 'm4', name: "½ LB TURKEY", price: 8.95, category: "Meat by the LB." },
+    { id: 'm5', name: "½ CHICKEN", price: 8.95, category: "Meat by the LB." },
+    { id: 'm6', name: "½ LB PULLED PORK", price: 8.45, category: "Meat by the LB." },
+    // Sandwiches
+    { id: 's1', name: "SLICED OR CHOPPED BEEF", price: 12.95, category: "Sandwiches" },
+    { id: 's2', name: "PULLED PORK", price: 10.95, category: "Sandwiches", description: "Topped with coleslaw & spicy bbq sauce." },
+    { id: 's3', name: "SAUSAGE", price: 9.95, category: "Sandwiches" },
+    { id: 's4', name: "TURKEY", price: 12.95, category: "Sandwiches", description: "Romaine lettuce, tomato, red onions & special sauce." },
+    { id: 's5', name: "MARINO'S TRIPLE CHOP", price: 12.95, category: "Sandwiches", description: "Chopped Brisket, Sausage & Ribs." },
+    // Small Plates
+    { id: 'sp1', name: "BRISKET", price: 10.95, category: "Small Plates", description: "For under 10 & over 65." },
+    { id: 'sp2', name: "PORK RIBS", price: 9.95, category: "Small Plates", description: "For under 10 & over 65." },
+    { id: 'sp3', name: "SAUSAGE", price: 8.95, category: "Small Plates", description: "For under 10 & over 65." },
+    // Sides
+    { id: 'sd1', name: "SINGLE SERVING", price: 3.50, category: "Sides", description: "Beans, Potato Salad or Coleslaw." },
+    { id: 'sd2', name: "1 PINT", price: 4.50, category: "Sides", description: "Beans, Potato Salad or Coleslaw." },
+    { id: 'sd3', name: "1 QUART", price: 9.00, category: "Sides", description: "Beans, Potato Salad or Coleslaw." },
+    // BBQ Sauce
+    { id: 'bbq1', name: "½ PINT BBQ SAUCE", price: 1.75, category: "Sides", description: "Regular or Spicy" },
+    { id: 'bbq2', name: "1 PINT BBQ SAUCE", price: 3.50, category: "Sides", description: "Regular or Spicy" },
+    // Desserts
+    { id: 'd1', name: "HOMEMADE PECAN PIE", price: 5.95, category: "Desserts" },
+    { id: 'd2', name: "CHOCOLATE PECAN PIE", price: 5.95, category: "Desserts" },
+    { id: 'd3', name: "BLACKBERRY COBBLER", price: 5.95, category: "Desserts" },
+    { id: 'd4', name: "PEACH COBBLER", price: 5.95, category: "Desserts" },
+    // Beverages
+    { id: 'b1', name: "SWEET/UNSWEET TEA", price: 2.50, category: "Beverages" },
+    { id: 'b2', name: "SODA", price: 2.50, category: "Beverages", description: "Coke, Diet Coke, Sprite, Dr. Pepper" },
+    { id: 'b3', name: "BOTTLED WATER", price: 2.50, category: "Beverages" },
 ];
 
 let orders = [
@@ -65,15 +97,14 @@ let orders = [
         id: '101',
         customerName: 'John Doe',
         items: [
-            { menuItemId: '1', quantity: 1, name: 'BRISKET PLATE', price: 17.95 },
-            { menuItemId: '7', quantity: 2, name: 'COKE', price: 2.50 },
+            { menuItemId: 'p1', quantity: 1, name: 'BRISKET', price: 17.95 },
+            { menuItemId: 'b2', quantity: 2, name: 'SODA', price: 2.50 },
         ],
         total: 22.95,
         status: 'Completed', // Pending -> In Progress -> Completed
         createdAt: new Date().toISOString(),
     }
 ];
-let nextMenuItemId = 8;
 let nextOrderId = 102;
 
 // Hardcoded admin user for demonstration
@@ -81,7 +112,6 @@ const users = [
     {
         id: 'admin01',
         username: 'admin',
-        // In a real app, this hash would be generated and stored securely on user creation.
         // This hash is for the password "password123"
         passwordHash: '$2a$10$Y.aV5.xY9.I/8An/5e5hKej11Cr9eFTxGCLwE/yvCSaDUIB9GgQgi'
     }
@@ -121,13 +151,13 @@ const typeDefs = `#graphql
   type Query {
     menu: [MenuItem!]!
     orders: [Order!]!
-    activeOrders: [Order!]! # Orders that are "Pending" or "In Progress"
+    activeOrders: [Order!]!
     order(id: ID!): Order
   }
 
   type Mutation {
     # Admin mutations
-    login(username: String!, password: String!): String # Returns auth token
+    login(username: String!, password: String!): String
     addMenuItem(name: String!, price: Float!, category: String!, description: String): MenuItem!
     updateMenuItem(id: ID!, name: String, price: Float, category: String, description: String): MenuItem
     removeMenuItem(id: ID!): Boolean
@@ -164,7 +194,6 @@ const resolvers = {
         if (!isValid) {
             throw new Error('Invalid credentials');
         }
-        // Return a JWT token
         const token = jwt.sign({ userId: user.id, username: user.username }, JWT_SECRET, { expiresIn: '1h' });
         return token;
     },
@@ -172,7 +201,7 @@ const resolvers = {
     addMenuItem: (_, { name, price, category, description }, context) => {
       if (!context.isAdmin) throw new Error('Not authorized');
       const newItem = {
-        id: String(nextMenuItemId++),
+        id: `new-${Math.random().toString(36).substr(2, 9)}`, // Use a random ID for new items
         name,
         price,
         category,
@@ -244,7 +273,6 @@ const resolvers = {
         };
 
         orders.push(newOrder);
-        // In a real app with subscriptions, you would publish the new order here
         return newOrder;
     },
   },
@@ -259,7 +287,7 @@ async function startServer() {
     const server = new ApolloServer({
         typeDefs,
         resolvers,
-        introspection: true, // Allows GraphQL Playground in production
+        introspection: true,
     });
 
     await server.start();
@@ -270,8 +298,6 @@ async function startServer() {
         express.json(),
         expressMiddleware(server, {
             context: async ({ req }) => {
-                // This context function is called for every GraphQL request.
-                // It checks for an Authorization header and validates the JWT.
                 const auth = req.headers.authorization || '';
                 if (!auth.startsWith('Bearer ')) {
                     return { isAdmin: false };
@@ -279,14 +305,11 @@ async function startServer() {
                 const token = auth.substring(7, auth.length);
                 try {
                     const decoded = jwt.verify(token, JWT_SECRET);
-                    // If the token is valid, we add isAdmin=true to the context
-                    // This allows our resolvers to check for admin privileges.
                     if (decoded.userId) {
                          return { isAdmin: true, user: decoded };
                     }
                     return { isAdmin: false };
                 } catch (err) {
-                    // Token is invalid or expired
                     return { isAdmin: false };
                 }
             },
