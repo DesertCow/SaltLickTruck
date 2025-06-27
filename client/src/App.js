@@ -28,6 +28,7 @@ import Cart from './pages/Cart';
 import Profile from './pages/Profile';
 import OrderSubmit from './pages/OrderSubmit';
 import Kitchen from './pages/Kitchen';
+import MenuHardCode from './pages/Menu_Hardcode'
 
 //* Component Import
 import Header from './components/Header';
@@ -62,15 +63,15 @@ function SubMenuPage() {
 }
 
 const client = new ApolloClient({
-  // uri: 'http://192.168.25.22:4001/graphql',
-  uri: 'https://saltlicktruck-api.up.railway.app/graphql',
+  uri: 'http://192.168.25.22:4002/graphql',
+  // uri: 'https://saltlicktruck-api.up.railway.app/graphql',
   cache: new InMemoryCache(),
 });
 
 export default function App() {
 
-  require('./style.css')
-  require('./reset.css')
+  // require('./style.css')
+  // require('./reset.css')
   require('./img/Salt_Lick_Menu_DWood-PDF.pdf')
 
 
@@ -84,7 +85,8 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/main_Menu" element={<MainMenu />} />
+          {/* <Route path="/main_Menu" element={<MainMenu />} /> */}
+          <Route path="/main_Menu" element={<MenuHardCode />} />
           <Route path="/sub_Menu/:menuID" element={<SubMenu />} />
           <Route path="/item/:menuItem" element={<ItemMenu />} />
           <Route path="/user/cart" element={<Cart />} />
